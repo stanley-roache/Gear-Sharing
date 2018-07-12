@@ -1,18 +1,29 @@
-var request = require('supertest')
+const db = require('../../../server/db/db')
 
-var server = require('../../../server/server')
-// var lostDb = require('../../../server/db/db/users')
-var setupDb = require('.././setup-db')
+const env = require('./test-environment')
 
-// test.cd is an ava function, you are using jest
-// they're set up differently
-// jest is easier imo
-test('GET /',() => {
-  request(server)
-    .get('/api/lost')
-    .expect(200)
-    .end((err,res) => {
-      if (err) console.log(err);
-      expect(res.body.length).toBe(1)
+let testDb = null
+beforeEach(() => {
+  testDb = env.getTestDb()
+  return env.initialise(testDb)
+})
+afterEach(() => env.cleanup(testDb))
+
+test('getLost pets db function', () => {
+  return db.getLost(testDb)
+    .then(lostPets => {
+      expect(lostPets).toHaveLength(1)
     })
 })
+
+test('add a lost pet to db', () => {
+  return db.addLost({name: 'Hayden'}, testDb)
+    .then(lostPet => {
+        expect(lostPet).toEqual([2])
+        return testDb('lost')
+          .then(lostPets => {
+            expect(lostPets).toHaveLength(2)
+            expect(lostPets[1].name).toBe('Hayden')
+          })
+        })
+      })
