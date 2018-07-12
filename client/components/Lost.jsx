@@ -8,34 +8,39 @@ const Lost = (props) => {
       [
         {
           id: 1,
-          photo: 'https://tinyurl.com/ybmbgafu',
+          name: 'doggoJo',
           species: 'dog',
-          contact_details: 'no.'
+          photo: 'https://tinyurl.com/ybmbgafu',
+          user_id: 'no.'
         },
         {
           id: 2,
-          photo: 'url',
+          name: 'doggo',
           species: 'dog',
-          contact_details: 'no.'
+          photo: 'https://tinyurl.com/ybmbgafu',
+          user_id: 'no.'
         },
         {
           id: 3,
-          photo: 'url',
+          name: 'doggo',
           species: 'dog',
-          contact_details: 'no.'
+          photo: 'https://tinyurl.com/ybmbgafu',
+          user_id: 'no.'
         },
         {
           id: 4,
-          photo: 'url',
+          name: 'doggo',
           species: 'dog',
-          contact_details: 'no.'
+          photo: 'https://tinyurl.com/ybmbgafu',
+          user_id: 'no.'
         },
         {
           id: 5,
-          photo: 'url',
+          name: 'doggo',
           species: 'dog',
-          contact_details: 'no.'
-        },
+          photo: 'https://tinyurl.com/ybmbgafu',
+          user_id: 'no.'
+        }
       ]
   }
 
@@ -43,7 +48,9 @@ const Lost = (props) => {
     <div className='pets'>
       <div className='is-size-1'> Lost Pets </div>
       <div className="columns is-multiline">
-        {mockProps.lostPets.map(pet => <LostPet pet={pet} />)}
+        {mockProps.lostPets.map(pet => (
+          <LostPet key={pet.id} pet={pet} />
+        ))}
       </div>
     </div>
   )
