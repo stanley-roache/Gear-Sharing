@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../db')
+const db = require('../db/db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    return db.addLost()
+    const pet = req.body
+
+    return db.addLost(pet)
         .then(() => {
             res.sendStatus(200)
         })
