@@ -4,12 +4,13 @@ exports.seed = function(knex, Promise) {
   return knex('lost').del()
     .then(function () {
       // Inserts seed entries
+      // Dog Cat Fish Rat Rock
       return knex('lost').insert([
         {
           id: 1,
           name: 'Pouya',
-          species: 'Mouse',
-          photo: 'https://cdn.pixabay.com/photo/2018/03/03/02/26/mouse-3194768__340.jpg',
+          species: 'Rat',
+          photo: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
           user_id: 2
         },
         {
@@ -29,8 +30,8 @@ exports.seed = function(knex, Promise) {
         {
           id: 4,
           name: 'Lil Peep',
-          species: 'Lizard',
-          photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Tiliqua_scincoides_scincoides.jpg/1200px-Tiliqua_scincoides_scincoides.jpg',
+          species: 'Cat',
+          photo: 'https://data.whicdn.com/images/308357995/large.png',
           user_id: 2
         },
         {
@@ -50,15 +51,15 @@ exports.seed = function(knex, Promise) {
         {
           id: 7,
           name: '6ix9ine',
-          species: 'Bird',
-          photo: 'https://media.treehugger.com/assets/images/2011/10/lorikeet.jpg',
+          species: 'Cat',
+          photo: 'https://cdn.shopify.com/s/files/1/2526/4348/products/product-image-102128320_580x.jpg?v=1519190090',
           user_id: 3
         },
         {
           id: 8,
           name: 'Slug Christ',
-          species: 'Slug',
-          photo: 'https://www.publicdomainpictures.net/pictures/110000/velka/banana-slug.jpg',
+          species: 'Cat',
+          photo: 'https://i.ytimg.com/vi/z5eF_pIbqus/maxresdefault.jpg',
           user_id: 2
         },
         {
@@ -71,8 +72,8 @@ exports.seed = function(knex, Promise) {
         {
           id: 10,
           name: 'XXXTentacion',
-          species: 'Possum',
-          photo: 'https://flyfishhunt.co.nz/wp-content/uploads/2016/09/IMG_6618-1-e1472796323791.jpg',
+          species: 'Dog',
+          photo: 'https://i.ytimg.com/vi/VNcBHABReF8/hqdefault.jpg',
           user_id: 2
         },
       ]);
