@@ -7,6 +7,7 @@ import Register from './Register'
 import Nav from './Nav'
 import Lost from './Lost'
 import LostForm from './LostForm'
+import Found from './Found'
 
 const App = ({auth}) => (
   <Router>
