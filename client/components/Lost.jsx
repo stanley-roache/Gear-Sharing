@@ -2,6 +2,8 @@ import React from 'react'
 
 import LostPet from './LostPet'
 
+import { fetchLostPets } from '../actions/lostPets'
+
 const Lost = (props) => {
   const mockProps = {
     lostPets:
