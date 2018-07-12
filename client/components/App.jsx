@@ -29,6 +29,7 @@ const App = ({auth}) => (
         <Route path="/register" component={Register} />
         <Route exact path="/lost" component={Lost} />
         <Route path="/lost/new" component={LostForm} />
+        <Route path="/found" component={Found} />
       </div>
     </div>
   </Router>
