@@ -1,4 +1,4 @@
-import request from 'superagent'
+const request = require('superagent')
 
 export const ADD_LOST_PET = 'ADD_LOST_PET'
 export const RECEIVE_LOST_PETS = 'RECEIVE_LOST_PETS'
@@ -41,5 +41,8 @@ export function insertLostPet(pet) {
         request
             .post(lostUrl)
             .send(pet)
+            .then((res) => {
+                console.log(res.body)
+            })
     }
 }
