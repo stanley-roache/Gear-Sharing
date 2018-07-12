@@ -1,6 +1,5 @@
-const RECEIVE_LOST_PETS = 'RECEIVE_LOST_PETS'
-const ADD_LOST_PET = 'ADD_LOST_PET'
-
+export const RECEIVE_LOST_PETS = 'RECEIVE_LOST_PETS'
+export const ADD_LOST_PET = 'ADD_LOST_PET'
 
 export function receiveLostPets(lostPets) {
     return {
