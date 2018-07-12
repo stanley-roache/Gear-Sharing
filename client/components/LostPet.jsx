@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LostPet = props => (
+export const LostPet = props => (
   <div className="column is-one-third has-text-bold">
     <div className="box has-text-left">
       <figure className="image is-4by3">

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import LostPet from './LostPet'
 
-const Lost = (props) => {
+export const Lost = (props) => {
   return (
     <div className='pets'>
       <div className='is-size-1'> Lost Pets </div>
@@ -21,4 +21,4 @@ const mapStateToProps = ({lostPets}) => ({
   lostPets
 })
 
-module.exports = connect(mapStateToProps)(Lost)
+export default connect(mapStateToProps)(Lost)
