@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     return db.getLost()
         .then(lostPets => {
             res.json({lostPets})
+            res.sendStatus(200)
          })
         .catch(err => {
             res.status(500).send('DATABASE ERROR:' + err.message)
