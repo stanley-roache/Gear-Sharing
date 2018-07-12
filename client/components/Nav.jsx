@@ -31,10 +31,10 @@ class Nav extends React.Component {
             {auth.isAuthenticated
               ? <Link to="/" onClick={this.props.logout} className="navbar-item is-large">Logout</Link>
               : [
-                <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>,
-                <Link onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>,
-                <Link onClick={this.toggleBurger} className="navbar-item" to='/lost'>Lost Pets</Link>,
-                <Link onClick={this.toggleBurger} className="navbar-item" to='/lost/new'>Lost your Pet?</Link> 
+                <Link key='login' onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>,
+                <Link key='register' onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>,
+                <Link key='lostPets' onClick={this.toggleBurger} className="navbar-item" to='/lost'>Lost Pets</Link>,
+                <Link key='lostPetsForm' onClick={this.toggleBurger} className="navbar-item" to='/lost/new'>Lost your Pet?</Link> 
               ]
             }
           </div>

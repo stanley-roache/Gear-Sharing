@@ -41,8 +41,5 @@ export function insertLostPet(pet) {
         request
             .post(lostUrl)
             .send(pet)
-            .then((res) => {
-                console.log(res.body)
-            })
     }
 }

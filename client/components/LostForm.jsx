@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addLostPet } from '../actions/lostPets'
+import { addLostPet, insertLostPet } from '../actions/lostPets'
 
 class LostForm extends React.Component {
   constructor(props) {
@@ -25,52 +25,54 @@ class LostForm extends React.Component {
 
   submit(e) {
     e.preventDefault()
-    console.log(this.state)
-    this.props.dispatch(addLostPet(this.state))
+    this.props.dispatch(insertLostPet(this.state))
   }
 
-
   render() {
-    
+
     return (
-      <form>
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input name="name"  onChange={this.updateDetails}class="input" type="text" />
+      <div className="box formBox">
+        <form>
+          <div className="field">
+            <label className="label">Name</label>
+            <div className="control">
+              <input name="name" onChange={this.updateDetails} className="input" type="text" />
+            </div>
           </div>
-        </div>
 
-        <br/>
+          <br />
 
-        <div class="field">
-          <label class="label">Species</label>
-          <div class="select">
-            <select onChange={this.updateDetails} name="species">
-              <option>Dog</option>
-              <option>Cat</option>
-              <option>Fish</option>
-            </select>
+          <div className="field">
+            <label className="label">Species</label>
+            <div className="select">
+              <select onChange={this.updateDetails} name="species">
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Fish</option>
+                <option>Rat</option>
+                <option>Rock</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <br/>
+          <br />
 
-        <div class="field">
-          <label class="label">Image URL</label>
-          <div class="control">
-            <input name="photo" onChange={this.updateDetails}class="input is-danger" />
+          <div className="field">
+            <label className="label">Image URL</label>
+            <div className="control">
+              <input name="photo" onChange={this.updateDetails} className="input is-danger" />
+            </div>
           </div>
-        </div>
 
-      <br/>
+          <br />
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button onClick={(e) => this.submit(e)} class="button is-primary is-link">Submit</button>
+          <div className="field is-grouped">
+            <div className="control buttonControl">
+              <button onClick={(e) => this.submit(e)} className="button formButton is-primary is-link">Submit</button>
+            </div>
           </div>
-        </div>
-      </form >
+        </form >
+      </div>
     )
   }
 }
