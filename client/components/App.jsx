@@ -22,16 +22,14 @@ const App = ({auth}) => (
       </div>
 
       <div className=''>
-        {/* {!auth.isAuthenticated &&
+        {!auth.isAuthenticated &&
           <Route exact path="/" component={Login} />
-        } */}
-        
+        }
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route exact path="/lost" component={Lost} />
         <Route path="/lost/new" component={LostForm} />
       </div>
-
     </div>
   </Router>
 )

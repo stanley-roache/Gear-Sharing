@@ -1,7 +1,8 @@
 import React from 'react'
 
-import LostPet from './LostPet'
+import {connect} from 'react-redux'
 
+<<<<<<< HEAD
 import { fetchLostPets } from '../actions/lostPets'
 
 const Lost = (props) => {
@@ -40,15 +41,25 @@ const Lost = (props) => {
         },
       ]
   }
+=======
+import LostPet from './LostPet'
+>>>>>>> c6f3e3c2fe15fe0eeff35bf52d5922a520715910
 
+export const Lost = (props) => {
   return (
     <div className='pets'>
       <div className='is-size-1'> Lost Pets </div>
       <div className="columns is-multiline">
-        {mockProps.lostPets.map(pet => <LostPet pet={pet} />)}
+        {props.lostPets.map(pet => (
+          <LostPet key={pet.id} pet={pet} />
+        ))}
       </div>
     </div>
   )
 }
 
-module.exports = Lost
+const mapStateToProps = ({lostPets}) => ({
+  lostPets
+})
+
+export default connect(mapStateToProps)(Lost)
