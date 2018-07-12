@@ -2,7 +2,7 @@ import React from 'react'
 
 import {connect} from 'react-redux'
 
-import FoundPet from 'react-redux'
+import FoundPet from './FoundPet'
 
 export const Found = props => {
   return (
