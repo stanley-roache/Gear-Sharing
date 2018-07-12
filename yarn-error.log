@@ -1,5 +1,5 @@
 Arguments: 
-  /home/student/.nvm/versions/node/v8.10.0/bin/node /usr/share/yarn/bin/yarn.js jest db
+  /home/student/.nvm/versions/node/v8.10.0/bin/node /usr/share/yarn/bin/yarn.js jest
 
 PATH: 
   /home/student/.nvm/versions/node/v8.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
@@ -24,17 +24,13 @@ npm manifest:
       "postinstall": "webpack",
       "dev": "nodemon --watch server server/index & webpack --watch",
       "start": "node server/index",
-      "test": "jest --watchAll",
+      "test": "jest --watch",
       "watch": "nodemon -e js,jsx -x npm test",
       "h:deploy": "git push heroku master",
       "h:migrate": "heroku run knex migrate:latest",
       "h:rollback": "heroku run knex migrate:rollback",
       "h:seed": "heroku run knex seed:run",
       "knex": "knex"
-    },
-    "ava": {
-      "require": "babel-register",
-      "babel": "inherit"
     },
     "babel": {
       "presets": [
@@ -54,6 +50,7 @@ npm manifest:
     },
     "dependencies": {
       "babel-core": "^6.24.1",
+      "babel-jest": "^23.4.0",
       "babel-loader": "^6.4.1",
       "babel-preset-es2015": "^6.24.1",
       "babel-preset-react": "^6.24.1",
@@ -6004,6 +6001,12 @@ Lockfile:
       indent-string "^2.1.0"
       strip-indent "^1.0.1"
   
+  redux-mock-store@^1.5.3:
+    version "1.5.3"
+    resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.5.3.tgz#1f10528949b7ce8056c2532624f7cafa98576c6d"
+    dependencies:
+      lodash.isplainobject "^4.0.6"
+  
   redux-thunk@^2.2.0:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
@@ -7564,7 +7567,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c /home/student/workspace/lost-and-found/node_modules/.bin/jest db
+  Arguments: -c /home/student/workspace/lost-and-found/node_modules/.bin/jest
   Directory: /home/student/workspace/lost-and-found
   Output:
   
