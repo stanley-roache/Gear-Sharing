@@ -25,6 +25,7 @@ class LostForm extends React.Component {
 
   submit(e) {
     e.preventDefault()
+    console.log(this.state)
     this.props.dispatch(addLostPet(this.state))
   }
 
@@ -74,6 +75,4 @@ class LostForm extends React.Component {
   }
 }
 
-
-
-export default connect()(LostForm);
+export default connect()(LostForm)

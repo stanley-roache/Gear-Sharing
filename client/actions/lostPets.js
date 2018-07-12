@@ -3,6 +3,8 @@ import request from 'superagent'
 export const ADD_LOST_PET = 'ADD_LOST_PET'
 export const RECEIVE_LOST_PETS = 'RECEIVE_LOST_PETS'
 
+const lostUrl = '/api/lost'
+
 export function receiveLostPets(lostPets) {
     return {
         type: RECEIVE_LOST_PETS, 
@@ -17,16 +19,27 @@ export function addLostPet(lostPet) {
     }
 }
 
+// Thunk
 export function fetchLostPets() {
-    return dispatch => {
+    return (dispatch) => {
       return request
-        .get('api/lost')
+        .get(lostUrl)
         .then(res => {
             const lostPets = res.body
-            dispatch(receiveLostPets(receiveLostPets))
+            dispatch(receiveLostPets(lostPets))
         })
         .catch(err => {
             if (err) throw err
         })
     }
   }
+
+export function insertLostPet(pet) {
+    return (dispatch) => {
+        dispatch(addLostPet(pet))
+
+        request
+            .post(lostUrl)
+            .send(pet)
+    }
+}
