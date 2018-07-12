@@ -5,8 +5,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
     return db.getLost()
         .then(lostPets => {
-            res.json({lostPets})
-            res.sendStatus(200)
+            res.status(200).json(lostPets)
          })
         .catch(err => {
             res.status(500).send('DATABASE ERROR:' + err.message)
@@ -17,8 +16,8 @@ router.post('/', (req, res) => {
     const pet = req.body
 
     return db.addLost(pet)
-        .then(() => {
-            res.sendStatus(200)
+        .then(id => {
+            res.status(200).json(id)
         })
         .catch(err => {
             res.status(500).send('DATABASE ERROR:' + err.message)
