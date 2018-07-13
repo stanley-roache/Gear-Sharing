@@ -12,6 +12,8 @@ export function registerUserRequest (creds) {
         dispatch(receiveLogin(userInfo))
         document.location = "/#/"
       })
-      .catch(err => dispatch(loginError(err.response.body.message)))
+      .catch(err => {
+        dispatch(loginError(err.response.body.message))
+      })
   }
 }

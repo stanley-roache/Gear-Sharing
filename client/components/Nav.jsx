@@ -1,7 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logoutUser} from '../actions/logout'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logoutUser } from '../actions/logout'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -12,15 +12,15 @@ class Nav extends React.Component {
     this.toggleBurger = this.toggleBurger.bind(this)
   }
   toggleBurger() {
-    this.setState({showBurger: !this.state.showBurger})
+    this.setState({ showBurger: !this.state.showBurger })
   }
   render() {
-    const {auth, logout} = this.props
-    const {showBurger} = this.state
+    const { auth, logout } = this.props
+    const { showBurger } = this.state
     return <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          <span onClick={this.toggleBurger} className={`navbar-burger burger ${showBurger ? 'is-active': ''}`} data-target="navbarMenuHeroA">
+          <span onClick={this.toggleBurger} className={`navbar-burger burger ${showBurger ? 'is-active' : ''}`} data-target="navbarMenuHeroA">
             <span></span>
             <span></span>
             <span></span>
@@ -29,7 +29,11 @@ class Nav extends React.Component {
         <div id="navbarMenuHeroA" className={`navbar-menu ${showBurger ? "is-active" : ''}`}>
           <div className="navbar-end">
             {auth.isAuthenticated
-              ? <Link to="/" onClick={this.props.logout} className="navbar-item is-large">Logout</Link>
+              ? [
+                <Link to="/" onClick={this.props.logout} className="navbar-item is-large">Logout</Link>,
+                <Link key='lostPets' onClick={this.toggleBurger} className="navbar-item" to='/lost'>Lost Pets</Link>,
+                <Link key='lostPetsForm' onClick={this.toggleBurger} className="navbar-item" to='/lost/new'>Lost your Pet?</Link>
+              ]
               : [
                 <Link key='login' onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>,
                 <Link key='register' onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>,
@@ -51,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }

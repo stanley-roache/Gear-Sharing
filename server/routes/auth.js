@@ -6,6 +6,7 @@ var token = require('../auth/token')
 router.post('/register', register, token.issue)
 
 function register (req, res, next) {
+  
   const {user_name, contact_details, email_address, password} = req.body
   userExists(user_name)
     .then(exists => {
