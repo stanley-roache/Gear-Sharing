@@ -2,7 +2,7 @@ import React from 'react'
 
 export const LostPet = props => (
   <div className="column is-one-third has-text-bold">
-    <div className="box has-text-left">
+    <div className="box has-text-centered">
       <figure className="image is-4by3">
         <img src={props.pet.photo} />
       </figure>
