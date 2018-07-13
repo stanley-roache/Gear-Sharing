@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const pet = req.body
-    console.log(pet)
     
     return db.addLost(pet)
         .then(id => {
