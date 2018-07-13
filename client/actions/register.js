@@ -13,7 +13,6 @@ export function registerUserRequest (creds) {
         document.location = "/#/"
       })
       .catch(err => {
-        console.log(err)
         dispatch(loginError(err.response.body.message))
       })
   }

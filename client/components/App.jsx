@@ -1,6 +1,7 @@
 import React from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router'
 
 import Login from './Login'
 import Register from './Register'
@@ -23,9 +24,7 @@ const App = ({auth}) => (
       </div>
 
       <div className=''>
-        {!auth.isAuthenticated && 
-          <Route exact path="/" component={Login} />
-        }
+        {!auth.isAuthenticated ? <Redirect to="/login" /> : <Redirect to="/lost" />}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route exact path="/lost" component={Lost} />
