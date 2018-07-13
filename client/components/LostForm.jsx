@@ -5,7 +5,7 @@ import { Redirect } from 'react-router'
 
 import { addLostPet, insertLostPet } from '../actions/lostPets'
 
-class LostForm extends React.Component {
+export class LostForm extends React.Component {
   constructor(props) {
     super(props)
 
