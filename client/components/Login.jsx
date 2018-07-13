@@ -2,12 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loginUser, loginError} from '../actions/login'
 
+import { Redirect } from 'react-router'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user_name: '',
-      password: ''
+      password: '',
+      submitted: false
     }
     this.updateDetails = this.updateDetails.bind(this)
     this.submit = this.submit.bind(this)
@@ -18,14 +21,30 @@ class Login extends React.Component {
   updateDetails(e) {
     this.setState({[e.target.name]: e.target.value})
   }
+
+  redirect() {
+
+    return (
+      <Redirect to="/lost" />
+    )
+
+  }
+
   submit(e) {
     e.preventDefault()
     let {user_name, password} = this.state
     this.props.dispatch(loginUser({user_name, password}))
+      .then(() => {
+        console.log('state')
+      })
   }
   render() {
     const {auth} = this.props
-    return (
+    console.log('hi', this.state.submitted)
+    console.log(auth)
+    return this.state.submitted ? (
+      <Redirect to="/lost" />
+    ) : (
       <form className="form box" onSubmit={this.submit}>
         <h1 className="title is-2">Login</h1>
         <hr />

@@ -23,7 +23,7 @@ const App = ({auth}) => (
       </div>
 
       <div className=''>
-        {!auth.isAuthenticated &&
+        {!auth.isAuthenticated && 
           <Route exact path="/" component={Login} />
         }
         <Route path="/login" component={Login} />
