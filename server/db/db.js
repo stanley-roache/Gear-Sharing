@@ -1,18 +1,31 @@
 const conn = require('./connection')
 
-// get
+// lost get
 function getLost(testDb) {
   const db = testDb || conn
   return db('lost').select()
 }
 
-//post
+// lost post
 function addLost(pet, testDb) {
   const db = testDb || conn
   return db('lost').insert(pet)
 }
 
+// found get
+function getFound(testDb) {
+  const db = testDb || conn
+  return db('found').select()
+}
+
+// found post
+function addFound(pet, testDb) {
+  const db = testDb || conn
+  return db('found').insert(pet)
+}
 module.exports = {
   getLost,
-  addLost
+  addLost,
+  getFound,
+  addFound
 }
