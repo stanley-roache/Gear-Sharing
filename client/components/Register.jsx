@@ -44,7 +44,7 @@ class Register extends React.Component {
             <input required className="input is-large has-text-centered is-fullwidth" placeholder="Contact Details" type="text" name="contact_details" onChange={this.updateDetails}/>
           </label>
           <label className="column is-6 label is-large has-text-centered">Email Address
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Email Adress" type="text" name="email_address" onChange={this.updateDetails}/>
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Email Address" type="text" name="email_address" onChange={this.updateDetails}/>
           </label>
         </div>
         <br />
