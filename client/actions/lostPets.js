@@ -36,10 +36,16 @@ export function fetchLostPets() {
 
 export function insertLostPet(pet) {
     return (dispatch) => {
-        dispatch(addLostPet(pet))
 
-        request
+        return request
             .post(lostUrl)
             .send(pet)
+            .then(() => {
+                dispatch(addLostPet(pet))
+            })
+            .catch(err => {
+                if (err) throw err
+            })
+            
     }
 }

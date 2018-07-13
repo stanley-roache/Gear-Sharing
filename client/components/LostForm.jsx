@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { Redirect } from 'react-router'
+
 import { addLostPet, insertLostPet } from '../actions/lostPets'
 
 class LostForm extends React.Component {
@@ -10,7 +12,8 @@ class LostForm extends React.Component {
     this.state = {
       name: '',
       species: 'Dog',
-      photo: ''
+      photo: '',
+      submitted: false
     }
 
     this.updateDetails = this.updateDetails.bind(this)
@@ -25,12 +28,28 @@ class LostForm extends React.Component {
 
   submit(e) {
     e.preventDefault()
-    this.props.dispatch(insertLostPet(this.state))
+
+    const {name, species, photo} = this.state
+
+    const pet = {
+      name,
+      species,
+      photo
+    }
+
+    this.props.dispatch(insertLostPet(pet))
+      .then(() => {
+        this.setState({
+          submitted: true
+        })
+      })
   }
 
   render() {
 
-    return (
+      return this.state.submitted ? (
+        <Redirect to="/lost" />
+      ) : (
       <div className="box formBox">
         <form>
           <div className="field">
