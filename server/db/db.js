@@ -12,7 +12,21 @@ function addLost(pet, testDb) {
   return db('lost').insert(pet)
 }
 
+// get
+function getFound(testDb) {
+  const db = testDb || conn
+  return db('found').select()
+}
+
+//post
+function addFound(pet, testDb) {
+  const db = testDb || conn
+  return db('found').insert(pet)
+}
+
 module.exports = {
   getLost,
-  addLost
+  addLost,
+  getFound,
+  addFound
 }
