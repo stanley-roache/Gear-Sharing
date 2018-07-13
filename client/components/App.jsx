@@ -6,6 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Lost from './Lost'
+import LostForm from './LostForm'
 import Found from './Found'
 
 const App = ({auth}) => (
@@ -27,7 +28,8 @@ const App = ({auth}) => (
         }
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/lost" component={Lost} />
+        <Route exact path="/lost" component={Lost} />
+        <Route path="/lost/new" component={LostForm} />
         <Route path="/found" component={Found} />
       </div>
     </div>

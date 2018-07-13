@@ -1,0 +1,19 @@
+.formBox {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.formBox form .field .control {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.formBox form .field.is-grouped .control {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.buttonControl {
+    display: flex;
+    justify-content: center;
+}
