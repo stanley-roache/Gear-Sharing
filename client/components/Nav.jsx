@@ -38,7 +38,8 @@ class Nav extends React.Component {
                 <Link key='login' onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>,
                 <Link key='register' onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link>,
                 <Link key='lostPets' onClick={this.toggleBurger} className="navbar-item" to='/lost'>Lost Pets</Link>,
-                <Link key='lostPetsForm' onClick={this.toggleBurger} className="navbar-item" to='/lost/new'>Lost your Pet?</Link>
+                <Link key='foundPets' onClick={this.toggleBurger} className="navbar-item" to='/found'>Found Pets</Link>,
+                <Link key='lostPetsForm' onClick={this.toggleBurger} className="navbar-item" to='/lost/new'>Lost your Pet?</Link> 
               ]
             }
           </div>
