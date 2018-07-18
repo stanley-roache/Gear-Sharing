@@ -1,30 +1,17 @@
 const conn = require('./connection')
 
-// lost get
-function getLost(testDb) {
+// add gear post
+function addGear(gear, testDb) {
   const db = testDb || conn
-  return db('lost').select()
+  return db('gear').insert(gear)
 }
 
-// lost post
-function addLost(pet, testDb) {
+function updateGear(gear, id, testDb) {
   const db = testDb || conn
-  return db('lost').insert(pet)
-}
-
-function getFound(testDb) {
-  const db = testDb || conn
-  return db('found').select()
-}
-
-function addFound(pet, testDb) {
-  const db = testDb || conn
-  return db('found').insert(pet)
+  return db('gear').where({id}).update(gear)
 }
 
 module.exports = {
-  getLost,
-  addLost,
-  getFound,
-  addFound
+  getGear,
+  updateGear
 }
