@@ -1,57 +1,31 @@
-# Lost and Found
-
-https://edalostandfound.herokuapp.com/#/
-
-## Week 7 Large group project
-
-The focus of this app is to practice using the Full Stack we teach, (with auth) in a large scale app.
-
-The idea of the app is to create a "billboard" style site for people to post about their animals that have gone missing, and for people who have found stray animals to post about them.
-
-The hope is that within a small community this could be a great go to for making sure those run-away floofs make it home safely.
-
-
-## The Tech
-
-A Boilerplate is already set up for you (Thanks Harrison!) with everything you will need to get started. This boilerplate is set up to use:
-
-* [React](https://reactjs.org/docs/getting-started.html)
-* [Redux](https://redux.js.org/)
-* [Express](https://expressjs.com/en/api.html)
-* [Knex.js (SQL)](https://knexjs.org/)
-* [Bulma (CSS framework)](https://bulma.io/documentation/)
-* [JWT Auth (Local)](https://jwt.io/)
-
-The Migration and seeds for the users table, and all login functionality is already set up!
-
-The mobile responsiveness is also being handled by some neat JS and Bulma classes, be sure to incorporate that view in your project goals!
-
-
 ## User Stories
+  * I can sign up
+  * I can make a profile
+  * I can add some of my tools to share
+  * I can view other tools in the Tool Pool
+  * I can view a particualr tool and see the trust framework for it
+  * I can request a tool to use (email sent)
+  * Once accepted, the tools status changes to rented
 
 ### MVP
-
-As a non-registered user:
-  * I want to register for the App under my name
-  * I want to browse all of the "Found" animals on the site.
-  * I want to to view a list of "Lost" animals posted to the site.
-  * I want to sort the "Lost" or Found" animals by species. (such as Cat / Dog)
-
-As a registered user:
-  * I want to see the contact information for the user that has found an animal that is mine.
-  * I want to be able to inform a user that their "Found" animal is mine through the app, and provide them with contact information of my own.
-  * I want to be able to post about a Lost animal that I have "Found"
-  * I want to be able to post about an animal of my own that has been "Lost"
+  * Login to view everything
+  * Profile/Tools available to Share
+  * Edit Tool Profile/Add a Tool Profile
+  * Definining Trust Framework
+  * Browse Tools available to use
+  * Request a tool to use (email sent)
+  * Change Tool Status to rented/available
 
 ### Stretch
+  * Multiple Groups (Tool Pools)
+  * Trust Ratings
+  * See tools that are currently rented
+  * Forum to discuss tools/appliances that people needs tips/advice with.
+  * In app messages
+  * View others' profiles when you're logged in
+  * Keeping ToolPool ?anonymus? (proof of id auth)
 
-As an unregistered user:
-  * I want to be able to see a list of all the Animals that have been "Found" after being posted as lost within the site, to give me hope <3
 
-As a registered user:
-  * I want to be able to remove a lost animal that I have posted, as it has been "Found" / Mark it as found.
-  * I want to be able to edit a post I have made about a Lost animal of mine
-  * I want to be able to edit a post I have made about a Found animal of mine
 
   ---
 

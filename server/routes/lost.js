@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
             res.status(200).json(lostPets)
          })
         .catch(err => {
+            console.log(err)
             res.status(500).send('DATABASE ERROR:' + err.message)
         })
 })

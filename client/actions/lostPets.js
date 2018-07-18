@@ -29,6 +29,7 @@ export function fetchLostPets() {
             dispatch(receiveLostPets(lostPets))
         })
         .catch(err => {
+            console.log(err)
             if (err) throw err
         })
     }
