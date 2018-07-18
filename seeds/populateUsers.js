@@ -9,24 +9,34 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert([
         {
           id: 1,
-          name: 'Bradley Adams',
+          first_name: 'Bradley',
+          last_name: 'Adams',
           user_name: 'wayneric',
-          email_address: 'brad@devacademy.co.nz',
-          contact_details: '0226968234',
+          email_address: 'brad@devacademy.co.nz',ß
           hash: hashSync('Krang', saltRounds)
         },
         {
           id: 2,
-          user_name: 'Hayden',
-          email_address: 'hblummont1@gmail.com',
-          contact_details: 'Play RuPaul\'s Drag race theme loudly',
+          first_name: 'Haydeen',
+          last_name: 'Blumont',
+          user_name: 'haydiggidydoc',
+          email_address: 'hblummont1@gmail.com',ß
           hash: hashSync('Krang', saltRounds)
         },
         {
           id: 3,
-          user_name: 'Reuben',
+          first_name: 'Reuben',
+          last_name: 'Harcourt',
+          user_name: 'Reuban',
           email_address: 'reuban@imrich.co.usa',
-          contact_details: 'Send a driver',
+          hash: hashSync('Krang', saltRounds)
+        },
+        {
+          id: 4,
+          first_name: 'Stan',
+          last_name: 'Danly',
+          user_name: 'Diddly',
+          email_address: 'diddly@imcool.co.usa',
           hash: hashSync('Krang', saltRounds)
         }
       ]);
