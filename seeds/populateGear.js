@@ -1,11 +1,11 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('lost').del()
+  return knex('gear').del()
     .then(function () {
       // Inserts seed entries
       // Dog Cat Fish Rat Rock
-      return knex('lost').insert([
+      return knex('gear').insert([
         {
           id: 1,
           status: "Available",
