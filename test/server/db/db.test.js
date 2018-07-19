@@ -18,11 +18,36 @@ const fakeUser = {
   email_address: 'bill@murray.com'
 }
 
-test('getUserByName db func return', () => {
+const fakeGearItem = {
+  status: "Available",
+  trustframework: "One",
+  name: 'Dyna Drill',
+  description: 'A drill that can be used on concrete',
+  photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+  user_id: 1
+}
 
+const fakeGearItemUpdate = {
+  name: 'Dyno Drilla'
+}
+
+test('addGear function returns an ID of type numbers', done => {
+  db.addGear(fakeGearItem, testDb)
+    .then(ids => {
+      const expected = 'number'
+      const actual = typeof ids[0]
+      expect(actual).toBe(expected)
+      done()
+    })
 })
 
-
+test('updateGear function causes one record to be changed', done => {
+  db.updateGear(fakeGearItemUpdate, 1, testDb)
+    .then(numUpdated => {
+      expect(numUpdated).toBe(1)
+      done()
+    })
+})
 
 
 
