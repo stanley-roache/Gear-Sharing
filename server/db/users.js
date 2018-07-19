@@ -1,5 +1,5 @@
 var hash = require('../auth/hash')
-const db = require('./connection')
+const conn = require('./connection')
 
 function createUser (user_name, first_name, last_name, email_address, password, testDb) {
   const db = testDb || conn
@@ -7,7 +7,7 @@ function createUser (user_name, first_name, last_name, email_address, password, 
     hash.generate(password, (err, hash) => {
       if (err) reject(err)
       db('users')
-        .insert({user_name, contact_details, email_address, hash})
+        .insert({user_name, first_name, last_name, email_address, hash})
         .then(user_id => resolve(user_id))
         .catch(err => reject(err))
     })
