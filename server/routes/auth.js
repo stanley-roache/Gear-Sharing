@@ -17,7 +17,7 @@ function register (req, res, next) {
           res.status(500).send({message: "Server Error"})
         })
     })
-    .catch(err => res.status(500).send({message: "Server Error"}))
+    .catch(err => res.status(500).send({message: "Server/db Error"}))
 }
 
 

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
+import Profile from './Profile'
 
 const App = ({ auth }) => (
   <Router>
@@ -16,10 +17,10 @@ const App = ({ auth }) => (
         </div>
       </div>
 
-      <div className=''>
+
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-      </div>
+        {auth.isAuthenticated && <Route exact path='/profile' component={Profile}/>}
     </div>
   </Router>
 )
