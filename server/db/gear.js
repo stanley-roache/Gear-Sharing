@@ -36,6 +36,11 @@ function updateGear(gear, id, testDb) {
   return db('gear').where({id}).update(gear)
 }
 
+function removeGearById(id, testDb) {
+  const db = testDb || conn
+  return db('gear').where({id}).del()
+}
+
 
 module.exports = {
   getGearWithUsers,
@@ -43,7 +48,8 @@ module.exports = {
   getGearByGearId,
   getGearByUserId,
   addGear,
-  updateGear
+  updateGear,
+  removeGearById
 }
 
 // need testing
