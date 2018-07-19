@@ -39,10 +39,13 @@ function decode (req, res, next) {
 }
 
 function handleError (err, req, res, next) {
+  console.log('handling authentication error');
+  
   if (err) {
     return res.status(403).json({
       message: 'Access to this resource was denied.',
-      error: err.message
+      error: err.message,
+      info: 'Missing credentials'
     })
   }
   next()
