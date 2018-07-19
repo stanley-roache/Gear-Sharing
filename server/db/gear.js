@@ -1,6 +1,5 @@
 const conn = require('./connection')
 
-
 function getGearWithUsers (testDb) {
   const db = testDb || conn
   return db('gear')
