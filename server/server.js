@@ -13,6 +13,7 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 server.use('/api/auth', require('./routes/auth'))
+server.use('/api/user', require('./routes/user'))
 server.use('/api/profile', require('./routes/profile'))
 
 module.exports = server
