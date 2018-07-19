@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Bradley',
           last_name: 'Adams',
           user_name: 'wayneric',
-          email_address: 'brad@devacademy.co.nz',ß
+          email_address: 'brad@devacademy.co.nz',
           hash: hashSync('Krang', saltRounds)
         },
         {
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Haydeen',
           last_name: 'Blumont',
           user_name: 'haydiggidydoc',
-          email_address: 'hblummont1@gmail.com',ß
+          email_address: 'hblummont1@gmail.com',
           hash: hashSync('Krang', saltRounds)
         },
         {
@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 4,
           first_name: 'Stan',
-          last_name: 'Danly',
+          last_name: 'Dan',
           user_name: 'Diddly',
           email_address: 'diddly@imcool.co.usa',
           hash: hashSync('Krang', saltRounds)

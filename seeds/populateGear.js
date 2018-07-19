@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Dyna Drill',
           description: 'A drill that can be used on concrete',
-          photo: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+          photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
           user_id: 1
         },
         {
@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Dehydrator',
           description: 'Dry your meat',
-          photo: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+          photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
           user_id: 2
         },
         {
@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Three",
           name: 'Chainsaw',
           description: 'Cut your trees down',
-          photo: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+          photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
           user_id: 3
         },
         {
@@ -39,7 +39,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Hole Saw',
           description: 'Cut holes in timber or concrete or anything',
-          photo: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+          photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
           user_id: 4
         },
       ]);
