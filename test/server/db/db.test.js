@@ -49,6 +49,18 @@ test('updateGear function causes one record to be changed', done => {
     })
 })
 
+test('getGear function retrieves all gear', done => {
+  gear.getGear(testDb)
+    .then(gearArray => {
+      expect(gearArray).toHaveLength(4)
+      done()
+    })
+    .catch(err => {
+      done(err)
+    })
+})
+
+
 
 
 
