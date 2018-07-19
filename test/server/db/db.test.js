@@ -1,4 +1,4 @@
-const db = require('../../../server/db/db')
+const gear = require('../../../server/db/gear')
 const env = require('./test-environment')
 
 let testDb = null
@@ -32,7 +32,7 @@ const fakeGearItemUpdate = {
 }
 
 test('addGear function returns an ID of type numbers', done => {
-  db.addGear(fakeGearItem, testDb)
+  gear.addGear(fakeGearItem, testDb)
     .then(ids => {
       const expected = 'number'
       const actual = typeof ids[0]
@@ -42,7 +42,7 @@ test('addGear function returns an ID of type numbers', done => {
 })
 
 test('updateGear function causes one record to be changed', done => {
-  db.updateGear(fakeGearItemUpdate, 1, testDb)
+  gear.updateGear(fakeGearItemUpdate, 1, testDb)
     .then(numUpdated => {
       expect(numUpdated).toBe(1)
       done()
