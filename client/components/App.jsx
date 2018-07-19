@@ -1,15 +1,16 @@
 import React from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 
-const App = ({auth}) => (
+const App = ({ auth }) => (
   <Router>
     <div className="container has-text-centered">
+    {!auth.isAuthenticated && <Redirect to="/login" />}
 
       <div className="hero is-small is-success">
         <div className="hero-body has-text-centered">
@@ -21,7 +22,6 @@ const App = ({auth}) => (
       </div>
 
       <div className=''>
-        {/* {!auth.isAuthenticated ? <Redirect to="/login" /> : <Redirect to="/lost" />} */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
       </div>
@@ -29,7 +29,7 @@ const App = ({auth}) => (
   </Router>
 )
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }
