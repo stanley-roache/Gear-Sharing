@@ -1,6 +1,5 @@
 const conn = require('./connection')
 
-// add gear post
 function addGear(gear, testDb) {
   const db = testDb || conn
   return db('gear').insert(gear)
@@ -12,6 +11,6 @@ function updateGear(gear, id, testDb) {
 }
 
 module.exports = {
-  getGear,
+  addGear,
   updateGear
 }
