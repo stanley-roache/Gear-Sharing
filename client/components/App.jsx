@@ -10,6 +10,7 @@ import Nav from './Nav'
 const App = ({ auth }) => (
   <Router>
     <div className="container has-text-centered">
+    
     {!auth.isAuthenticated && <Redirect to="/login" />}
 
       <div className="hero is-small is-success">
