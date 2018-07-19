@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const {getUserByName} = require('../db/users')
 
+// to protect
+
 router.get('/:username', (req, res) => {
     getUserByName(req.params.username)
         .then((user) => {
