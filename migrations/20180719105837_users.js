@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
       table.string('last_name')
       table.string('user_name')
       table.string('email_address')
+      table.string('profile_pic')
       table.string('hash')
     })
   };
@@ -13,3 +14,4 @@ exports.up = function(knex, Promise) {
   exports.down = function(knex, Promise) {
     return knex.schema.dropTableIfExists('users')
   };
+
