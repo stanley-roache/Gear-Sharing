@@ -6,7 +6,6 @@
   * Blender
   * Return to Blender
   * Toolerino
-  *
 
 ## User Stories
   * I can sign up
@@ -38,6 +37,18 @@
   * Modle for add gear form
 
   ---
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  fix below here
 
 ## Views (Client Side)
   | name | purpose |
