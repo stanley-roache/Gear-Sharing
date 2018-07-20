@@ -1,6 +1,7 @@
 import React from 'react'
-
 // import {addGearItem} from '../actions/user'
+import {connect} from 'react-redux'
+
 
 export class NewGearForm extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export class NewGearForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -31,6 +33,7 @@ export class NewGearForm extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <form className='new-gear-form' onSubmit={this.handleSubmit}>
         <label>
@@ -64,4 +67,4 @@ export class NewGearForm extends React.Component {
   }
 }
 
-export default NewGearForm
+export default connect()(NewGearForm)
