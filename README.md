@@ -10,7 +10,7 @@
 
 ## User Stories
   * I can sign up
-  * I can make a profile
+  * I can see my profile
   * I can add some of my tools to share
   * I can view other tools in the Tool Pool
   * I can view a particualr tool and see the trust framework for it
