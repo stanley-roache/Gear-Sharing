@@ -8,22 +8,39 @@ import Nav from './Nav'
 import Profile from './Profile'
 import ToolPool from './ToolPool'
 
-const App = ({ auth }) => (
-  <Router>
-    <div className="container has-text-centered">
-      <div className="hero is-small is-success">
-        <div className="hero-body has-text-centered">
-          <Link to='/'><h1 className="title is-1">Home</h1></Link>
-          <Nav />
-        </div>
-      </div>
-        <Route exact path='/toolpool' component={ToolPool}/>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        {auth.isAuthenticated && <Route exact path='/profile' component={Profile}/>}
-    </div>
-  </Router>
-)
+import { getGear } from "../actions/gear";
+
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getGear())
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="container has-text-centered">
+          <div className="hero is-small is-success">
+            <div className="hero-body has-text-centered">
+              <Link to='/'><h1 className="title is-1">Home</h1></Link>
+              <Nav />
+            </div>
+          </div>
+
+          <Route exact path='/toolpool' component={ToolPool}/>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          {this.props.auth.isAuthenticated && <Route exact path='/profile' component={Profile}/>}
+       </div>
+      </Router>
+    )
+  }
+} 
 
 const mapStateToProps = ({ auth }) => {
   return {
