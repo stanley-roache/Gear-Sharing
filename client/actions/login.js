@@ -35,7 +35,7 @@ export function setUser (user) {
 }
 
 export function loginUser (creds) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(requestLogin(creds))
     return request('post', 'auth/login', creds)
       .then((response) => {
