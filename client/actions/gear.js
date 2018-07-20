@@ -11,6 +11,7 @@ export function getGear() {
       .catch(err => {
         console.log(err.response)
         dispatch(gearError(err.message))
+        // not sure catch block works
       })
   }
 }
@@ -38,5 +39,37 @@ export function getGear() {
       isFetching: false,
       isSaving: false,
       message
+    }
+  }
+
+  export function requestGearSave () {
+    return {
+      type: 'REQUEST_GEAR_SAVE',
+      isFetching: false,
+      isSaving: true
+    }
+  }
+
+  export function gearAdd (item) {
+    return {
+      type: 'GEAR_ADD',
+      item
+    }
+  }
+
+  export function addGearItem(item) {
+    // untested
+    return dispatch => {
+      dispatch(requestGearSave())
+      return request('post', 'gear/new', item)
+        .then((res) => {
+          let newGear = res.body
+          dispatch(gearAdd(newGear))
+        })
+        .catch(err => {
+          console.log(err.response)
+          dispatch(gearError(err.message))
+          // not sure catch block works
+        })
     }
   }

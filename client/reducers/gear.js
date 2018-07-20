@@ -1,4 +1,8 @@
-const initialState = {}
+const initialState = {
+    gear: [],
+    isFetching: false,
+    isSaving: false
+}
 
 export default function gear(state = initialState, action) {
     switch (action.type) {
@@ -22,6 +26,23 @@ export default function gear(state = initialState, action) {
                 isSaving: action.isSaving,
                 errorMessage: action.message
             }
+        case 'REQUEST_GEAR_SAVE':
+            // untested
+            return {
+                ...state,
+                isFetching: action.isFetching,
+                isSaving: action.isSaving
+            }
+        case 'GEAR_ADD':
+            // untested
+            let newGearArr = [...state.gear, action.item]
+            return {
+              ...state,
+              gear: newGearArr,
+              isFetching: false,
+              isSaving: false
+            }
+            // note: may need deeper copy
         default:
             return state
     }
