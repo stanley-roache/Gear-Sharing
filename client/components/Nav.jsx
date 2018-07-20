@@ -26,6 +26,7 @@ class Nav extends React.Component {
                   <Link key='registerbutton' className="navbar-item" to='/register'>Register</Link>,
                 ]
               }
+              <Link className="navbar-item" to='/toolpool'>ToolPool</Link>
             </div>
           </div>
         </div>

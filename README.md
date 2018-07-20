@@ -1,6 +1,15 @@
+## Names
+  * Compliance
+  * Commppliance
+  * ESTPWTUBNB
+  * Toolies
+  * Blender
+  * Return to Blender
+  * Toolerino
+
 ## User Stories
   * I can sign up
-  * I can make a profile
+  * I can see my profile
   * I can add some of my tools to share
   * I can view other tools in the Tool Pool
   * I can view a particualr tool and see the trust framework for it
@@ -24,10 +33,22 @@
   * In app messages
   * View others' profiles when you're logged in
   * Keeping ToolPool ?anonymus? (proof of id auth)
-
-
+  * Changing profile picture
+  * Modle for add gear form
 
   ---
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  fix below here
 
 ## Views (Client Side)
   | name | purpose |

@@ -6,10 +6,9 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Profile from './Profile'
+import ToolPool from './ToolPool'
 
-//************ just for testing - to be moved to gear container jsx file
 import { getGear } from "../actions/gear";
-//
 
 
 
@@ -18,12 +17,9 @@ class App extends React.Component {
     super(props)
   }
 
-  //************ just for testing - to be moved to gear container jsx file
   componentDidMount() {
-    console.log('dispatching getGear')
     this.props.dispatch(getGear())
   }
-  //
 
   render() {
     return (
@@ -36,7 +32,7 @@ class App extends React.Component {
             </div>
           </div>
 
-
+          <Route exact path='/toolpool' component={ToolPool}/>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           {this.props.auth.isAuthenticated && <Route exact path='/profile' component={Profile}/>}
