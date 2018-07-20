@@ -1,6 +1,4 @@
-import { getGear } from "../actions/gear";
-
-const initialState = getGear()
+const initialState = {}
 
 export default function gear(state = initialState, action) {
     switch (action.type) {

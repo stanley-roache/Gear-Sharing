@@ -9,7 +9,8 @@ export function getGear() {
         dispatch(setGear(gear))
       })
       .catch(err => {
-        dispatch(gearError(err.response.body.message))
+        console.log(err.response)
+        dispatch(gearError(err.message))
       })
   }
 }
@@ -26,7 +27,7 @@ export function getGear() {
     return {
       type: 'SET_GEAR',
       gear:gear,
-      isFetching: true,
+      isFetching: false,
       isSaving: false
     }
   }
