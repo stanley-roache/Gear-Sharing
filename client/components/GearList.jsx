@@ -1,7 +1,16 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 export const GearList = props => (
-  <div>GEARLIST PLACEHOLDER</div>
+  <div>
+    <ul>
+      {props.user.gear.map((item) => {
+        return <li>{item.name} - {item.description} - {item.status} - {item.trustframework}</li>
+      })}
+    </ul>
+  </div>
 )
 
-export default GearList
+const mapStateToProps = ({user}) => ({user})
+
+export default connect(mapStateToProps)(GearList)
