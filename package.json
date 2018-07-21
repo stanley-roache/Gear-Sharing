@@ -15,7 +15,8 @@
     "h:migrate": "heroku run knex migrate:latest",
     "h:rollback": "heroku run knex migrate:rollback",
     "h:seed": "heroku run knex seed:run",
-    "knex": "knex"
+    "knex": "knex",
+    "dbsetup": "knex migrate:latest && knex seed:run"
   },
   "babel": {
     "presets": [
