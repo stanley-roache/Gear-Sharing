@@ -8,7 +8,6 @@ function getGearWithUsers (testDb) {
 
 function getGear (testDb) {
   const db = testDb || conn
-  // uncomment to make error for catch block testing
   return db('gear')
     .select()
 }
