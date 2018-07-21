@@ -9,9 +9,7 @@ export function getGear() {
         dispatch(setGear(gear))
       })
       .catch(err => {
-        console.log(err.response)
         dispatch(gearError(err.message))
-        // not sure catch block works
       })
   }
 }
@@ -67,9 +65,7 @@ export function getGear() {
           dispatch(gearAdd(newGear))
         })
         .catch(err => {
-          console.log(err.response)
-          dispatch(gearError(err.message))
-          // not sure catch block works
+          dispatch(gearError(err.response.body.message))
         })
     }
   }

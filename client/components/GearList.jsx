@@ -5,7 +5,7 @@ export const GearList = props => (
   <div>
     <ul>
       {props.user.gear.map((item) => {
-        return <li>{item.name} - {item.description} - {item.status} - {item.trustframework}</li>
+        return <li key={item.id}>{item.name} - {item.description} - {item.status} - {item.trustframework}</li>
       })}
     </ul>
   </div>

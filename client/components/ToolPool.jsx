@@ -6,12 +6,13 @@ import ItemInline from './ItemInline'
 export const ToolPool = props => (
   <div className='toolpool-wrapper'>
     <h1>TOOL POOL</h1>
+    {props.err && <span className="has-text-danger is-large">{props.err}</span>}
     {props.gear.map(item => {
       return <ItemInline item={item}/>
     })}
   </div>
 )
 
-const mapStateToProps = (state) => ({gear: state.gear.gear})
+const mapStateToProps = (state) => ({gear: state.gear.gear, err: state.gear.errorMessage})
 
 export default connect(mapStateToProps)(ToolPool)

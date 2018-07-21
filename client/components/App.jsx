@@ -9,6 +9,7 @@ import Profile from './Profile'
 import ToolPool from './ToolPool'
 
 import { getGear } from "../actions/gear";
+import {fetchUser} from '../actions/login'
 
 
 
@@ -19,6 +20,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getGear())
+    this.props.auth.isAuthenticated && this.props.dispatch(fetchUser())
   }
 
   render() {

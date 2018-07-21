@@ -27,14 +27,12 @@ export default function gear(state = initialState, action) {
                 errorMessage: action.message
             }
         case 'REQUEST_GEAR_SAVE':
-            // untested
             return {
                 ...state,
                 isFetching: action.isFetching,
                 isSaving: action.isSaving
             }
         case 'GEAR_ADD':
-            // untested
             let newGearArr = [...state.gear, action.item]
             return {
               ...state,
