@@ -1,12 +1,12 @@
 const router = require('express').Router()
 const verifyJWT = require('express-jwt')
 const { getSecret, handleError } = require('../auth/token')
-gearDB = require('../db/gear')
+const gearDB = require('../db/gear')
 
 // public routes
 
 router.get('/single/:id', (req, res) => {
-  const gearID = req.params.id
+  const gearID = Number(req.params.id)
 
   gearDB.getGearByGearId(gearID)
     .then(gear => {
