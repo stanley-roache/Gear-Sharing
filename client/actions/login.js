@@ -41,7 +41,7 @@ export function loginUser (creds) {
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
-        return request('get', `user/${userInfo.user_name}`)
+        return request('get', 'user/fullProfile')
           .then((res) => {
             const fullUser = res.body
             dispatch(setUser(fullUser))

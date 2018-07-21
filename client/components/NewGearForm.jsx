@@ -1,5 +1,5 @@
 import React from 'react'
-// import {addGearItem} from '../actions/user'
+import {addGearItem} from '../actions/gear'
 import {connect} from 'react-redux'
 
 
@@ -10,8 +10,10 @@ export class NewGearForm extends React.Component {
     this.state = {
       name: '',
       description: '',
-      photoUrl: '',
+      photo_url: '',
       trustframework: "One",
+      status: 'Available',
+      user_id: this.props.user.id
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,7 +30,7 @@ export class NewGearForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     console.log('new tool added', this.state)
-    // addGearItem(this.state)
+    this.props.dispatch(addGearItem(this.state))
     this.props.finish()
   }
 
