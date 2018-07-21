@@ -31,6 +31,7 @@ class Profile extends React.Component {
   render() {
     return (
         <div className='profile-display'>
+          {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
           <img className='tempimgcss' src='http://getdrawings.com/img/person-silhouette-standing-4.jpg' />
           <h2>{this.props.user.firstName}</h2>
           <h2>{this.props.user.lastName}</h2>

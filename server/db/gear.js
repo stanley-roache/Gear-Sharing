@@ -8,8 +8,7 @@ function getGearWithUsers (testDb) {
 
 function getGear (testDb) {
   const db = testDb || conn
-  // uncomment to make error for catch block testing
-  return db('gear')
+  return db('gears')
     .select()
 }
 
@@ -22,7 +21,7 @@ function getGearByGearId (id, testDb) {
 
 function getGearByUserId (user_id, testDb) {
   const db = testDb || conn
-  return db('gear')
+  return db('gears')
     .where({user_id})
 }
 
