@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const verifyJWT = require('express-jwt')
 const { getSecret, handleError } = require('../auth/token')
-const { getUserByName } = require('../db/users')
 gearDB = require('../db/gear')
 
 // public routes
@@ -41,6 +40,8 @@ router.use(
   handleError
 )
 
+// PROTECTED ROUTES
+
 router.post('/new', (req, res) => {
   const newItem = req.body
 
@@ -54,6 +55,33 @@ router.post('/new', (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: 'error adding gear item',
+        err
+      })
+    })
+})
+
+router.post('/update/:id', (req, res) => {
+  const updateInfo = req.body
+  const itemID = req.params.id
+
+  gearDB.updateGear(updateInfo, itemID)
+    .then(res.sendStatus(200))
+    .catch(err => {
+      res.status(500).send({
+        message: 'error updating gear item',
+        err
+      })
+    })
+})
+
+router.delete('/delete/:id', (req, res) => {
+  const itemID = req.params.id
+
+  gearDB.removeGearById(itemID)
+    .then(res.sendStatus(200))
+    .catch(err => {
+      res.status(500).send({
+        message: 'error removing gear item',
         err
       })
     })
