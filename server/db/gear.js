@@ -8,7 +8,7 @@ function getGearWithUsers (testDb) {
 
 function getGear (testDb) {
   const db = testDb || conn
-  return db('gears')
+  return db('gear')
     .select()
 }
 
@@ -21,7 +21,7 @@ function getGearByGearId (id, testDb) {
 
 function getGearByUserId (user_id, testDb) {
   const db = testDb || conn
-  return db('gears')
+  return db('gear')
     .where({user_id})
 }
 
