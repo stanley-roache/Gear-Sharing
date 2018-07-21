@@ -7,9 +7,11 @@ export const ToolPool = props => (
   <div className='toolpool-wrapper'>
     <h1>TOOL POOL</h1>
     {props.err && <span className="has-text-danger is-large">{props.err}</span>}
-    {props.gear.map(item => {
-      return <ItemInline item={item}/>
-    })}
+    <ul>
+      {props.gear.map(item => {
+        return <ItemInline item={item} key={item.id}/>
+      })}
+    </ul>
   </div>
 )
 

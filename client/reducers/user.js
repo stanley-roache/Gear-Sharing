@@ -1,4 +1,6 @@
-const initialState = {}
+const initialState = {
+  gear: []
+}
   
   export default function user (state = initialState, action) {
     switch (action.type) {
