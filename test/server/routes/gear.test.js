@@ -2,7 +2,11 @@ import request from 'supertest'
 import server from '../../../server/server'
 
 jest.mock('../../../server/db/gear', () => ({
-  getGearByGearId: (id) => Promise.resolve({id: 1, name: 'doodad', description: 'cool as'}),
+  getGearByGearId: (id) => {
+    return (id
+      ? Promise.resolve({id, name: 'doodad', description: 'cool as'})
+      : Promise.reject('database err')
+    )},
   getGearWithUsers: null,
   getGear: () => Promise.resolve([1,2,3]),
   getGearByUserId: null,
@@ -13,17 +17,28 @@ jest.mock('../../../server/db/gear', () => ({
 
 describe('gear route tests', () => {
   describe('public routes', () => {
-    it('get request for single gear item', () => {
-      const id = 1
+    describe('get single item', () => {
+      it('get request for single gear item', () => {
+        const id = 1
+  
+        return request(server)
+          .get(`/api/gear/single/${id}`)
+          .expect(200)
+          .then(res => {
+            const gearItem = res.body
+  
+            expect(gearItem.id).toBe(id)
+          })
+      })
 
-      return request(server)
-        .get(`/api/gear/single/${id}`)
-        .expect(200)
-        .then(res => {
-          const gearItem = res.body
+      it('get single can throw err', () => {
+        const id = 0
 
-          expect(gearItem.id).toBe(id)
-        })
+        return request(server)
+          .get(`/api/gear/single/${id}`)
+          .expect(500)
+      })
+
     })
 
     it('get request for all gear', () => {

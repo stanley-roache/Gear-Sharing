@@ -22,7 +22,6 @@ function issue (req, res) {
 }
 
 function createToken (user, secret) {
-  console.log('user in createToken', user);
   return jwt.sign({
     user_id: user.id,
     user_name: user.user_name
