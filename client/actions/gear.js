@@ -58,13 +58,12 @@ export function getGear() {
   }
 
   export function addGearItem(item) {
-    // untested
     return dispatch => {
-      console.log('about to request api/gear/new')
       dispatch(requestGearSave())
       return request('post', 'gear/new', item)
         .then((res) => {
-          let newGear = res.body
+          let newGear = res.body.gear
+          newGear.id = res.body.id
           dispatch(gearAdd(newGear))
         })
         .catch(err => {
