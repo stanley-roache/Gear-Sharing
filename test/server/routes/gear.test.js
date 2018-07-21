@@ -94,7 +94,7 @@ describe('gear route tests', () => {
         .send(fakeGearUpdate)
         .expect(200)
         .then(res => {
-          expect(res.body.numOfUpdates).toBe(1)
+          expect(res.body.numUpdates).toBe(1)
         }) 
     })
 

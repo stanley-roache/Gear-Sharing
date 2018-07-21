@@ -65,7 +65,7 @@ router.post('/update/:id', (req, res) => {
   const itemID = req.params.id
 
   gearDB.updateGear(updateInfo, itemID)
-    .then(res.sendStatus(200))
+    .then(numUpdates => res.status(200).send({numUpdates}))
     .catch(err => {
       res.status(500).send({
         message: 'error updating gear item',
