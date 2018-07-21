@@ -1,15 +1,20 @@
+<img src='https://nypdecider.files.wordpress.com/2018/04/home-improvement-wilson-tim.jpg?quality=90&strip=all&strip=all'>
+
 #(name to be confirmed)
 
 A platform to share expensive equipment within trusted groups
 
-## Names
-  * Compliance
+## Name ideas
   * Commppliance
-  * ESTPWTUBNB
+  * ESYWTUBNB
   * Toolies
+  * Toolerino
+  * GearShare
+  * The Kitchen Sink
   * Blender
   * Return to Blender
-  * Toolerino
+  * The Broom Cupboard
+  * Nutes & Bolts
 
 ## User Stories
   * I can sign up
@@ -38,21 +43,8 @@ A platform to share expensive equipment within trusted groups
   * View others' profiles when you're logged in
   * Keeping ToolPool ?anonymus? (proof of id auth)
   * Changing profile picture
-  * Modle for add gear form
+  * Modal for add gear form
 
-  ---
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  fix below here
 
 ## Views (Client Side)
   | name | purpose |
