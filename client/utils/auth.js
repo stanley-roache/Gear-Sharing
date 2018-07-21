@@ -20,7 +20,6 @@ export function isAuthenticated () {
 }
 
 export function saveUserToken (token) {
-  console.log({token});
   set('token', token)
   return decode(token)
 }
