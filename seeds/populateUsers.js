@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
           user_name: 'wayneric',
           email_address: 'brad@devacademy.co.nz',
           profile_pic: 'https://i.ebayimg.com/images/g/AmAAAOSwPydZpDlm/s-l300.jpg',
-          hash: hashSync('Krang', saltRounds)
+          hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
           id: 2,
@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
           user_name: 'haydiggidydoc',
           email_address: 'hblummont1@gmail.com',
           profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
-          hash: hashSync('Krang', saltRounds)
+          hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
           id: 3,
@@ -32,7 +32,7 @@ exports.seed = function(knex, Promise) {
           user_name: 'Reuban',
           email_address: 'reuban@imrich.co.usa',
           profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
-          hash: hashSync('Krang', saltRounds)
+          hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
           id: 4,
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
           user_name: 'Diddly',
           email_address: 'diddly@imcool.co.usa',
           profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
-          hash: hashSync('Krang', saltRounds)
+          hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         }
       ]);
     });
