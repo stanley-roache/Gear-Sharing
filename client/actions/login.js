@@ -35,7 +35,7 @@ export function setUser (user) {
 }
 
 export function loginUser (creds) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(requestLogin(creds))
     return request('post', 'auth/login', creds)
       .then((response) => {
@@ -53,5 +53,18 @@ export function loginUser (creds) {
       .catch(err => {
         dispatch(loginError(err.response.body.message))
       })
+  }
+}
+
+export function fetchUser () {
+  return dispatch => {
+    return request('get', 'user/fullProfile')
+          .then((res) => {
+            const fullUser = res.body
+            dispatch(setUser(fullUser))
+          })
+          .then(() => {
+            document.location = "/#/profile"
+          })
   }
 }
