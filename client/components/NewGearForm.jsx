@@ -35,7 +35,6 @@ export class NewGearForm extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <form className='new-gear-form' onSubmit={this.handleSubmit}>
         <label>
@@ -63,10 +62,16 @@ export class NewGearForm extends React.Component {
         </label>
         <br />
         <input type="submit" value='add Gear' />
-        <button onClick={this.props.finish}>Cancel</button>
+        <button onClick={this.props.handleSubmit}>Cancel</button>
       </form>
     )
   }
 }
 
-export default connect()(NewGearForm)
+const mapStateToProps = ({user}) => {
+  return {
+    user
+  }
+}
+
+export default connect(mapStateToProps)(NewGearForm)

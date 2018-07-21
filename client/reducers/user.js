@@ -3,6 +3,7 @@ const initialState = {}
   export default function user (state = initialState, action) {
     switch (action.type) {
       case 'SET_USER':
+      console.log('setting user', action)
         return {
           id: action.user.id,
           firstName: action.user.first_name,
