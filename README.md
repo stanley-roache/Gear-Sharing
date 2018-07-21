@@ -1,3 +1,7 @@
+#(name to be confirmed)
+
+A platform to share expensive equipment within trusted groups
+
 ## Names
   * Compliance
   * Commppliance
@@ -55,74 +59,84 @@
   | --- | --- |
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
-  | FoundPets | View the pets that users have found |
-  | LostPets | View the pets that users have reported as lost |
-  | LostForm | For a User to add a pet that they have lost |
+  | Profile | View a logged in user's profile |
+  | GearList | User's view of their own gear |
+  | ItemInline | single item display in GearList |
+  | NewGearForm | Form fpr user to add new item of gear |
+  | ToolPool | View all gear in the loaning group |
+  | Nav | Navigation Bar |
   | FoundForm | For a user to add a pet that they have found |
-
 
 ## Reducers (Client Side)
 
   | name | purpose |
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
-  | foundPets | Store the array of pets that have been found (from db) |
-  | lostPets | Store the array of pets that have been lost (from db) |
+  | gear | Store the array of all gear and status of any gear fetching/saving |
+  | user | Store user info and array of all gear belonging to logged in user |
 
 
-## Actions (Client Side)
+## Thunk Actions (Client Side)
+
+Each of these actions calls on several synchrous actions on sending and receiving fetch/save requests to DB
+
+  | name | data | purpose |
+  | --- | --- | --- |
+  | getGear | all gear | fetches all gear into client |
+  | addGearItem | single item | saves new item to redux state and posts to server for DB saving |
+  | registerUserRequest | new user form data | creates new user in the server and logs them in in state |
+  | loginUser | login credentials | authenticates user and saves full info to state |
+  | fetchUser | - | fetches full user data of logged in user |
+  
+## Synchrous actions
 
   | type | data | purpose |
   | --- | --- | --- |
-  | RECEIVE_FOUND_PETS | pets | For retreving the found pets from the server response |
-  | ADD_FOUND_PET | pet | For adding a found pet to the client store after is had been added to the db |
-  | RECEIVE_LOST_PETS | pets | For retreving the lost pets from the server response |
-  | ADD_LOST_PET | pet | For adding lost a pet to the client store after is had been added to the db |
+  | GEAR_REQUEST | none | notifying state that gear request is in progress |
+  | SET_GEAR | gear | gear array from response into state |
+  | GEAR_ERROR | err | notifying state of error in fetch |
+  | REQUEST_GEAR_SAVE | none | notifying state that gear push to server is in progress |
+  | GEAR_ADD | item | pushes new item to local state and alters changes saving status to false |
+  | SET_USER | user | saves user info to state on login or register |
 
 
 ## API (Client - Server)
 
-| Method | Endpoint | Protected | Usage | Response |
-| --- | --- | --- | --- | --- |
-| Post | /api/auth/login | Yes | Log In a User | The Users JWT Token |
-| Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
-| Get | /api/lost | No | Get the list of lost pets | Array of Objects (object = A Lost Pet) |
-| Get | /api/found | No | Get the list of found pets | Array of Objects (object = A Found Pet) |
-| Post | /api/lost | Yes | Add a Lost pet to the db | The Pet that was added (as an object) |
-| Post | /api/lost | Yes | Add a Found pet to the db | The Pet that was added (as an object) |
+| Method | Endpoint | Protected | Usage | Request Data | Response |
+| --- | --- | --- | --- | --- | --- |
+| Post | /api/auth/login | Yes | Log In a User | credentials object | The Users JWT Token |
+| Post | /api/auth/register | Yes | Register a User | registration form data | The Users JWT Token |
+| Get | /api/gear/all | No | Get full list of gear | - | Array of Objects (object = A Gear Item) |
+| Get | /api/gear/single/:id | No | Get a single gear item | - | A Gear Item |
+| Post | /api/gear/new | Yes | Add a gear item to db | single gear object | gear item object |
+| Post | /api/gear/update/:id | Yes | update gear object in DB | update info as an object | numUpdates (should be 1) |
+| Delete | /api/gear/delete/:id | Yes | delete gear object | - | status 200 |
 
 ## DB (Server Side) -
-  There should be three tables for MVP. You may want/need to add additional columns or tables.
+ MVP has two tables -- Gear ( * - 1 ) Users
 
-### Lost
+### Gear
   | Column Name | Data Type | Purpose |
   | --- | --- | --- |
   | id | Integer | Unique identifier for each lost animal |
-  | name | String | Name of Lost animal, because names are special <3 |
-  | species | String | What kind of animal is it? |
-  | photo | string | URL of a picture of the lost animal |
-  | user_id | integer | Id of the user who reported the animal as lost |
+  | name | String | name of item |
+  | description | String | Description of item, condition, missing parts etc. |
+  | photo_url | string | URL of a picture of the item |
+  | user_id | integer | Id of the owner |
+  | trustframework | string | loaning category/conditions of item |
+  | status | string | availability of item for use |
 
-
-### Found
-  | Column Name | Data Type | Purpose |
-  | --- | --- | --- |
-  | id | Integer | Unique identifier for each found animal |
-  | species | String | What kind of animal is it? |
-  | photo | string | URL of a picture of the found animal |
-  | user_id | integer | Id of the user who found the lost animal |
-
-### Users (Join Table M2M)
-
-  Many Users to Many Pets
+### Users (Join Table M21)
 
  | Column Name | Data Type | Purpose |
  | --- | --- | --- |
  | id | Integer | Unique identifier for each user |
  | user_name | string | Used for login |
- | contact_details | string | displayed for contact information |
+ | first_name | string | First name |
+ | last_name | string | Last name |
+ | profile_pic | string | url of profile picture |
  | email_address | string | displayed for contact information |
- | hash | text | hashed login password |
+ | hash | string | hashed login password |
  ---
 
 
