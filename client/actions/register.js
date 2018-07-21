@@ -11,7 +11,7 @@ export function registerUserRequest (creds) {
       .then(res => {
         const userInfo = saveUserToken(res.body.token)
         dispatch(receiveLogin(userInfo))
-        return customRequest('get', `user/${userInfo.user_name}`)
+        return customRequest('get', `user/fullProfile`)
           .then((res) => {
             const fullUser = res.body
             dispatch(setUser(fullUser))

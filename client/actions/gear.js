@@ -3,7 +3,7 @@ import request from '../utils/api'
 export function getGear() {
   return dispatch => {
     dispatch(requestGear())
-    return request('get', 'gear')
+    return request('get', 'gear/all')
       .then((res) => {
         let gear = res.body
         dispatch(setGear(gear))
@@ -60,6 +60,7 @@ export function getGear() {
   export function addGearItem(item) {
     // untested
     return dispatch => {
+      console.log('about to request api/gear/new')
       dispatch(requestGearSave())
       return request('post', 'gear/new', item)
         .then((res) => {
