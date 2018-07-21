@@ -7,6 +7,7 @@ import Register from './Register'
 import Nav from './Nav'
 import Profile from './Profile'
 import ToolPool from './ToolPool'
+import GearItem from './GearItem'
 
 import { getGear } from "../actions/gear";
 import {fetchUser} from '../actions/login'
@@ -38,6 +39,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path='/profile' component={Profile}/>
+          <Route path='/item/:id' component={GearItem}/>
        </div>
       </Router>
     )
