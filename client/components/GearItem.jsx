@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import GearEdit from './GearEdit'
 import GearRequest from './GearRequest'
 
@@ -9,24 +9,50 @@ export class GearItem extends React.Component {
         super(props)
     }
 
+    toLogin() {
+        document.location = "/#/login"
+    }
+
     render() {
-        const { name, description, status, photo_url, trustframework, user_id } = this.props.gear.find(
-            (i) => i.id == this.props.match.params.id)
+        const gearId = Number(this.props.match.params.id)
+        
+        // to wait on gear array & user info load:
+        if (this.props.gear.isFetching || this.props.user.isFetching) {
+            return (
+                <p>Fetching!!!!!!!!!!!</p>
+            )
+        }
+        
+        // once loaded:
+        else {
+            const thisGear = this.props.gear.gear.find((i) => i.id === gearId)
+            const { 
+                name, // error here ??
+                description, 
+                status, 
+                photo_url, 
+                trustframework, 
+                user_id 
+            } = thisGear
+            const activeUserId = this.props.user.id
+            const gearOwnerId = user_id
 
-        return (
-            <div className='gear-display'>
-                <img className='tempimgcss' src={photo_url} />
-                <h1>{name}</h1>
-                <p>{status} - {trustframework}</p>
-                <p>{description}</p>
+            return (
+                <div className='gear-display'>
+                    <img className='tempimgcss' src={photo_url} />
+                    <h1>{name}</h1>
+                    <p>{status} - {trustframework}</p>
+                    <p>{description}</p>
 
-                {!this.props.auth.isAuthenticated
-                    && <Link to='/login'><button>Login to request this tool</button></Link>}
-                {this.props.auth.isAuthenticated && this.props.user.id === user_id
-                    ? <GearEdit />
-                    : <GearRequest />}
-            </div>
-        )
+                    {!this.props.auth.isAuthenticated
+                        && <button onClick={this.toLogin}>Login to request this tool</button>}
+                    {this.props.auth.isAuthenticated && activeUserId === gearOwnerId
+                        && <GearEdit />}
+                    {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
+                        && <GearRequest />}
+                </div>
+            )
+        }
     }
 }
 
@@ -34,7 +60,7 @@ const mapStateToProps = (state) => (
     {
         auth: state.auth,
         user: state.user,
-        gear: state.gear.gear
+        gear: state.gear
     }
 )
 export default connect(mapStateToProps)(GearItem)
