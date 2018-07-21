@@ -12,13 +12,16 @@ const initialState = {}
           gear: action.user.gear
         }
       case 'GEAR_ADD':
-        // untested
         let newGearArr = [...state.gear, action.item]
         return {
           ...state,
           gear: newGearArr
         }
-        // note: may need deeper copy
+      case 'GEAR_ERROR':
+        return {
+            ...state,
+            message: action.message
+        }
       default:
         return state
     }
