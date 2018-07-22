@@ -5,7 +5,7 @@ import ItemInline from './ItemInline'
 
 export const ToolPool = props => (
   <div className='toolpool-wrapper'>
-    <h1>TOOL POOL</h1>
+    <h1 className='title is-2'>TOOL POOL</h1>
     {props.err && <span className="has-text-danger is-large">{props.err}</span>}
     <ul>
       {props.gear.map(item => {
