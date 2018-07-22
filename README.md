@@ -9,13 +9,14 @@ A platform to share expensive equipment within trusted groups
   * ESYWTUBNB
   * Toolies
   * Toolerino
+  * ToolPool
   * GearShare
+  * Gears of Poor
   * The Kitchen Sink
+  * The Broom Cupboard
   * Blender
   * Return to Blender
-  * The Broom Cupboard
   * Nuts & Bolts
-  * ToolPool
 
 ## User Stories
   * I can sign up
