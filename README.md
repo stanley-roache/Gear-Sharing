@@ -15,6 +15,7 @@ A platform to share expensive equipment within trusted groups
   * Return to Blender
   * The Broom Cupboard
   * Nuts & Bolts
+  * ToolPool
 
 ## User Stories
   * I can sign up
