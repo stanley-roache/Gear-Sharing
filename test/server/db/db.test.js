@@ -133,8 +133,7 @@ test('updateUser function causes one user to change', () => {
 })
 
 test('createUser function creates a new user', () => {
-const {user_name, first_name, last_name, email_address, password} = fakeNewUser
-  return users.createUser(user_name, first_name, last_name, email_address, password, testDb)
+  return users.createUser(fakeNewUser, testDb)
     .then(users => {
       expect(users).toHaveLength(1)
     })
