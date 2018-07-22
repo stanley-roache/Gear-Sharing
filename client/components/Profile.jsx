@@ -15,7 +15,7 @@ class Profile extends React.Component {
     }
 
     this.cancelAdd = this.cancelAdd.bind(this)
-    this.handleFormClick = this.handleFormClick.bind(this)
+    this.renderForm = this.renderForm.bind(this)
   }
 
   cancelAdd() {
@@ -24,7 +24,7 @@ class Profile extends React.Component {
     })
   }
 
-  handleFormClick() {
+  renderForm() {
     this.setState({
       addingItem: true
     })
@@ -47,7 +47,7 @@ class Profile extends React.Component {
           <p>{this.props.user.email}</p>
           <GearList />
           {!this.state.addingItem 
-            && <button onClick={() => this.handleFormClick()}>Add Gear Item</button>}
+            && <button onClick={() => this.renderForm()}>Add Gear Item</button>}
           <div ref='form'>
             {this.state.addingItem 
               && <NewGearForm finish={() => this.cancelAdd()}/>}
