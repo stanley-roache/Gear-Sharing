@@ -28,7 +28,6 @@ export class NewGearForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('submitting');
     e.preventDefault()
     this.props.dispatch(addGearItem(this.state))
     this.props.finish()

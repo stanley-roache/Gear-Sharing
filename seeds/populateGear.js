@@ -26,7 +26,7 @@ exports.seed = function(knex, Promise) {
         },
         {
           id: 3,
-          status: "Available",
+          status: "Not Available",
           trustframework: "Three",
           name: 'Chainsaw',
           description: 'Cut your trees down',
