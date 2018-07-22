@@ -74,7 +74,7 @@ export class GearItem extends React.Component {
                         && <button onClick={() => this.renderForm()}>Edit this piece of shit</button>}
 
                     <div ref='editForm'>
-                        {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && this.state.editingItem
+                        {this.state.editingItem
                             && <GearEdit item={thisGear} finish={() => this.cancelEdit()} />}
                     </div>
 
