@@ -36,7 +36,6 @@ export function registerUserRequest (creds) {
           })
       })
       .catch(err => {
-        console.log('catching lgin error');
         dispatch(registerError(err.response.body.message))
       })
   }
