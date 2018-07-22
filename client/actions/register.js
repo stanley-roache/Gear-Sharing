@@ -23,7 +23,6 @@ export function registerUserRequest (creds) {
       .post('/api/auth/register')
       .send(creds)
       .then(res => {
-        console.log('succesful registration post');
         const userInfo = saveUserToken(res.body.token)
         dispatch(receiveLogin(userInfo))
         return customRequest('get', `user/fullProfile`)
