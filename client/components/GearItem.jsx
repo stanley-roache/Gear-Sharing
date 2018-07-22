@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router'
 import GearEdit from './GearEdit'
 import GearRequest from './GearRequest'
 
@@ -27,7 +26,7 @@ export class GearItem extends React.Component {
         else {
             const thisGear = this.props.gear.gear.find((i) => i.id === gearId)
             const { 
-                name, // error here ??
+                name,
                 description, 
                 status, 
                 photo_url, 
