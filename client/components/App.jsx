@@ -8,6 +8,7 @@ import Nav from './Nav'
 import Profile from './Profile'
 import ToolPool from './ToolPool'
 import GearItem from './GearItem'
+// import TestModal from './TestModal'
 
 import { getGear } from "../actions/gear";
 import {fetchUser} from '../actions/login'
@@ -34,6 +35,7 @@ class App extends React.Component {
               <Nav />
             </div>
           </div>
+          {/* <TestModal /> */}
 
           <Route exact path='/toolpool' component={ToolPool}/>
           <Route exact path="/login" component={Login} />
