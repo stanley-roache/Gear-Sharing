@@ -48,12 +48,12 @@ export class NewGearForm extends React.Component {
         </label>
         <br />
         <label>
-          Photo URL:
-          <input onChange={this.handleChange} type="text" value={this.state.photo_url} name='photoUrl' />
+          Photo url:
+          <input onChange={this.handleChange} type="text" value={this.state.photo_url} name='photo_url' />
         </label>
         <br />
         <label>
-          Lending conditions: 
+          Lending conditions:
           <select name='trustframework' onChange={this.handleChange}>
             <option value='One'>Free Borrowing</option>
             <option value='Two'>Upkeep Koha</option>
