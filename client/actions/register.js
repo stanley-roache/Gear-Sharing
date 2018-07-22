@@ -1,10 +1,24 @@
 import request from 'superagent'
 import customRequest from '../utils/api'
 import {saveUserToken} from '../utils/auth'
-import {receiveLogin, loginError, setUser} from './login'
+import {receiveLogin, setUser} from './login'
+
+function requestRegister() {
+  return ({
+    type: 'REGISTER_REQUEST',
+  })
+}
+
+function registerError(message) {
+  return ({
+    type: 'REGISTER_FAILURE',
+    message
+  })
+}
 
 export function registerUserRequest (creds) {
   return (dispatch) => {
+    dispatch(requestRegister())
     request
       .post('/api/auth/register')
       .send(creds)
@@ -21,7 +35,7 @@ export function registerUserRequest (creds) {
           })
       })
       .catch(err => {
-        dispatch(loginError(err.response.body.message))
+        dispatch(registerError(err.response.body.message))
       })
   }
 }
