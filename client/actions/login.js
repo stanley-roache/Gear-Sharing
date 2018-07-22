@@ -27,6 +27,12 @@ export function loginError (message) {
   }
 }
 
+export function requestUser () {
+  return {
+    type: 'USER_REQUEST'
+  }
+}
+
 export function setUser (user) {
   return {
     type: 'SET_USER',
@@ -36,11 +42,12 @@ export function setUser (user) {
 
 export function loginUser (creds) {
   return dispatch => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return request('post', 'auth/login', creds)
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
+        dispatch(requestUser())
         return request('get', 'user/fullProfile')
           .then((res) => {
             const fullUser = res.body
@@ -58,13 +65,14 @@ export function loginUser (creds) {
 
 export function fetchUser () {
   return dispatch => {
+    dispatch(requestUser())
     return request('get', 'user/fullProfile')
-          .then((res) => {
-            const fullUser = res.body
-            dispatch(setUser(fullUser))
-          })
-          .then(() => {
-            document.location = "/#/profile"
-          })
+      .then((res) => {
+        const fullUser = res.body
+        dispatch(setUser(fullUser))
+      })
+      .catch(err => {
+        dispatch(loginError(err.response.body.message))
+      })
   }
 }

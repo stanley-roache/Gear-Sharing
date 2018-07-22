@@ -5,7 +5,7 @@ const initialState = {
   
   export default function user (state = initialState, action) {
     switch (action.type) {
-      case 'LOGIN_SUCCESS':
+      case 'USER_REQUEST':
         return {
           ...state,
           isFetching: true
