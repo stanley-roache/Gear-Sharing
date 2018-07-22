@@ -55,6 +55,7 @@
     "jwt-decode": "^2.2.0",
     "knex": "^0.13.0",
     "nodemailer": "^4.6.7",
+    "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.4.0",
     "pg": "^7.4.3",
     "react": "^15.5.4",
@@ -64,7 +65,9 @@
     "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "sendmail": "^1.4.1",
     "superagent": "^2.2.0",
-    "webpack": "3"
+    "webpack": "3",
+    "xoauth2": "^1.2.0"
   }
 }
