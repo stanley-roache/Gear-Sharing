@@ -76,12 +76,11 @@ export function getGear() {
       dispatch(editRequest())
       return request('post', `gear/update/${item.id}`, item)
         .then((res) => {
-          let editedGear = res.body.gear
-          dispatch(editGear(editedGear))
+          dispatch(editGear(item))
         })
         .catch(err => {
           dispatch(gearError(err.response.body.message))
-        })
+        }) // need to work on catch blocks
     }
   }
 
