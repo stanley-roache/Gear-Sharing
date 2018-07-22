@@ -209,6 +209,11 @@ yarn h:rollback
 npm run h:rollback
 ```
 
+Set environment variables on heroku (instead of .env)
+```sh
+heroku config:set GITHUB_USERNAME=joesmith
+heroku config:set JWT_SECRET=somesecret
+```
 
 ### Ta-Da!
 Your app should be deployed!
