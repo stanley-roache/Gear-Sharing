@@ -1,6 +1,6 @@
 const initialState = {
     gear: [],
-    isFetching: false,
+    isFetching: true,
     isSaving: false
 }
 
