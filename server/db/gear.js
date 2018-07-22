@@ -27,7 +27,7 @@ function getGearByUserId (user_id, testDb) {
 
 function addGear(gear, testDb) {
   const db = testDb || conn
-  return db('gear').insert(gear)
+  return db.insert([gear], 'id').into('gear')
 }
 
 function updateGear(gear, id, testDb) {

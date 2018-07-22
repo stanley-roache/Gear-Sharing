@@ -1,15 +1,23 @@
+<img src='https://nypdecider.files.wordpress.com/2018/04/home-improvement-wilson-tim.jpg?quality=90&strip=all&strip=all'>
+
 #(name to be confirmed)
 
 A platform to share expensive equipment within trusted groups
 
-## Names
-  * Compliance
+## Name ideas
   * Commppliance
-  * ESTPWTUBNB
+  * ESYWTUBNB
   * Toolies
+  * Toolerino
+  * ToolPool
+  * GearShare
+  * Gears of Poor
+  * The Kitchen Sink
+  * The Broom Cupboard
   * Blender
   * Return to Blender
-  * Toolerino
+  * Nuts & Bolts
+  * The Broom Cupboard
 
 ## User Stories
   * I can sign up
@@ -38,21 +46,8 @@ A platform to share expensive equipment within trusted groups
   * View others' profiles when you're logged in
   * Keeping ToolPool ?anonymus? (proof of id auth)
   * Changing profile picture
-  * Modle for add gear form
+  * Modal for add gear form
 
-  ---
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  fix below here
 
 ## Views (Client Side)
   | name | purpose |
@@ -65,7 +60,6 @@ A platform to share expensive equipment within trusted groups
   | NewGearForm | Form fpr user to add new item of gear |
   | ToolPool | View all gear in the loaning group |
   | Nav | Navigation Bar |
-  | FoundForm | For a user to add a pet that they have found |
 
 ## Reducers (Client Side)
 
@@ -118,7 +112,7 @@ Each of these actions calls on several synchrous actions on sending and receivin
 ### Gear
   | Column Name | Data Type | Purpose |
   | --- | --- | --- |
-  | id | Integer | Unique identifier for each lost animal |
+  | id | Integer | Unique identifier for each item |
   | name | String | name of item |
   | description | String | Description of item, condition, missing parts etc. |
   | photo_url | string | URL of a picture of the item |
@@ -215,6 +209,11 @@ yarn h:rollback
 npm run h:rollback
 ```
 
+Set environment variables on heroku (instead of .env)
+```sh
+heroku config:set GITHUB_USERNAME=joesmith
+heroku config:set JWT_SECRET=somesecret
+```
 
 ### Ta-Da!
 Your app should be deployed!
