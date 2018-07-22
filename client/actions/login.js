@@ -1,7 +1,7 @@
 import request from '../utils/api'
 import { saveUserToken } from '../utils/auth'
 
-function requestLogin () {
+function requestLogin() {
   return {
     type: 'LOGIN_REQUEST',
     isFetching: true,
@@ -9,7 +9,7 @@ function requestLogin () {
   }
 }
 
-export function receiveLogin (user) {
+export function receiveLogin(user) {
   return {
     type: 'LOGIN_SUCCESS',
     isFetching: false,
@@ -18,7 +18,7 @@ export function receiveLogin (user) {
   }
 }
 
-export function loginError (message) {
+export function loginError(message) {
   return {
     type: 'LOGIN_FAILURE',
     isFetching: false,
@@ -27,44 +27,43 @@ export function loginError (message) {
   }
 }
 
-export function setUser (user) {
+export function requestUser() {
+  return {
+    type: 'USER_REQUEST'
+  }
+}
+
+export function setUser(user) {
   return {
     type: 'SET_USER',
     user
   }
 }
 
-export function loginUser (creds) {
+export function loginUser(creds) {
   return dispatch => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return request('post', 'auth/login', creds)
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
-        return request('get', 'user/fullProfile')
-          .then((res) => {
-            const fullUser = res.body
-            dispatch(setUser(fullUser))
-          })
-          .then(() => {
-            document.location = "/#/profile"
-          })
-      })
-      .catch(err => {
-        dispatch(loginError(err.response.body.message))
+        dispatch(requestUser())
+        dispatch(fetchUser(() => {document.location = '/#/profile'}))
       })
   }
 }
 
-export function fetchUser () {
+export function fetchUser(callback) {
   return dispatch => {
+    dispatch(requestUser())
     return request('get', 'user/fullProfile')
-          .then((res) => {
-            const fullUser = res.body
-            dispatch(setUser(fullUser))
-          })
-          .then(() => {
-            document.location = "/#/profile"
-          })
+      .then((res) => {
+        const fullUser = res.body
+        dispatch(setUser(fullUser))
+        callback()
+      })
+      .catch(err => {
+        dispatch(loginError(err.response.body.message))
+      })
   }
 }
