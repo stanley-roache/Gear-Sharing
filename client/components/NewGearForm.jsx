@@ -28,6 +28,7 @@ export class NewGearForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log('submitting');
     e.preventDefault()
     this.props.dispatch(addGearItem(this.state))
     this.props.finish()
@@ -61,7 +62,7 @@ export class NewGearForm extends React.Component {
         </label>
         <br />
         <input type="submit" value='add Gear' />
-        <button onClick={this.props.handleSubmit}>Cancel</button>
+        <button onClick={this.props.finish}>Cancel</button>
       </form>
     )
   }
