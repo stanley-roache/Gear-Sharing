@@ -60,7 +60,6 @@ A platform to share expensive equipment within trusted groups
   | NewGearForm | Form fpr user to add new item of gear |
   | ToolPool | View all gear in the loaning group |
   | Nav | Navigation Bar |
-  | FoundForm | For a user to add a pet that they have found |
 
 ## Reducers (Client Side)
 
@@ -113,7 +112,7 @@ Each of these actions calls on several synchrous actions on sending and receivin
 ### Gear
   | Column Name | Data Type | Purpose |
   | --- | --- | --- |
-  | id | Integer | Unique identifier for each lost animal |
+  | id | Integer | Unique identifier for each item |
   | name | String | name of item |
   | description | String | Description of item, condition, missing parts etc. |
   | photo_url | string | URL of a picture of the item |
