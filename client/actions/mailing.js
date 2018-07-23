@@ -20,10 +20,12 @@ function mailingError(message) {
     }
 }
 
-export function sendRequest(gearId, didSucceed) {
+export function sendRequest(message, didSucceed) {
+    const gearId = message.gear_id
+    const messageBody = message.message
     return dispatch => {
         dispatch(requestMailOut())
-        request('post', 'mail/request', {gearId})
+        request('post', 'mail/request', {gearId, messageBody})
             .then(() => {
                 dispatch(sentMail(gearId))
                 didSucceed(true)

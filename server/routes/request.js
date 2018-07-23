@@ -20,8 +20,6 @@ router.post('/new', (req, res) => {
             })
         })
         .catch(err => {
-            console.log(err);
-
             res.status(500).send({
                 message: 'error adding new request to DB',
                 err

@@ -1,5 +1,5 @@
 import request from '../utils/api'
-import {sendRequest} from './mailing'
+import {sendRequest as mailRequest} from './mailing'
 
 function postRequest(message, didSucceed) {
     return dispatch => {
@@ -44,7 +44,7 @@ export function manageRequest(message) {
     // then send to state
     return dispatch => {
         const chain = new Promise((resolve, reject) => {
-            dispatch(sendRequest(message.gear_id, succeeded => {
+            dispatch(mailRequest(message, succeeded => {
                 succeeded ? resolve(): reject()
             }))
         })
