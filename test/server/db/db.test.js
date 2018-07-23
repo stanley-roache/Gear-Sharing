@@ -145,3 +145,26 @@ test('userExists function lets you know if a username is taken', () => {
       expect(userExists).toBeTruthy()
     })
 })
+
+test('getGearByGearIdWithUser function joins the owner and gear', () => {
+  const expectedKeys = [
+    'id',
+    'first_name',
+    'last_name',
+    'user_name',
+    'email_address',
+    'hash',
+    'status',
+    'trustframework',
+    'name',
+    'description',
+    'photo_url',
+    'user_id',
+  ]
+  gear.getGearByGearIdWithUser(1, testDb)
+    .then(actual => {
+        expectedKeys.forEach(key => {
+          expect(actual.hasOwnProperty(key)).toBeTruthy()
+        })
+    })
+})

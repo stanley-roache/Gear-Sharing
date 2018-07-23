@@ -15,17 +15,18 @@ router.use(
 
 router.post('/request', (req, res) => {
     Promise.all([
-        gearDB.getGearByGearId(req.body.gearId),
-        userDB.getUserById(req.body.ownerId),
+        gearDB.getGearByGearIdWithUser(req.body.gearId),
         userDB.getUserById(req.user.user_id)
     ])
-    .then(([item, owner, requester]) => {
-        return sendRequest(item, owner, requester)
+    .then(([item, requester]) => {
+        return sendRequest(item, requester)
     })
     .then(() => {
         res.sendStatus(200)
     })
     .catch(err => {
+        console.log(err);
+        
         res.status(500).send({
             message: 'error sending mail request',
             err

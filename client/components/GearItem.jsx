@@ -79,7 +79,7 @@ export class GearItem extends React.Component {
                     </div>
 
                     {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
-                        && <GearRequest />}
+                        && <GearRequest id={gearId}/>}
                 </div>
             )
         }
