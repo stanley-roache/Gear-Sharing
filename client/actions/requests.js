@@ -1,11 +1,11 @@
 import request from '../utils/api'
 
-export function postRequest(request) {
+export function postRequest(message) {
     return dispatch => {
         dispatch(requestMessageSave())
-        return request('post', 'request/new', request)
+        return request('post', 'request/new', message)
             .then((res) => {
-                dispatch(setRequest(request))
+                dispatch(setRequest(message))
             })
             .catch(err => {
                 dispatch(requestError(err.message))
@@ -27,11 +27,11 @@ export function setRequest(request) {
 }
 
 
-export function requestError (message) {
+export function requestError(message) {
     return {
-      type: 'REQUEST_ERROR',
-      isFetching: false,
-      isSaving: false,
-      message
+        type: 'REQUEST_ERROR',
+        isFetching: false,
+        isSaving: false,
+        message
     }
-  }
+}
