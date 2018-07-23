@@ -63,11 +63,13 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-star-rating-component": "^1.4.1",
     "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "sendmail": "^1.4.1",
     "superagent": "^2.2.0",
+    "vue-star-rating": "^1.6.0",
     "webpack": "3",
     "xoauth2": "^1.2.0"
   }
