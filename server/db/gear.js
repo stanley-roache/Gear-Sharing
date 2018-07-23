@@ -1,25 +1,25 @@
 const conn = require('./connection')
 
-function getGearWithUsers (testDb) {
+function getGearWithUsers(testDb) {
   const db = testDb || conn
   return db('gear')
     .join('users', 'gear.user_id', 'users.id')
 }
 
-function getGear (testDb) {
+function getGear(testDb) {
   const db = testDb || conn
   return db('gear')
     .select()
 }
 
-function getGearByGearId (id, testDb) {
+function getGearByGearId(id, testDb) {
   const db = testDb || conn
   return db('gear')
-    .where({id})
+    .where({ id })
     .first()
 }
 
-function getGearByGearIdWithUser (id, testDb) {
+function getGearByGearIdWithUser(id, testDb) {
   const db = testDb || conn
   return db('gear')
     .join('users', 'gear.user_id', 'users.id')
@@ -27,10 +27,10 @@ function getGearByGearIdWithUser (id, testDb) {
     .first()
 }
 
-function getGearByUserId (user_id, testDb) {
+function getGearByUserId(user_id, testDb) {
   const db = testDb || conn
   return db('gear')
-    .where({user_id})
+    .where({ user_id })
 }
 
 function addGear(gear, testDb) {
@@ -40,12 +40,12 @@ function addGear(gear, testDb) {
 
 function updateGear(gear, id, testDb) {
   const db = testDb || conn
-  return db('gear').where({id}).update(gear)
+  return db('gear').where({ id }).update(gear)
 }
 
 function removeGearById(id, testDb) {
   const db = testDb || conn
-  return db('gear').where({id}).del()
+  return db('gear').where({ id }).del()
 }
 
 
