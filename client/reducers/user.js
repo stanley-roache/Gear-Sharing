@@ -1,6 +1,8 @@
 const initialState = {
   gear: [],
-  isFetching: false
+  messages: {},
+  isFetching: false,
+  isSaving: false
 }
 
 export default function user(state = initialState, action) {
@@ -25,20 +27,20 @@ export default function user(state = initialState, action) {
     case 'REQUEST_GEAR_SAVE':
       return {
         ...state,
-        isFetching: true
+        isSaving: true
       }
     case 'GEAR_ADD':
       let newGearArr = [...state.gear, action.item]
       return {
         ...state,
         gear: newGearArr,
-        isFetching: false
+        isSaving: false
       }
     case 'GEAR_ERROR':
       return {
         ...state,
-        message: action.message,
-        isFetching: false
+        errorMessage: action.message,
+        isSaving: false
       }
     case 'EDIT_REQUEST':
       return {
@@ -53,6 +55,27 @@ export default function user(state = initialState, action) {
         ...state,
         gear: editedGearArr,
         isFetching: false,
+        isSaving: false
+      }
+    case 'REQUEST_MESSAGE_SAVE':
+      return {
+        ...state, 
+        isSaving: true
+      }
+    case 'SET_REQUEST':
+      let newMessages = {
+        ...state.messages, 
+        sent: [state.messages.sent, action.request]
+        }
+      return {
+        ...state, 
+        isSaving: false,
+        messages: newMessages
+      }
+    case 'REQUEST_ERROR':
+      return {
+        ...state,
+        errorMessage: action.message,
         isSaving: false
       }
     default:
