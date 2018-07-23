@@ -20,15 +20,17 @@ function mailingError(message) {
     }
 }
 
-export function sendRequest(gearId) {
+export function sendRequest(gearId, didSucceed) {
     return dispatch => {
         dispatch(requestMailOut())
         request('post', 'mail/request', {gearId})
             .then(() => {
                 dispatch(sentMail(gearId))
+                didSucceed(true)
             })
             .catch(err => {
                 dispatch(mailingError(err.response.body.message))
+                didSucceed(false)
             })
     }
 }
