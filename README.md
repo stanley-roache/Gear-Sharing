@@ -218,8 +218,17 @@ Set environment variables on heroku (instead of .env)
 heroku config:set GITHUB_USERNAME=joesmith
 heroku config:set JWT_SECRET=somesecret
 ```
-IMPORTANT NOTE
-Seeding the heroku database with yarn h:seed will break it due to how postgres creates ids with a .increments column, best to start the app with empt DB
+## Seeding Heroku
+
+1. You will need pgsql tools, install with ```sudo apt-get install -y postgresql-client```
+2. rollback and migrate heroku with yarn h:rollback, yarn h:migrate
+3. direct connect to heroku postgres db with ```heroku pg:psql```
+4. look up seq tables (which keep track of next id val) : ```SELECT c.relname FROM pg_class c WHERE c.relkind = 'S';```
+5. For each table run the following reset primary key: ```SELECT setval('tablename_id_seq', (SELECT max(id) FROM posts) + 1);```
+6. seed heroku with ```yarn h:seed```
+7. repeat steps 4 & 5 to update primary keys
+8. close direct db connection with \q
+
 
 ### Ta-Da!
 Your app should be deployed!
