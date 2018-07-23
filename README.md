@@ -160,6 +160,10 @@ yarn start
 npm start
 ```
 
+## Setting up sendgrid with api key
+
+FILL THIS IN
+
 
 ## Heroku!!!
 
@@ -214,6 +218,8 @@ Set environment variables on heroku (instead of .env)
 heroku config:set GITHUB_USERNAME=joesmith
 heroku config:set JWT_SECRET=somesecret
 ```
+IMPORTANT NOTE
+Seeding the heroku database with yarn h:seed will break it due to how postgres creates ids with a .increments column, best to start the app with empt DB
 
 ### Ta-Da!
 Your app should be deployed!
