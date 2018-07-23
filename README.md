@@ -162,7 +162,12 @@ npm start
 
 ## Setting up sendgrid with api key
 
-FILL THIS IN
+Get API key from sendgrid
+
+```sh
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+source ./sendgrid.env
+```
 
 
 ## Heroku!!!
