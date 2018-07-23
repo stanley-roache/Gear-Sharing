@@ -1,4 +1,89 @@
-const actions = require('../../../client/actions/gear')
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import * as actions from '../../../client/actions/gear'
+import nock from 'nock';
+import {requestGear, setGear, gearError} from '../../../client/actions/gear'
+
+
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
+
+test('test get some gear', () => {
+    const store = mockStore({})
+    const fakeGear = [
+        'Drill',
+        'Another Drill'
+    ]
+
+    const scope = nock('http://localhost:80')
+      .get('/gear/all')
+      .reply(200, fakeGear);
+  
+    const expectedActions = [
+        { type: 'GEAR_REQUEST'},
+        { type: 'SET_GEAR', gear: ['Drill', 'Another Drill']},
+        { type: 'GEAR_ERROR'}
+    ]
+
+    const dispatchedStore = store.dispatch(
+        actions.getGear()
+    )
+    return dispatchedStore.then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+    })
+  })
+
+// test('getGear will dispatch an action on success', () => {
+//     const fakeGear = [
+//         'Drill',
+//         'Another Drill'
+//     ]
+
+//     const scope = nock('http://localhost:80')
+//       .get('/gear/all')
+//       .reply(200, fakeGear);
+  
+//     const expectedAction = {
+//         type: 'SET_GEAR',
+//         gear: fakeGear,
+//         isFetching: false,
+//         isSaving: false,
+//     }
+  
+//     const dispatch = jest.fn()
+//       .mockImplementationOnce(action => {
+//         expect(action).toEqual(expectedAction)
+//         scope.done()
+//       })
+  
+//     actions.getGear()(dispatch)
+  
+//   })
+
+// describe('async actions', () => {
+//     it('gets all of the gear  on success', () => {
+
+//         const scope = nock('http://localhost:80')
+//             .get('/gear/all')
+//             .reply(200, { body: ['hi'] })
+
+
+//         const expectedActions = [
+//             { type: 'GEAR_REQUEST', isFetching: true, isSaving: false },
+//             { type: 'SET_GEAR', gear: ['hi'], isFetching: false, isSaving: false}
+//         ]
+//         const store = mockStore({gear:{
+//             gear: [],
+//             isFetching: true,
+//             isSaving: false
+//         }})
+
+//         return store.dispatch(actions.getGear()).then(() => {
+//             expect(store.getActions()).toEqual(expectedActions)
+//         })
+//     })
+// })
+
 
 
 describe('actions', () => {
@@ -10,9 +95,7 @@ describe('actions', () => {
         }
         expect(actions.requestGear()).toEqual(expectedAction)
     })
-})
 
-describe('actions', () => {
     it('is setting gear into state', () => {
         const gear =   {
             id: 1,
@@ -31,10 +114,8 @@ describe('actions', () => {
         }
         expect(actions.setGear(gear)).toEqual(expectedAction)
     })
-})
 
-describe('actions', () => {
-    it('displaying a  gear error', () => {
+    it('displaying a gear error', () => {
         const message = 'error grabbing full gear list'
         const expectedAction = {
             type: 'GEAR_ERROR',
@@ -44,9 +125,7 @@ describe('actions', () => {
         }
         expect(actions.gearError(message)).toEqual(expectedAction)
     })
-})
 
-describe('actions', () => {
     it('setting isSaving to true for adding gear', () => {
         const expectedAction = {
             type: 'REQUEST_GEAR_SAVE',
@@ -55,9 +134,7 @@ describe('actions', () => {
         }
         expect(actions.requestGearSave()).toEqual(expectedAction)
     })
-})
 
-describe('actions', () => {
     it('should create a new gear item', () => {
         const item = 'Blender'
         const expectedAction = {
@@ -66,4 +143,24 @@ describe('actions', () => {
         }
         expect(actions.gearAdd(item)).toEqual(expectedAction)
     })
+
+    it('setting isSaving to true for editing gear', () => {
+        const expectedAction = {
+            type:'EDIT_REQUEST',
+            isFetching: false,
+            isSaving: true
+        }
+        expect(actions.editRequest()).toEqual(expectedAction)
+    })
+
+    it('should edit a gear item and save it into state', () => {
+        const item = 'Chainsaw'
+        const expectedAction = {
+            type: 'EDIT_GEAR',
+            item
+        }
+        expect(actions.editGear(item)).toEqual(expectedAction)
+    })
+
+
 })
