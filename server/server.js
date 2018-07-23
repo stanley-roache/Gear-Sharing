@@ -16,5 +16,6 @@ server.use('/api/auth', require('./routes/auth'))
 server.use('/api/user', require('./routes/user'))
 server.use('/api/gear', require('./routes/gear'))
 server.use('/api/mail', require('./routes/mail'))
+server.use('/api/request', require('./routes/request'))
 
 module.exports = server

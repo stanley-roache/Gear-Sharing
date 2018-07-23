@@ -15,6 +15,13 @@ function getRequests(id, testDb) {
     })
 }
 
+function insertRequest(request, testDb) {
+    const db = testDb || conn
+    return db.insert([request], 'id')
+        .into('requests')
+}
+
 module.exports = {
-    getRequests
+    getRequests,
+    insertRequest
 }
