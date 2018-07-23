@@ -225,9 +225,9 @@ heroku config:set JWT_SECRET=somesecret
 3. direct connect to heroku postgres db with ```heroku pg:psql```
 4. look up seq tables (which keep track of next id val) : ```SELECT c.relname FROM pg_class c WHERE c.relkind = 'S';```
 5. For each table run the following reset primary key: ```SELECT setval('tablename_id_seq', (SELECT max(id) FROM posts) + 1);```
-6. seed heroku with ```yarn h:seed```
-7. repeat steps 4 & 5 to update primary keys
-8. close direct db connection with \q
+6. close direct db connection with \q
+7. seed heroku with ```yarn h:seed```
+8. repeat steps 3 - 6 to update primary keys
 
 
 ### Ta-Da!
