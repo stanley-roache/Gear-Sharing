@@ -19,6 +19,7 @@ export default function user(state = initialState, action) {
         username: action.user.user_name,
         email: action.user.email_address,
         gear: action.user.gear,
+        messages: action.user.messages,
         isFetching: false
       }
     case 'REQUEST_GEAR_SAVE':
