@@ -1,5 +1,6 @@
 const gear = require('../../../server/db/gear')
 const users = require('../../../server/db/users')
+const requests = require('../../../server/db/requests')
 const env = require('./test-environment')
 
 let testDb = null
@@ -59,13 +60,12 @@ const fakeUserUpdate = {
   first_name: 'Ichabod'
 }
 
-test('addGear function returns an ID of type numbers', done => {
-  gear.addGear(fakeGearItem, testDb)
+test('addGear function returns an ID of type numbers', () => {
+  return gear.addGear(fakeGearItem, testDb)
     .then(ids => {
       const expected = 'number'
       const actual = typeof ids[0]
       expect(actual).toBe(expected)
-      done()
     })
 })
 
@@ -153,5 +153,24 @@ test('getGearByGearIdWithUser function joins the owner and gear', () => {
         expectedJoinKeys.forEach(key => {
           expect(actual.hasOwnProperty(key)).toBeTruthy()
         })
+    })
+})
+
+// REQUEST TESTS
+
+test('insertRequest does it"s job', () => {
+  const fakeRequest =  { 
+    gear_id: '1', 
+    owner_id: '1', 
+    requester_id: '2', 
+    created_at: 12387612, 
+    message: "Hey I like your drill, it's not bad. Can I have?" 
+  }
+
+  return requests.insertRequest(fakeRequest, testDb)
+    .then(ids => {
+      const expected = 'number'
+      const actual = typeof ids[0]
+      expect(actual).toBe(expected)
     })
 })
