@@ -6,3 +6,5 @@ bundle.js
 .env
 bundle.js.map
 yarn-error.log
+.mailercreds.js
+sendgrid.env

@@ -1,9 +1,16 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
+import {sendRequest} from '../actions/mailing'
 
 export const GearRequest = props => {
   return (
-      <p>This is a gear request component</p>
+      <button onClick={() => props.sendRequestForItem(props.id)}>Email Owner</button>
   )
 }
 
-export default GearRequest
+const mapDispatchToProps = dispatch => ({
+  sendRequestForItem: id => {dispatch(sendRequest(id))}
+})
+
+export default connect(null, mapDispatchToProps)(GearRequest)

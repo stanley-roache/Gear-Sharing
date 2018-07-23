@@ -36,6 +36,21 @@ const fakeGearItem = {
   user_id: 1
 }
 
+const expectedJoinKeys = [
+  'id',
+  'first_name',
+  'last_name',
+  'user_name',
+  'email_address',
+  'hash',
+  'status',
+  'trustframework',
+  'name',
+  'description',
+  'photo_url',
+  'user_id',
+]
+
 const fakeGearItemUpdate = {
   name: 'Dyno Drilla'
 }
@@ -80,24 +95,10 @@ test('getGearByGearId function gets a gear by ID', () => {
 })
 
 test('getGearWithUsers function joins the users and gear', () => {
-  const expectedKeys = [
-    'id',
-    'first_name',
-    'last_name',
-    'user_name',
-    'email_address',
-    'hash',
-    'status',
-    'trustframework',
-    'name',
-    'description',
-    'photo_url',
-    'user_id',
-  ]
   gear.getGearWithUsers(testDb)
     .then(actualArr => {
       actualArr.forEach(actual => {
-        expectedKeys.forEach(key => {
+        expectedJoinKeys.forEach(key => {
           expect(actual.hasOwnProperty(key)).toBeTruthy()
         })
       })
@@ -143,5 +144,14 @@ test('userExists function lets you know if a username is taken', () => {
   return users.userExists('Diddly', testDb)
     .then(userExists => {
       expect(userExists).toBeTruthy()
+    })
+})
+
+test('getGearByGearIdWithUser function joins the owner and gear', () => {
+  gear.getGearByGearIdWithUser(1, testDb)
+    .then(actual => {
+        expectedJoinKeys.forEach(key => {
+          expect(actual.hasOwnProperty(key)).toBeTruthy()
+        })
     })
 })

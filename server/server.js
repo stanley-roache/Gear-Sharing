@@ -15,5 +15,6 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use('/api/auth', require('./routes/auth'))
 server.use('/api/user', require('./routes/user'))
 server.use('/api/gear', require('./routes/gear'))
+server.use('/api/mail', require('./routes/mail'))
 
 module.exports = server
