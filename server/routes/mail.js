@@ -4,7 +4,7 @@ const { getSecret, handleError } = require('../auth/token')
 const gearDB = require('../db/gear')
 const userDB = require('../db/users')
 
-const {sendMail} = require('../mail/request')
+const {sendRequest} = require('../mail/sendGrid')
 
 router.use(
     verifyJWT({
@@ -20,7 +20,7 @@ router.post('/request', (req, res) => {
         userDB.getUserById(req.user.user_id)
     ])
     .then(([item, owner, requester]) => {
-        return sendMail(item, owner, request)
+        return sendRequest(item, owner, requester)
     })
     .then(() => {
         res.sendStatus(200)
@@ -32,3 +32,5 @@ router.post('/request', (req, res) => {
         })
     })
 })
+
+module.exports = router

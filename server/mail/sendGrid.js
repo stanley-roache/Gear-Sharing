@@ -1,12 +1,32 @@
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 const sgMail = require('@sendgrid/mail');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: 'hblummont@gmail.com',
-  from: 'toolerino1@gmail.com',
-  subject: 'Testing',
-  text: 'PlEaSe WoRk!',
-  html: '<strong>PlEaSe WoRk!</strong>',
-};
-sgMail.send(msg);
+
+const adminEmail = 'toolerino1@gmail.com'
+const requestSubject = 'new request for gear use'
+
+function sendRequest(item, owner, requester) {
+  const requestBody = `Hey ${owner.user_name}, ${requester.user_name} wants to use your ${item.name}, contact them at ${requester.email_address}`
+  
+  return new Promise((resolve, reject) => {
+    const msg = {
+      to: owner.email_address,
+      from: adminEmail,
+      subject: requestSubject,
+      html: `<strong>${requestBody}</strong>`,
+      generateTextFromHTML: true
+    };
+    sgMail.send(msg, (err, result) => {
+      if (err) reject(err)
+      else resolve(result)
+    });
+  })  
+}
+
+module.exports = {
+  sendRequest
+}
+
+
