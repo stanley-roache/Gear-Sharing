@@ -160,6 +160,10 @@ yarn start
 npm start
 ```
 
+## Setting up sendgrid with api key
+
+FILL THIS IN
+
 
 ## Heroku!!!
 
