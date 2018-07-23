@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Reuben',
           last_name: 'Harcourt',
           user_name: 'Reuban',
-          email_address: 'reuban@imrich.co.usa',
+          email_address: 'rjharcourt@gmail.com',
           profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },

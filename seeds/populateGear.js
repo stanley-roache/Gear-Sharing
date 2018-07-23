@@ -4,7 +4,6 @@ exports.seed = function(knex, Promise) {
   return knex('gear').del()
     .then(function () {
       // Inserts seed entries
-      // Dog Cat Fish Rat Rock
       return knex('gear').insert([
         {
           id: 1,
