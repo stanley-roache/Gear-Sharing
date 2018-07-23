@@ -60,6 +60,7 @@ class Profile extends React.Component {
         <h2>{this.props.user.firstName}</h2>
         <h2>{this.props.user.lastName}</h2>
         <p>{this.props.user.email}</p>
+        <a href="https://www.Vecteezy.com/">Free Vector Art by www.vecteezy.com</a>
         <h2>Trust rating</h2>
         <StarRatingComponent
           name="rate1"
