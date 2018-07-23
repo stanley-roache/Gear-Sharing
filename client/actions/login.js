@@ -48,7 +48,10 @@ export function loginUser(creds) {
         const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
         dispatch(requestUser())
-        dispatch(fetchUser(() => {document.location = '/#/profile'}))
+        dispatch(fetchUser(redirectToProfile))
+      })
+      .catch(err => {
+        dispatch(loginError(err.response.body.message))
       })
   }
 }
@@ -60,10 +63,14 @@ export function fetchUser(callback) {
       .then((res) => {
         const fullUser = res.body
         dispatch(setUser(fullUser))
-        callback()
+        if (callback) callback()
       })
       .catch(err => {
         dispatch(loginError(err.response.body.message))
       })
   }
+}
+
+export function redirectToProfile () {
+  document.location = '/#/profile'
 }

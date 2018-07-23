@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema.createTableIfNotExists('gear', table => {
-      table.increments('id')
+      table.increments('id').primary()
       table.string('status')
       table.string('trustframework')
       table.string('name')
