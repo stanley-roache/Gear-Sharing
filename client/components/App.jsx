@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container has-text-centered">
+        <div className="container">
           <div className="hero is-small is-success">
             <div className="hero-body has-text-centered">
               <Link to='/'><h1 className="title is-1">Home</h1></Link>
