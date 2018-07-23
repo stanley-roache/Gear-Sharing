@@ -1,23 +1,59 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { sendRequest } from '../actions/mailing'
 import { manageRequest } from '../actions/requests'
 
-const fakeMessage =  { gear_id: '3', owner_id: '4', requester_id: '1', created_at: 12387643534, message: "Hey I like your face, it's not bad. Can I have?" }
+class GearRequest extends React.Component {
+  constructor(props) {
+    super(props)
 
-export const GearRequest = props => {
-  return (
-    <div>
-      <button onClick={() => props.sendRequestForItem(props.id)}>Email Owner</button>
-      <button onClick={props.test}>Send it</button>
-    </div>
-  )
+    this.state = {
+      message: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.buildMessage = this.buildMessage.bind(this)
+  }
+
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    const message = this.buildMessage()
+    this.props.dispatch(manageRequest(message))
+    this.props.onFinish()
+  }
+
+  buildMessage() {
+    return {
+      gear_id: this.props.gear_id,
+      owner_id: this.props.owner_id,
+      requester_id: this.props.requester_id,
+      created_at: Math.round(Date.now() / 1000),
+      message: this.state.message
+    }
+  }
+
+
+  render() {
+    return (
+      <form className='new-request-form' onSubmit={this.handleSubmit}>
+        <label>
+          Send a message with your request: 
+          <input onChange={this.handleChange} type="text" value={this.state.message} name='message' />
+        </label>
+        <br />
+        <input type="submit" value='Send Request' />
+        <button onClick={this.props.onFinish}>Cancel</button>
+      </form>
+    )
+  }
 }
 
-const mapDispatchToProps = dispatch => ({
-  sendRequestForItem: id => { dispatch(sendRequest(id)) },
-  test: () => {dispatch(manageRequest(fakeMessage))}
-})
-
-export default connect(null, mapDispatchToProps)(GearRequest)
+export default connect()(GearRequest)
