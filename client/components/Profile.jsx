@@ -75,11 +75,11 @@ class Profile extends React.Component {
 
             <div className='columns is-multiline'>
 
-              <div className='column is-4'>
+              <div className='column is-6'>
                 <img className='tempimgcss' src={this.props.user.profilePic} />
               </div>
 
-              <div className='column is-8'>
+              <div className='column is-6'>
                 <div className='columns is-multiline'>
                   <div className='column is-8'>
                     <h1 className='title is-1'>@{this.props.user.username}</h1>
@@ -92,17 +92,20 @@ class Profile extends React.Component {
 
                   <div className='column is-12'>
                     <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
-                    <p className='is-large'>{this.props.user.email}</p>
-                    <h2>Trust Rating</h2>
-                    <StarRatingComponent
-                      name="rate1"
-                      starCount={5}
-                      value={hoverRating || rating}
-                      onStarClick={this.rate}
-                      onStarHover={this.changeHoverRating}
-                      onStarHoverOut={this.endHover}
-                      starColor={hoverRating ? 'green' : 'yellow'}
-                    />
+                    <p>{this.props.user.email}</p>
+                    <p className='rating'>Trust Rating: </p>
+                      <span className='rating'><StarRatingComponent
+                        name="rate1"
+                        starCount={5}
+                        value={this.hoverRating || this.rating}
+                        onStarClick={this.rate}
+                        onStarHover={this.changeHoverRating}
+                        onStarHoverOut={this.endHover}
+                        starColor='gold'
+                      />
+                    </span>
+                    <br/>
+                    
                     <a className='button edit'>Edit Profile</a>
                 </div>
               </div>
