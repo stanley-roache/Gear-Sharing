@@ -79,10 +79,10 @@ test('updateGear function causes one record to be changed', () => {
 test('getGear function retrieves all gear', () => {
   return gear.getGear(testDb)
     .then(gearArray => {
-      expect(gearArray).toHaveLength(4)
+      expect(gearArray).toHaveLength(12)
     })
     .catch(err => {
-      expect(err).toBeFalsey()
+      expect(err).toBeFalsy()
     })
 })
 
@@ -172,5 +172,38 @@ test('insertRequest does it"s job', () => {
       const expected = 'number'
       const actual = typeof ids[0]
       expect(actual).toBe(expected)
+    })
+})
+
+test('updateRequest', () => {
+  const update = {
+    message: 'new message'
+  }
+  const id = 1
+
+  return requests.updateRequest(id, update, testDb)
+    .then(numUpdates => {
+      expect(numUpdates).toBe(1)
+    })
+})
+
+test('deleteRequest', () => {
+  const id = 1
+
+  return requests.deleteRequest(id, testDb)
+    .then(numDeletes => {
+      expect(numDeletes).toBe(1)
+    })
+})
+
+test.skip('deleteRequest throws error if request with matching id doesnt exist', () => {
+  const id = 1
+
+  return requests.deleteRequest(id, testDb)
+    .then(() => {
+      expect(true).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
     })
 })
