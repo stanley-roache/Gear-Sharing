@@ -20,14 +20,14 @@ export const ItemInGrid = props => {
       </Link>
       <p>{status}</p>
       {props.showToggle && 
-        <a className={`button button-pad has-text-centered ${status == 'Available'
+        <a className={`button button-pad has-text-centered ${status !== 'Available'
           ? 'is-inverted'
           : 'is-dark'}`}
           onClick={() => props.dispatch(setAvailability(id, status != 'Available'))}
         >
-          {status == 'Available'
+          {status !== 'Available'
             ? 'MARK AS AVAILABLE'
-            : 'MARK AS BORROWED'}
+            : 'MARK AS UNAVAILABLE'}
         </a>}
     </div>
   )
