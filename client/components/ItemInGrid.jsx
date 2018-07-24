@@ -16,8 +16,8 @@ export const ItemInGrid = props => {
       </Link> */}
       <Link to={`/item/${id}`}>
         <h4 className='title is-4'>
-          <i className="fas fa-screwdriver"></i>
-          <a className='tool-name'>{name}</a>
+          <i className="fas fa-screwdriver icon-pad"></i>
+          <a>{name}</a>
         </h4>
       </Link>
       <p>{status}</p>

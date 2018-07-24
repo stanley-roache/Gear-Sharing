@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
@@ -143,9 +144,24 @@ class Profile extends React.Component {
                       <div>
                         <div className='column is-12'>
                           <h1 className='title is-1'>Messages</h1>
+                          <div>
                           <ul>
-                            {this.props.user.messages.received.map(message => <li>{message.message}</li>)}
+                            {this.props.user.messages.received.map(message => {
+                              return (
+                                <div className='message'>
+                                  <i className="far fa-envelope icon-pad"></i>
+                                  <span>{message.requester_name} -- {message.created_at}</span>
+                                  <li>{message.message}</li>
+                                  <p>
+                                    <Link to={`/item/${message.gear_id}`}>
+                                      Need to print gear name
+                                    </Link>
+                                  </p>
+                                </div>
+                              )
+                            })}
                           </ul>
+                          </div>
                         </div>
                       </div>
                   }
