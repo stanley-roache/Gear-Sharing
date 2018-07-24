@@ -25,6 +25,9 @@
       "stage-3"
     ]
   },
+  "jest": {
+    "collectCoverage": true
+  },
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {

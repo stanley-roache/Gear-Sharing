@@ -12,13 +12,11 @@ router.use(
 
 router.post('/new', (req, res) => {
     const request = req.body
+    const isSender = (req.user.user_id == req.body.requester_id)
 
-    requestDB.insertRequest(req.body)
-        .then(ids => {
-            res.status(201).send({
-                id: ids[0], 
-                message: 'All is well with the world'
-            })
+    requestDB.insertRequest(req.body, isSender)
+        .then(details => {
+            res.status(201).send(details)
         })
         .catch(err => {
             res.status(500).send({
