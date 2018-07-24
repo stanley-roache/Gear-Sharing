@@ -56,10 +56,31 @@
     padding: 3rem;
 }
 
+.navlink a:link {
+  color: black;
+}
+
+.navLink a:visited {
+  color: black;
+}
+
+.navLink a.active {
+  color: hotpink;
+}
+
+.navSpace {
+  padding-left: 30px;
+}
+
+.tool-name {
+    padding-left: 15px;
+}
+
 .gear-item {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
 
 .icon-pad {
     padding-right: 20px;
@@ -69,3 +90,4 @@
 .message {
     padding: 20px;
 }
+
