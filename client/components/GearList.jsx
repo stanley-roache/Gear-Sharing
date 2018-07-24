@@ -18,11 +18,11 @@ export const GearList = props => (
             </Link>
             <p>{item.status}</p>
             <a className={`button button-pad has-text-centered ${item.status == 'Available' 
-              ? 'is-danger'
-              : 'is-success'}`}>
+              ? 'is-inverted'
+              : 'is-dark'}`}>
                 {item.status == 'Available' 
-                  ? 'MAKE UNAVAILABLE'
-                  : 'MAKE AVAILABLE'}
+                  ? 'MARK AS AVAILABLE'
+                  : 'MARK AS BORROWED'}
             </a>
           </div>
         )
