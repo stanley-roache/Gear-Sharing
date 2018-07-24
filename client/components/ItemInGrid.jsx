@@ -7,16 +7,15 @@ import { setAvailability } from '../actions/gear'
 
 
 export const ItemInGrid = props => {
-  const { name, description, status, id, photo_url } = props.item
+  const { name, status, id } = props.item
 
   return (
-    <div key={id} className='column is-4'>
+    <div key={id} className='column is-4 gear-item'>
       <Link to={`/item/${id}`}>
-        <img src={photo_url} />
-      </Link>
-      <br />
-      <Link to={`/item/${id}`}>
-        <h4 className='title is-4'><a>{name}</a></h4>
+        <h4 className='title is-4'>
+          <i className="fas fa-screwdriver icon-pad"></i>
+          <a>{name}</a>
+        </h4>
       </Link>
       <p>{status}</p>
       {props.showToggle && 

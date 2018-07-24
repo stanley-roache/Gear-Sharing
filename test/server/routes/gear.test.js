@@ -5,18 +5,16 @@ const { createToken } = require('../../../server/auth/token')
 require('dotenv').config()
 
 jest.mock('../../../server/db/gear', () => ({
-  getGearByGearId: (id) => {
-    return (id
-      ? Promise.resolve({ id, name: 'doodad', description: 'cool as' })
-      : Promise.reject('database err')
-    )
-  },
-  getGearWithUsers: null,
+  getGearByGearId: id => id
+    ? Promise.resolve({ id, name: 'doodad', description: 'cool as' })
+    : Promise.reject('database err')
+  ,
   getGear: () => Promise.resolve([1, 2, 3]),
-  getGearByUserId: null,
   addGear: () => Promise.resolve([1]),
   updateGear: (updateInfo, itemID) => Promise.resolve((itemID == 1) ? 1 : 0),
-  removeGearById: id => Promise.resolve((id == 1) ? 1 : 0)
+  removeGearById: id => Promise.resolve((id == 1) ? 1 : 0),
+  getGearByUserId: null,
+  getGearWithUsers: null
 }))
 
 describe('gear route tests', () => {
