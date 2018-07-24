@@ -13,7 +13,7 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className='section'>
+      <div className='section' id='navbar'>
         <div className='columns is-centered has-text-centered'>
           <div className='column is-3'>
             <p><Link to="/toolpool">ALL TOOLS</Link></p>
