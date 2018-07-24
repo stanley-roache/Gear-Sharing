@@ -29,12 +29,8 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
-          <div className="hero is-small is-success">
-            <div className="hero-body has-text-centered">
-              <Link to='/'><h1 className="title is-1">Home</h1></Link>
+
               <Nav />
-            </div>
-          </div>
           {/* <TestModal /> */}
 
           <Route exact path='/toolpool' component={ToolPool}/>
@@ -46,7 +42,7 @@ class App extends React.Component {
       </Router>
     )
   }
-} 
+}
 
 const mapStateToProps = ({ auth }) => {
   return {
