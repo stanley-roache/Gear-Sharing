@@ -26,15 +26,15 @@ class Profile extends React.Component {
   }
 
   endHover() {
-    this.setState({hoverRating: null})
+    this.setState({ hoverRating: null })
   }
 
   changeHoverRating(hoverRating) {
-    this.setState({hoverRating})
+    this.setState({ hoverRating })
   }
 
   rate(rating) {
-    this.setState({rating, hoverRating: null})
+    this.setState({ rating, hoverRating: null })
   }
 
   cancelAdd() {
@@ -72,11 +72,11 @@ class Profile extends React.Component {
 
             <div className='columns is-multiline'>
 
-              <div className='column is-4'>
+              <div className='column is-6'>
                 <img className='tempimgcss' src={this.props.user.profilePic} />
               </div>
 
-              <div className='column is-8'>
+              <div className='column is-6'>
                 <div className='columns is-multiline'>
                   <div className='column is-8'>
                     <h1 className='title is-1'>@{this.props.user.username}</h1>
@@ -89,17 +89,20 @@ class Profile extends React.Component {
 
                   <div className='column is-12'>
                     <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
-                    <p className='is-large'>{this.props.user.email}</p>
-                    <h2>Trust Rating</h2>
-        <StarRatingComponent
-          name="rate1"
-          starCount={5}
-          value={hoverRating || rating}
-          onStarClick={this.rate}
-          onStarHover={this.changeHoverRating}
-          onStarHoverOut={this.endHover}
-          starColor={hoverRating ? 'green' : 'yellow'}
-        />
+                    <p>{this.props.user.email}</p>
+                    <p className='rating'>Trust Rating: </p>
+                      <span className='rating'><StarRatingComponent
+                        name="rate1"
+                        starCount={5}
+                        value={this.hoverRating || this.rating}
+                        onStarClick={this.rate}
+                        onStarHover={this.changeHoverRating}
+                        onStarHoverOut={this.endHover}
+                        starColor='gold'
+                      />
+                    </span>
+                    <br/>
+                    
                     <a className='button edit'>Edit Profile</a>
                   </div>
                 </div>
@@ -110,7 +113,7 @@ class Profile extends React.Component {
           <div className='section'>
             <GearList />
           </div>
-          
+
           <div className='section'>
             {!this.state.addingItem
               && <button onClick={() => this.renderForm()}>Add Gear Item</button>}
