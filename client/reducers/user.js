@@ -42,6 +42,7 @@ export default function user(state = initialState, action) {
         email: action.user.email_address,
         gear: action.user.gear,
         messages: action.user.messages,
+        profilePic: action.user.profile_pic,
         isFetching: false
       }
     case 'REQUEST_GEAR_SAVE':

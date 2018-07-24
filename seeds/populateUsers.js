@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           last_name: 'Adams',
           user_name: 'wayneric',
           email_address: 'adams.b.w@hotmail.com',
-          profile_pic: 'https://i.ebayimg.com/images/g/AmAAAOSwPydZpDlm/s-l300.jpg',
+          profile_pic: '/images/profiles/4.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
           last_name: 'Blumont',
           user_name: 'haydiggidydoc',
           email_address: 'hblummont@gmail.com',
-          profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
+          profile_pic: '/images/profiles/3.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
           last_name: 'Harcourt',
           user_name: 'Reuban',
           email_address: 'rjharcourt@gmail.com',
-          profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
+          profile_pic: '/images/profiles/2.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         },
         {
@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
           last_name: 'Dan',
           user_name: 'Diddly',
           email_address: 'stan.roache@gmail.com',
-          profile_pic: 'http://getdrawings.com/img/person-silhouette-standing-4.jpg',
+          profile_pic: '/images/profiles/1.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
         }
       ]);

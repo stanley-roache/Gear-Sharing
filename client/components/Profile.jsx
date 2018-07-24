@@ -57,40 +57,80 @@ class Profile extends React.Component {
 
   render() {
     const { hoverRating, rating } = this.state
-    return (
-      <div className='profile-display'>
+    // to wait on gear array & user info load:
+    if (this.props.user.isFetching) {
+      return (
+        <p>Fetching!!!!!!!!!!!</p>
+      )
+    }
 
-        {!this.props.auth.isAuthenticated && <Redirect to='/login' />}
+    // once loaded:
+    else {
+      return (
+        <div className='section'>
+          {/* {!this.props.auth.isAuthenticated && <Redirect to='/login'/>} */}
+          {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
 
-        {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
-        <img className='tempimgcss' src='http://getdrawings.com/img/person-silhouette-standing-4.jpg' />
+          <div className='section'>
 
-        <h2>Trust Rating</h2>
-        <StarRatingComponent
-          name="rate1"
-          starCount={5}
-          value={hoverRating || rating}
-          onStarClick={this.rate}
-          onStarHover={this.changeHoverRating}
-          onStarHoverOut={this.endHover}
-          starColor={hoverRating ? 'green' : 'yellow'}
-        />
+            <div className='columns is-multiline'>
 
-        <GearList />
-        {!this.state.addingItem && !this.state.editingProfile
-          && <button onClick={() => this.renderForm('addingItem')}>Add Gear Item</button>}
-        <div ref='addingItem'>
-          {this.state.addingItem
-            && <NewGearForm finish={() => this.setFalse('addingItem')} />}
+              <div className='column is-4'>
+                <img className='tempimgcss' src={this.props.user.profilePic} />
+              </div>
+
+              <div className='column is-8'>
+                <div className='columns is-multiline'>
+                  <div className='column is-8'>
+                    <h1 className='title is-1'>@{this.props.user.username}</h1>
+                  </div>
+
+                  <div className='column is-4 tab'>
+                    <p className='is-small is-pulled-right tab'>Profile</p>
+                    <p className='is-small is-pulled-right tab'>My Messages</p>
+                  </div>
+
+                  <div className='column is-12'>
+                    <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
+                    <p className='is-large'>{this.props.user.email}</p>
+                    <h2>Trust Rating</h2>
+                    <StarRatingComponent
+                      name="rate1"
+                      starCount={5}
+                      value={hoverRating || rating}
+                      onStarClick={this.rate}
+                      onStarHover={this.changeHoverRating}
+                      onStarHoverOut={this.endHover}
+                      starColor={hoverRating ? 'green' : 'yellow'}
+                    />
+                    <a className='button edit'>Edit Profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        {!this.state.editingProfile && !this.state.addingItem
-          && <button onClick={() => this.renderForm('editingProfile')}>Edit Profile</button>}
-        <div ref='editingProfile'>
-          {this.state.editingProfile
-            && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
+
+        <div className='section'>
+          <GearList />
         </div>
-      </div>
-    )
+
+        <div className='section'>
+          {!this.state.addingItem && !this.state.editingProfile
+            && <button onClick={() => this.renderForm('addingItem')}>Add Gear Item</button>}
+          <div ref='addingItem'>
+            {this.state.addingItem
+              && <NewGearForm finish={() => this.setFalse('addingItem')} />}
+          </div>
+          {!this.state.editingProfile && !this.state.addingItem
+            && <button onClick={() => this.renderForm('editingProfile')}>Edit Profile</button>}
+          <div ref='editingProfile'>
+            {this.state.editingProfile
+              && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
+          </div>
+        </div>
+        </div >
+      )
+    }
   }
 }
 
