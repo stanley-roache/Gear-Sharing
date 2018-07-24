@@ -7,13 +7,11 @@ export class EditProfileForm extends React.Component {
   constructor(props) {
     super(props)
 
-    const {first_name, last_name, email_address, profile_pic} = props.user
-
     this.state = {
-        first_name,
-        last_name,
-        email_address,
-        profile_pic 
+        first_name: props.user.firstName,
+        last_name: props.user.lastName,
+        email_address: props.user.email,
+        profile_pic: '' 
     }
 
     this.handleChange = this.handleChange.bind(this)
