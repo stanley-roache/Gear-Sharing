@@ -10,12 +10,18 @@ const requestSubject = 'new request for gear use'
 function sendRequest(details) {
   const {item, requester, messageBody} = details
   const requestBodyHTML = `
-  Hey ${item.user_name}, ${requester.user_name} wants to use your ${item.name},
+  Hey ${item.user_name},
   <br><br>
-  User message: ${messageBody}
+  ${requester.user_name} wants to use your ${item.name}.
   <br><br>
-  contact them at ${requester.email_address}`
-  
+  Their message: ${messageBody}
+  <br><br>
+  It'd be awesome if you could touch base with them at ${requester.email_address} ASAP.
+  <br><br>
+  Thanks for getting involved!
+  <br><br>
+  Have an awesome day!`
+
   return new Promise((resolve, reject) => {
     const msg = {
       to: item.email_address,
@@ -28,11 +34,9 @@ function sendRequest(details) {
       if (err) reject(err)
       else resolve(result)
     });
-  })  
+  })
 }
 
 module.exports = {
   sendRequest
 }
-
-
