@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ItemInGrid from './ItemInGrid'
 
-import {nameSort} from '../utils/sorting'
+import { nameSort } from '../utils/sorting'
 
 export class ToolPool extends React.Component {
   constructor(props) {
@@ -12,7 +12,9 @@ export class ToolPool extends React.Component {
     this.state = {
       term: '',
       results: props.gear,
-      filter: 'AVAILABLE'
+      filter: 'AVAILABLE',
+      viewingFilter: false,
+      viewingSearch: true
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -20,6 +22,8 @@ export class ToolPool extends React.Component {
     this.resetSearch = this.resetSearch.bind(this)
     this.runSearch = this.runSearch.bind(this)
     this.cancelSearch = this.cancelSearch.bind(this)
+    this.selectSearch = this.selectSearch.bind(this)
+    this.selectFilter = this.selectFilter.bind(this)
   }
 
   handleChange(e) {
@@ -27,7 +31,7 @@ export class ToolPool extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   handleSubmit() {
     (this.state.term === '')
       ? this.resetSearch()
@@ -57,28 +61,86 @@ export class ToolPool extends React.Component {
     this.resetSearch()
   }
 
+  selectSearch() {
+    this.setState({
+      viewingSearch: true,
+      viewingFilter: false
+    })
+  }
+
+  selectFilter() {
+    this.setState({
+      viewingSearch: false,
+      viewingFilter: true
+    })
+  }
+
   render() {
-    let display = (this.state.filter === 'AVAILABLE') 
+    let display = (this.state.filter === 'AVAILABLE')
       ? this.state.results.filter(e => e.status === 'Available')
       : this.state.results
 
     return (
-      <div className='toolpool-wrapper'>
-          <input onChange={this.handleChange} type="text" value={this.state.term} name='term'/>
-          <button onClick={this.handleSubmit}>Search</button>
-          <button onClick={this.cancelSearch}>Cancel</button>
-          <select onChange={this.handleChange} name="filter">
-            <option value='AVAILABLE'>Available Now</option>
-            <option value='ALL'>All</option>
-          </select>
-        <h1 className='title is-2'>TOOL POOL</h1>
+      <div className='container'>
+        <div className='columns is-multiline'>
+          <div className='column is-4 is-offset-4 has-text-centered'>
+            <h1 className='title is-1'>ALL TOOLS</h1>
+          </div>
+
+          <div className='column is-4'>
+
+            <div className="tabs is-boxed is-right profile-tab">
+              <ul>
+                <li className={`${this.state.viewingFilter && 'is-active'}`}
+                  onClick={() => this.selectFilter()}>
+                  <a>Filter</a>
+                </li>
+                <li className={`${this.state.viewingSearch && 'is-active'}`}
+                  onClick={() => this.selectSearch()}>
+                  <a>Search</a>
+                </li>
+              </ul>
+            </div>
+
+            {
+              this.state.viewingSearch
+
+                ?
+
+                <div>
+                  <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
+                  <button className='button is-centered' onClick={this.handleSubmit}>Search</button>
+                  <button className='button is-centered' onClick={this.cancelSearch}>Cancel</button>
+                </div>
+
+                :
+                <div className='columns'>
+                  <div className='column is-4'>
+                    <span>Filter by: </span>
+                  </div>
+                  <div className='column is-8'>
+                    <div className='select is-fullwidth'>
+                      <select onChange={this.handleChange} name="filter">
+                        <option className='option' value='AVAILABLE'>Available Now</option>
+                        <option className='option' value='ALL'>All Tools</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+            }
+
+          </div>
+
+
+        </div>
+
         {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
         <ul>
           {display
             .sort(nameSort)
             .map(item => {
-            return <ItemInGrid item={item} key={item.id} showToggle={false}/>
-          })}
+              return <ItemInGrid item={item} key={item.id} showToggle={false} />
+            })}
         </ul>
       </div>
     )
