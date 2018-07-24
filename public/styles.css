@@ -55,3 +55,12 @@
 .edit-profile {
     padding: 3rem;
 }
+
+.tool-name {
+    padding-left: 15px;
+}
+
+.gear-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
