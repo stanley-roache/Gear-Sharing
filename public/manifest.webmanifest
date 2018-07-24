@@ -4,12 +4,12 @@
     "display": "fullscreen",
     "icons": [
         {
-            "src": "icon/sample_icon.jpg",
+            "src": "icon/sample_icon.png",
             "sizes": "192x192",
-            "type": "image/jpg"
+            "type": "image/png"
         }
     ],
-    "name": "ToolPool",
+    "name": "Tool Pool",
     "short_name": "ToolPool",
     "start_url": "/index.html"
 }
