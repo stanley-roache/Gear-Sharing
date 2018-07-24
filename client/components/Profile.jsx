@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
-import scrollToComponent from 'react-scroll-to-component'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
@@ -16,28 +15,12 @@ class Profile extends React.Component {
       addingItem: false,
       editingProfile: false,
       rating: 4,
-      hovering: false,
-      hoverRating: null
     }
 
     this.setFalse = this.setFalse.bind(this)
     this.renderForm = this.renderForm.bind(this)
-    this.rate = this.rate.bind(this)
-    this.endHover = this.endHover.bind(this)
-    this.changeHoverRating = this.changeHoverRating.bind(this)
   }
 
-  endHover() {
-    this.setState({ hoverRating: null })
-  }
-
-  changeHoverRating(hoverRating) {
-    this.setState({ hoverRating })
-  }
-
-  rate(rating) {
-    this.setState({ rating, hoverRating: null })
-  }
 
   setFalse(val) {
     this.setState({
@@ -49,14 +32,9 @@ class Profile extends React.Component {
     this.setState({
       [ref]: true
     })
-    scrollToComponent(this.refs[ref], {
-      align: 'top',
-      duration: 1000
-    })
   }
 
   render() {
-    const { hoverRating, rating } = this.state
     // to wait on gear array & user info load:
     if (this.props.user.isFetching) {
       return (
@@ -82,11 +60,11 @@ class Profile extends React.Component {
 
             <div className='columns is-multiline'>
 
-              <div className='column is-6'>
+              <div className='column is-5'>
                 <img className='tempimgcss' src={this.props.user.profilePic} />
               </div>
 
-              <div className='column is-6'>
+              <div className='column is-7'>
                 <div className='columns is-multiline'>
                   <div className='column is-12'>
                     <h1 className='title is-1'>@{this.props.user.username}</h1>
@@ -135,16 +113,24 @@ class Profile extends React.Component {
             </div>
 
             <div ref='addingItem'>
-              {this.state.addingItem
-                && <NewGearForm finish={() => this.setFalse('addingItem')} />}
+              <div className={`modal ${this.state.addingItem && 'is-active'}`}>
+                <div className="modal-background"></div>
+                <div className="modal-content">
+                  <NewGearForm onFinish={() => this.setFalse('addingItem')}/>}
+                </div>
+                <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.setFalse('addingItem')}></a>
+              </div>
             </div>
-
 
             <div ref='editingProfile'>
-              {this.state.editingProfile
-                && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
+              <div className={`modal ${this.state.editingProfile && 'is-active'}`}>
+                <div className="modal-background"></div>
+                <div className="modal-content">
+                  <EditProfileForm onFinish={() => this.setFalse('editingProfile')}/>
+                </div>
+                <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.setFalse('editingProfile')}></a>
+              </div>
             </div>
-
           </div>
         </div >
       )
