@@ -6,7 +6,7 @@ function postRequest(message, didSucceed) {
         dispatch(requestMessageSave())
         return request('post', 'request/new', message)
             .then((res) => {
-                didSucceed(res.body.id)
+                didSucceed(res.body)
             })
             .catch(err => {
                 dispatch(requestError(err.message))
@@ -50,13 +50,13 @@ export function manageRequest(message) {
         })
         .then(() => {
             return new Promise((resolve, reject) => {
-                dispatch(postRequest(message, id => {
-                    id ? resolve(id) : reject()
+                dispatch(postRequest(message, details => {
+                    details ? resolve(details) : reject()
                 }))
             })
         })
-        .then(id => {
-            message.id = id
+        .then(details => {
+            Object.assign(message, details)
             dispatch(setRequest(message))
         })
     }
