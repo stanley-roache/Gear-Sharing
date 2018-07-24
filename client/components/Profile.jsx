@@ -5,17 +5,36 @@ import scrollToComponent from 'react-scroll-to-component'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
+import StarRatingComponent from 'react-star-rating-component';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      addingItem: false
+      addingItem: false,
+      rating: 4,
+      hovering: false,
+      hoverRating: null
     }
 
     this.cancelAdd = this.cancelAdd.bind(this)
     this.renderForm = this.renderForm.bind(this)
+    this.rate = this.rate.bind(this)
+    this.endHover = this.endHover.bind(this)
+    this.changeHoverRating = this.changeHoverRating.bind(this)
+  }
+
+  endHover() {
+    this.setState({hoverRating: null})
+  }
+
+  changeHoverRating(hoverRating) {
+    this.setState({hoverRating})
+  }
+
+  rate(rating) {
+    this.setState({rating, hoverRating: null})
   }
 
   cancelAdd() {
@@ -71,6 +90,16 @@ class Profile extends React.Component {
                   <div className='column is-12'>
                     <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
                     <p className='is-large'>{this.props.user.email}</p>
+                    <h2>Trust Rating</h2>
+        <StarRatingComponent
+          name="rate1"
+          starCount={5}
+          value={hoverRating || rating}
+          onStarClick={this.rate}
+          onStarHover={this.changeHoverRating}
+          onStarHoverOut={this.endHover}
+          starColor={hoverRating ? 'green' : 'yellow'}
+        />
                     <a className='button edit'>Edit Profile</a>
                   </div>
                 </div>

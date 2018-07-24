@@ -13,25 +13,19 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
-        <div className="container">
-          <div id="navbarMenuHeroA" className='navbar-menu'>
-            <div className="navbar-end">
-              {this.props.auth.isAuthenticated
-                ? [
-                  <Link key='logout-nav' to="/" onClick={this.props.logout} className="navbar-item is-large">Logout</Link>,
-                  <Link key='profile-nav' to="/profile" className="navbar-item is-large">Profile</Link>
-                ]
-                : [
-                  <Link key='login-nav' className="navbar-item is-large" to='/login'>Login</Link>,
-                  <Link key='register-nav' className="navbar-item" to='/register'>Register</Link>,
-                ]
-              }
-              <Link className="navbar-item" to='/toolpool'>ToolPool</Link>
-            </div>
+      <div className='section'>
+        <div className='columns is-centered has-text-centered'>
+          <div className='column is-3'>
+            <p>ALL TOOLS</p>
+          </div>
+          <div className='column is-6'>
+            <h1 className='title is-3'>ToolPool</h1>
+          </div>
+          <div className='column is-3'>
+            <p>LOGIN/REGISTER</p>
           </div>
         </div>
-      </nav>
+      </div>
     )
   }
 }
