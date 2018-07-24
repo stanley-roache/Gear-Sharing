@@ -30,9 +30,8 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
-
-          <Nav />
           {/* <TestModal /> */}
+          <Route path='/' component={Nav} />
           <Route exact path='/' component={Home} />
           <Route exact path='/toolpool' component={ToolPool} />
           <Route exact path="/login" component={Login} />
