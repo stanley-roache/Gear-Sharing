@@ -61,7 +61,7 @@ export class NewGearForm extends React.Component {
         </label>
         <br />
         <input type="submit" value='add Gear' />
-        <button onClick={this.props.handleSubmit}>Cancel</button>
+        <button onClick={this.props.finish}>Cancel</button>
       </form>
     )
   }

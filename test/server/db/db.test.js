@@ -1,5 +1,6 @@
 const gear = require('../../../server/db/gear')
 const users = require('../../../server/db/users')
+const requests = require('../../../server/db/requests')
 const env = require('./test-environment')
 
 let testDb = null
@@ -36,6 +37,21 @@ const fakeGearItem = {
   user_id: 1
 }
 
+const expectedJoinKeys = [
+  'id',
+  'first_name',
+  'last_name',
+  'user_name',
+  'email_address',
+  'hash',
+  'status',
+  'trustframework',
+  'name',
+  'description',
+  'photo_url',
+  'user_id',
+]
+
 const fakeGearItemUpdate = {
   name: 'Dyno Drilla'
 }
@@ -44,13 +60,12 @@ const fakeUserUpdate = {
   first_name: 'Ichabod'
 }
 
-test('addGear function returns an ID of type numbers', done => {
-  gear.addGear(fakeGearItem, testDb)
+test('addGear function returns an ID of type numbers', () => {
+  return gear.addGear(fakeGearItem, testDb)
     .then(ids => {
       const expected = 'number'
       const actual = typeof ids[0]
       expect(actual).toBe(expected)
-      done()
     })
 })
 
@@ -80,24 +95,10 @@ test('getGearByGearId function gets a gear by ID', () => {
 })
 
 test('getGearWithUsers function joins the users and gear', () => {
-  const expectedKeys = [
-    'id',
-    'first_name',
-    'last_name',
-    'user_name',
-    'email_address',
-    'hash',
-    'status',
-    'trustframework',
-    'name',
-    'description',
-    'photo_url',
-    'user_id',
-  ]
   gear.getGearWithUsers(testDb)
     .then(actualArr => {
       actualArr.forEach(actual => {
-        expectedKeys.forEach(key => {
+        expectedJoinKeys.forEach(key => {
           expect(actual.hasOwnProperty(key)).toBeTruthy()
         })
       })
@@ -143,5 +144,33 @@ test('userExists function lets you know if a username is taken', () => {
   return users.userExists('Diddly', testDb)
     .then(userExists => {
       expect(userExists).toBeTruthy()
+    })
+})
+
+test('getGearByGearIdWithUser function joins the owner and gear', () => {
+  gear.getGearByGearIdWithUser(1, testDb)
+    .then(actual => {
+        expectedJoinKeys.forEach(key => {
+          expect(actual.hasOwnProperty(key)).toBeTruthy()
+        })
+    })
+})
+
+// REQUEST TESTS
+
+test('insertRequest does it"s job', () => {
+  const fakeRequest =  { 
+    gear_id: '1', 
+    owner_id: '1', 
+    requester_id: '2', 
+    created_at: 12387612, 
+    message: "Hey I like your drill, it's not bad. Can I have?" 
+  }
+
+  return requests.insertRequest(fakeRequest, testDb)
+    .then(ids => {
+      const expected = 'number'
+      const actual = typeof ids[0]
+      expect(actual).toBe(expected)
     })
 })

@@ -4,7 +4,6 @@ exports.seed = function(knex, Promise) {
   return knex('gear').del()
     .then(function () {
       // Inserts seed entries
-      // Dog Cat Fish Rat Rock
       return knex('gear').insert([
         {
           id: 1,
@@ -26,7 +25,7 @@ exports.seed = function(knex, Promise) {
         },
         {
           id: 3,
-          status: "Available",
+          status: "Not Available",
           trustframework: "Three",
           name: 'Chainsaw',
           description: 'Cut your trees down',

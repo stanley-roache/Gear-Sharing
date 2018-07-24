@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const verifyJWT = require('express-jwt')
 const { getSecret, handleError } = require('../auth/token')
-const { getUserByName } = require('../db/users')
+const { getUserByName, updateUser } = require('../db/users')
 const { getGearByUserId } = require('../db/gear')
+const { getRequests } = require('../db/requests')
 
 router.use(
   verifyJWT({
@@ -18,21 +19,38 @@ router.get('/fullProfile', (req, res) => {
 
   Promise.all([
     getUserByName(req.user.user_name),
-    getGearByUserId(req.user.user_id)
+    getGearByUserId(req.user.user_id),
+    getRequests(req.user.user_id)
   ])
-  .then(([info, gear]) => {
-    user = info
-    user.gear = gear
-    res.json(user)
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500)
-    .send({ 
-      message: 'error getting user info',
-      err 
+    .then(([info, gear, messages]) => {
+      user = info
+      user.gear = gear
+      user.messages = messages
+      res.json(user)
     })
-  })
+    .catch(err => {
+      res.status(500)
+        .send({
+          message: 'error getting user info',
+          err
+        })
+    })
+})
+
+router.post('/update', (req, res) => {
+  const userUpdate = req.body
+  const userId = req.user.user_id
+
+  updateUser(userId, userUpdate)
+    .then(ids => {
+      res.sendStatus(200)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: `error updating user: ${userId}`,
+        err
+      })
+    })
 })
 
 

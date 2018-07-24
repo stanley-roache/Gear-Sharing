@@ -8,6 +8,7 @@ import Nav from './Nav'
 import Profile from './Profile'
 import ToolPool from './ToolPool'
 import GearItem from './GearItem'
+// import TestModal from './TestModal'
 
 import { getGear } from "../actions/gear";
 import {fetchUser} from '../actions/login'
@@ -27,13 +28,10 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container has-text-centered">
-          <div className="hero is-small is-success">
-            <div className="hero-body has-text-centered">
-              <Link to='/'><h1 className="title is-1">Home</h1></Link>
+        <div className="container">
+
               <Nav />
-            </div>
-          </div>
+          {/* <TestModal /> */}
 
           <Route exact path='/toolpool' component={ToolPool}/>
           <Route exact path="/login" component={Login} />
@@ -44,7 +42,7 @@ class App extends React.Component {
       </Router>
     )
   }
-} 
+}
 
 const mapStateToProps = ({ auth }) => {
   return {

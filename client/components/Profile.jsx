@@ -1,6 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
+import scrollToComponent from 'react-scroll-to-component'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
@@ -45,6 +46,10 @@ class Profile extends React.Component {
   renderForm() {
     this.setState({
       addingItem: true
+    })
+    scrollToComponent(this.refs.form,{
+      align: 'top',
+      duration: 1000
     })
   }
 
