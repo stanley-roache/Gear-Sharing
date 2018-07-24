@@ -47,11 +47,14 @@ export default function gear(state = initialState, action) {
                 isSaving: action.isSaving
             }
         case 'EDIT_GEAR':
-            let editedGearArr = state.gear.filter(item => item.id != action.item.id)
-            editedGearArr.push(action.item)
+            const newItem = Object.assign(
+                {}, 
+                state.gear.find(item => item.id == action.item.id), 
+                action.item
+            ) 
             return {
                 ...state,
-                gear: editedGearArr,
+                gear: [...state.gear.filter(item => item.id != action.item.id), newItem],
                 isFetching: false,
                 isSaving: false
             }
