@@ -128,11 +128,12 @@ class Profile extends React.Component {
                               return (
                                 <div className='message'>
                                   <i className="far fa-envelope icon-pad"></i>
-                                  <span>{message.requester_name} -- {message.created_at}</span>
+                                  <span>{message.requester_user_name}</span>
+                                  <span className='is-right'>{message.created_at}</span>
                                   <li>{message.message}</li>
                                   <p>
                                     <Link to={`/item/${message.gear_id}`}>
-                                      Need to print gear name
+                                      {message.gear_name}
                                     </Link>
                                   </p>
                                 </div>
