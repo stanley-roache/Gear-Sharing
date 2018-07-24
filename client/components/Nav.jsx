@@ -25,6 +25,7 @@ class Nav extends React.Component {
             <p><a href="#/login">LOGIN/REGISTER</a></p>
           </div>
         </div>
+        <hr/>
       </div>
     )
   }
