@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -63,30 +62,9 @@ class Profile extends React.Component {
     else {
       return (
         <div className='container'>
-          {/* {!this.props.auth.isAuthenticated && <Redirect to='/login'/>} */}
           {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
 
           <div className='section profile'>
-
-            {/* <div className='columns'>
-              <div className='column is-6 is-offset-6'>
-                <div className="tabs is-boxed is-right">
-                  <ul>
-                    <li className={`${this.state.viewingMessages && 'is-active'}`} 
-                      onClick={() => this.selectMessages()}>
-                        <a>My Messages</a>
-                    </li>
-                    <li className={`${this.state.viewingProfile && 'is-active'}`} 
-                      onClick={() => this.selectProfile()}>
-                        <a>Profile</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>  */}
-
-
-
 
             <div className='columns is-multiline'>
               <div className='column is-5'>
