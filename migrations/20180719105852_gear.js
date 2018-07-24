@@ -5,8 +5,8 @@ exports.up = function(knex, Promise) {
       table.string('status')
       table.string('trustframework')
       table.string('name')
-      table.string('description')
-      table.string('photo_url')
+      table.string('description', 1000)
+      table.string('photo_url', 1000)
       table.integer('user_id')
     })
   };
