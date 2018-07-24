@@ -9,14 +9,15 @@ export class ToolPool extends React.Component {
 
     this.state = {
       term: '',
-      results: props.gear
+      results: props.gear,
+      filter: 'AVAILABLE'
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.resetSearch = this.resetSearch.bind(this)
     this.runSearch = this.runSearch.bind(this)
-    this.cancel = this.cancel.bind(this)
+    this.cancelSearch = this.cancelSearch.bind(this)
   }
 
   handleChange(e) {
@@ -47,7 +48,7 @@ export class ToolPool extends React.Component {
     })
   }
 
-  cancel() {
+  cancelSearch() {
     this.setState({
       term: ''
     })
@@ -55,15 +56,23 @@ export class ToolPool extends React.Component {
   }
 
   render() {
+    let display = (this.state.filter === 'AVAILABLE') 
+      ? this.state.results.filter(e => e.status === 'Available')
+      : this.state.results
+
     return (
       <div className='toolpool-wrapper'>
           <input onChange={this.handleChange} type="text" value={this.state.term} name='term'/>
           <button onClick={this.handleSubmit}>Search</button>
-          <button onClick={this.cancel}>Cancel</button>
+          <button onClick={this.cancelSearch}>Cancel</button>
+          <select onChange={this.handleChange} name="filter">
+            <option value='AVAILABLE'>Available Now</option>
+            <option value='ALL'>All</option>
+          </select>
         <h1 className='title is-2'>TOOL POOL</h1>
         {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
         <ul>
-          {this.state.results.map(item => {
+          {display.map(item => {
             return <ItemInline item={item} key={item.id} />
           })}
         </ul>
