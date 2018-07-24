@@ -16,31 +16,41 @@ class Nav extends React.Component {
       <div className='section'>
         <div className='columns is-centered has-text-centered'>
           <div className='column is-3'>
-            <p>ALL TOOLS</p>
+            <p><Link to="/toolpool">ALL TOOLS</Link></p>
           </div>
           <div className='column is-6'>
-            <h1 className='title is-3'>ToolPool</h1>
+            <h1 className='title is-3'><Link to="/">TOOLPOOL</Link></h1>
           </div>
           <div className='column is-3'>
-            <p>LOGIN/REGISTER</p>
+            {this.props.auth.isAuthenticated
+              ? [
+                <div>
+                <Link to="/profile">PROFILE</Link>
+                <Link className="navBarItem" to="/" onClick={this.props.logout}>LOGOUT</Link>
+                </div>
+                ]
+                : [
+                  <Link to='/login'>LOGIN</Link>
+                ]
+              }
           </div>
+          </div>
+          <hr/>
         </div>
-        <hr/>
-      </div>
-    )
+      )
+    }
   }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logoutUser())
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      logout: () => dispatch(logoutUser())
+    }
   }
-}
 
-const mapStateToProps = ({ auth }) => {
-  return {
-    auth
+  const mapStateToProps = ({ auth }) => {
+    return {
+      auth
+    }
   }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+  export default connect(mapStateToProps, mapDispatchToProps)(Nav)
