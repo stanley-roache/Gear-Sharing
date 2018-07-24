@@ -73,7 +73,7 @@ export class ToolPool extends React.Component {
         {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
         <ul>
           {display.map(item => {
-            return <ItemInGrid item={item} key={item.id} />
+            return <ItemInGrid item={item} key={item.id} showToggle={false}/>
           })}
         </ul>
       </div>
