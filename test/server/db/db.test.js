@@ -224,7 +224,7 @@ describe('request joined queiries', () => {
   test('getReceivedRequestsWithUsername has expected length', () => {
     return requests.getReceivedRequestsWithUsername(user_id, testDb)
       .then(requests => {
-        expect(requests).toHaveLength(1)
+        expect(requests).toHaveLength(2)
       })
   })
 
