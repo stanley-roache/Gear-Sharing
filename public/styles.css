@@ -1,5 +1,5 @@
 .tempimgcss {
-    width: 400px;
+    width: 500px;
 }
 
 /* custom bulma overrides */
@@ -8,4 +8,17 @@
     width: 60%;
     margin: auto;
     display: block
+}
+
+.edit {
+    margin-top: 15px;
+}
+
+.tab {
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+#name {
+    margin-bottom: 10px;
 }
