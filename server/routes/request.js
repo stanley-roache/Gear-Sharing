@@ -14,8 +14,9 @@ router.post('/new', (req, res) => {
     const request = req.body
 
     requestDB.insertRequest(req.body)
-        .then(() => {
+        .then(ids => {
             res.status(201).send({
+                id: ids[0], 
                 message: 'All is well with the world'
             })
         })
