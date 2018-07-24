@@ -79,7 +79,7 @@ test('updateGear function causes one record to be changed', () => {
 test('getGear function retrieves all gear', () => {
   return gear.getGear(testDb)
     .then(gearArray => {
-      expect(gearArray).toHaveLength(12)
+      expect(gearArray).toHaveLength(24)
     })
     .catch(err => {
       expect(err).toBeFalsy()
@@ -163,7 +163,6 @@ test('insertRequest does it"s job', () => {
     gear_id: '1', 
     owner_id: '1', 
     requester_id: '2', 
-    created_at: 12387612, 
     message: "Hey I like your drill, it's not bad. Can I have?" 
   }
 
