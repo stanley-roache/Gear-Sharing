@@ -20,7 +20,7 @@ function mailingError(message) {
     }
 }
 
-export function sendRequest(message, didSucceed) {
+export function mailRequest(message, didSucceed) {
     const gearId = message.gear_id
     const messageBody = message.message
     return dispatch => {
