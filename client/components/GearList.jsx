@@ -19,7 +19,7 @@ export const GearList = props => (
             <p>{item.status}</p>
             <a className={`button button-pad has-text-centered ${item.status == 'Available' 
               ? 'is-danger'
-              : 'is-info'}`}>
+              : 'is-success'}`}>
                 {item.status == 'Available' 
                   ? 'MAKE UNAVAILABLE'
                   : 'MAKE AVAILABLE'}

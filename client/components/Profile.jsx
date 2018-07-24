@@ -125,25 +125,26 @@ class Profile extends React.Component {
                 <div className='level-right'>
                   <div className='level-item'>
                     {!this.state.addingItem && !this.state.editingProfile
-                      && <button className='button is-black is-medium button-pad' onClick={() => this.renderForm('addingItem')}>Add Tool</button>}
+                      && <button className='button is-black is-large button-pad' onClick={() => this.renderForm('addingItem')}>Add Tool</button>}
                   </div>
                 </div>
               </div>
               <hr />
 
               <GearList />
-
-              <div ref='addingItem'>
-                {this.state.addingItem
-                  && <NewGearForm finish={() => this.setFalse('addingItem')} />}
-              </div>
-
-
-              <div ref='editingProfile'>
-                {this.state.editingProfile
-                  && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
-              </div>
             </div>
+
+            <div ref='addingItem'>
+              {this.state.addingItem
+                && <NewGearForm finish={() => this.setFalse('addingItem')} />}
+            </div>
+
+
+            <div ref='editingProfile'>
+              {this.state.editingProfile
+                && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
+            </div>
+
           </div>
         </div >
       )
