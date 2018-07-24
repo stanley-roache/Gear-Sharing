@@ -1,0 +1,15 @@
+{
+    "background_color": "white",
+    "description": "Share your Gear",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "icon/sample_icon.jpg",
+            "sizes": "192x192",
+            "type": "image/jpg"
+        }
+    ],
+    "name": "ToolPool",
+    "short_name": "ToolPool",
+    "start_url": "/index.html"
+}
