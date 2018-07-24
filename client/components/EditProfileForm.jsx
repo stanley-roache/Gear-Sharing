@@ -1,5 +1,5 @@
 import React from 'react'
-// import {} from '../actions/gear'
+import {editProfileAction} from '../actions/profile'
 import {connect} from 'react-redux'
 
 
@@ -27,7 +27,7 @@ export class EditProfileForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    // this.props.dispatch(addGearItem(this.state))
+    this.props.dispatch(editProfileAction(this.state))
     this.props.onFinish()
   }
 
