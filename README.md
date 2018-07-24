@@ -52,14 +52,18 @@ A platform to share expensive equipment within trusted groups
 ## Views (Client Side)
   | name | purpose |
   | --- | --- |
+  | Nav | navigation bar |
+  | EditProfileForm | - |
+  | NewGearForm | Form fpr user to add new item of gear |
+  | GearEdit | Form/Modal for editing single item |
+  | GearItem | Full page view of single item |
+  | GearRequest | component for requesting use of too, within GearItem |
+  | ItemInGrid | single item display within GearList or ToolPool |
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
   | Profile | View a logged in user's profile |
   | GearList | User's view of their own gear |
-  | ItemInline | single item display in GearList |
-  | NewGearForm | Form fpr user to add new item of gear |
   | ToolPool | View all gear in the loaning group |
-  | Nav | Navigation Bar |
 
 ## Reducers (Client Side)
 
@@ -78,9 +82,18 @@ Each of these actions calls on several synchrous actions on sending and receivin
   | --- | --- | --- |
   | getGear | all gear | fetches all gear into client |
   | addGearItem | single item | saves new item to redux state and posts to server for DB saving |
+  | editGearItem | update object | updates item in db and redux state |
+  | setAvailability | id, boolean | sets availability of item in db and state |
+  | loginUser | creds | manages login request |
+  | fetchUser | callback | fetches full user profile from db for state |
+  | logoutUser | - | destroys token client-side to log out |
   | registerUserRequest | new user form data | creates new user in the server and logs them in in state |
-  | loginUser | login credentials | authenticates user and saves full info to state |
-  | fetchUser | - | fetches full user data of logged in user |
+  | editProfileAction | update object | udpates user profile in db and state |
+  | manageRequest | request object | manages saving emailing new request, saving to db and state in that order |
+  | postRequest | request object | manages saving new request to db and state |
+  | manageMessageDelete | id | manages deleting request from db and state |
+  | manageMessageUpdate | id, update object | manages updating request in db and state |
+  | mailRequest | request object, callback | manages email sending to user |
   
 ## Synchrous actions
 
