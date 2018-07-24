@@ -36,14 +36,14 @@ class Profile extends React.Component {
     })
   }
 
-  selectProfile () {
+  selectProfile() {
     this.setState({
       viewingProfile: true,
       viewingMessages: false
     })
   }
 
-  selectMessages () {
+  selectMessages() {
     this.setState({
       viewingProfile: false,
       viewingMessages: true
@@ -67,66 +67,96 @@ class Profile extends React.Component {
 
           <div className='section profile'>
 
-            <div className='columns'>
-              <div className='column is-12 tab'>
-                <a className='is-small is-pulled-right tab' onClick={() => this.selectProfile()}>Profile</a>
-                <a className='is-small is-pulled-right tab' onClick={() => this.selectMessages()}>My Messages</a>
+            {/* <div className='columns'>
+              <div className='column is-6 is-offset-6'>
+                <div className="tabs is-boxed is-right">
+                  <ul>
+                    <li className={`${this.state.viewingMessages && 'is-active'}`} 
+                      onClick={() => this.selectMessages()}>
+                        <a>My Messages</a>
+                    </li>
+                    <li className={`${this.state.viewingProfile && 'is-active'}`} 
+                      onClick={() => this.selectProfile()}>
+                        <a>Profile</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </div>  */}
+
+
+
 
             <div className='columns is-multiline'>
-
               <div className='column is-5'>
-                <img className='tempimgcss' src={this.props.user.profilePic} />
+                <img className='profile-photo' src={this.props.user.profilePic} />
               </div>
 
               <div className='column is-6 is-offset-1'>
                 <div className='columns is-multiline'>
+                  <div className='column is-12'>
+                    <div className="tabs is-boxed is-right profile-tab">
+                      <ul>
+                        <li className={`${this.state.viewingMessages && 'is-active'}`}
+                          onClick={() => this.selectMessages()}>
+                          <a>My Messages</a>
+                        </li>
+                        <li className={`${this.state.viewingProfile && 'is-active'}`}
+                          onClick={() => this.selectProfile()}>
+                          <a>Profile</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
 
                   {
                     this.state.viewingProfile
 
                       ?
-                        <div>
-                          <div className='column is-12'>
-                            <h1 className='title is-1'>@{this.props.user.username}</h1>
-                          </div>
-
-                          <div className='column is-12'>
-                            <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
-                            <p>{this.props.user.email}</p>
-                            <p className='rating'>Trust Rating: </p>
-                            <span className='rating'><StarRatingComponent
-                              name="rate1"
-                              starCount={5}
-                              value={this.hoverRating || this.rating}
-                              onStarClick={this.rate}
-                              onStarHover={this.changeHoverRating}
-                              onStarHoverOut={this.endHover}
-                              starColor='gold'
-                            />
-                            </span>
-                            <br />
-
-                            {!this.state.editingProfile && !this.state.addingItem
-                              && <a className='button button-pad' onClick={() => this.renderForm('editingProfile')}>Edit Profile</a>}
-                          </div>
+                      <div>
+                        <div className='column is-12'>
+                          <h1 className='title is-1'>@{this.props.user.username}</h1>
                         </div>
-                        
+
+                        <div className='column is-12'>
+                          <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
+                          <p>{this.props.user.email}</p>
+                          <p className='rating'>Trust Rating: </p>
+                          <span className='rating'><StarRatingComponent
+                            name="rate1"
+                            starCount={5}
+                            value={this.hoverRating || this.rating}
+                            onStarClick={this.rate}
+                            onStarHover={this.changeHoverRating}
+                            onStarHoverOut={this.endHover}
+                            starColor='gold'
+                          />
+                          </span>
+                          <br />
+
+                          {!this.state.editingProfile && !this.state.addingItem
+                            && <a className='button button-pad' onClick={() => this.renderForm('editingProfile')}>Edit Profile</a>}
+                        </div>
+                      </div>
+
                       :
-                        <div>
-                          <div className='column is-12'>
-                            <h1 className='title is-1'>Messages</h1>
-                            <ul>
-                              {this.props.user.messages.received.map(message => <li>{message.message}</li>)}
-                            </ul>
-                          </div>
+                      <div>
+                        <div className='column is-12'>
+                          <h1 className='title is-1'>Messages</h1>
+                          <ul>
+                            {this.props.user.messages.received.map(message => <li>{message.message}</li>)}
+                          </ul>
                         </div>
+                      </div>
                   }
 
                 </div>
               </div>
             </div>
+
+
+
+
 
             <div className='profile-gear'>
               <div className='level'>
