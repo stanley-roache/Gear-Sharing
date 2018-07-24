@@ -64,7 +64,7 @@ class Profile extends React.Component {
     // once loaded:
     else {
       return (
-        <div className='section'>
+        <div className='container'>
           {/* {!this.props.auth.isAuthenticated && <Redirect to='/login'/>} */}
           {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
 
