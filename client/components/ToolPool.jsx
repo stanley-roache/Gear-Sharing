@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ItemInline from './ItemInline'
+import ItemInGrid from './ItemInGrid'
 
 export class ToolPool extends React.Component {
   constructor(props) {
@@ -73,7 +73,7 @@ export class ToolPool extends React.Component {
         {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
         <ul>
           {display.map(item => {
-            return <ItemInline item={item} key={item.id} />
+            return <ItemInGrid item={item} key={item.id} />
           })}
         </ul>
       </div>
