@@ -14,9 +14,9 @@ export class Home extends React.Component {
         return (
             <div>
                 <img className='image' src='images/tools/four.jpg' />
-                
+
                 <h1 className='subtitle is-1 has-text-centered'>Tool Pool is a community for peer-to-peer lending of odd household items.</h1>
-                
+
                 <div className='columns'>
                     <div className='column is-half'>
                         <img className='imgset' src='images/tim/black.jpeg' />

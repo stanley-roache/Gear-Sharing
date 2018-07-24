@@ -9,7 +9,6 @@ import Profile from './Profile'
 import ToolPool from './ToolPool'
 import GearItem from './GearItem'
 import Home from './Home'
-// import TestModal from './TestModal'
 
 import { getGear } from "../actions/gear";
 import { fetchUser } from '../actions/login'
@@ -31,8 +30,7 @@ class App extends React.Component {
       <Router>
         <div className="container">
 
-          <Nav />
-          {/* <TestModal /> */}
+          <Route path='/' component={Nav} />
           <Route exact path='/' component={Home} />
           <Route exact path='/toolpool' component={ToolPool} />
           <Route exact path="/login" component={Login} />

@@ -51,7 +51,7 @@ export class EditProfileForm extends React.Component {
             </label>
 
             <label className="label is-medium">Profile Picture
-              <input required className="input is-medium is-fullwidth" placeholder="Past a link to an online photo" type="text" name="photo_url" onChange={this.handleChange} value={this.state.profile_pic} />
+              <input required className="input is-medium is-fullwidth" placeholder="Past a link to an online photo" type="text" name="profile_pic" onChange={this.handleChange} value={this.state.profile_pic} />
             </label>
             <hr/>
           <input className="submit button-pad button is-centered is-black is-large" type="submit" value='Submit' />
