@@ -15,6 +15,8 @@ class Profile extends React.Component {
       addingItem: false,
       editingProfile: false,
       rating: 4,
+      viewingProfile: true,
+      viewingMessages: false
     }
 
     this.setFalse = this.setFalse.bind(this)
@@ -31,6 +33,20 @@ class Profile extends React.Component {
   renderForm(ref) {
     this.setState({
       [ref]: true
+    })
+  }
+
+  selectProfile () {
+    this.setState({
+      viewingProfile: true,
+      viewingMessages: false
+    })
+  }
+
+  selectMessages () {
+    this.setState({
+      viewingProfile: false,
+      viewingMessages: true
     })
   }
 
@@ -53,8 +69,8 @@ class Profile extends React.Component {
 
             <div className='columns'>
               <div className='column is-12 tab'>
-                <p className='is-small is-pulled-right tab'>Profile</p>
-                <p className='is-small is-pulled-right tab'>My Messages</p>
+                <a className='is-small is-pulled-right tab' onClick={() => this.selectProfile()}>Profile</a>
+                <a className='is-small is-pulled-right tab' onClick={() => this.selectMessages()}>My Messages</a>
               </div>
             </div>
 
@@ -64,31 +80,50 @@ class Profile extends React.Component {
                 <img className='tempimgcss' src={this.props.user.profilePic} />
               </div>
 
-              <div className='column is-7'>
+              <div className='column is-6 is-offset-1'>
                 <div className='columns is-multiline'>
-                  <div className='column is-12'>
-                    <h1 className='title is-1'>@{this.props.user.username}</h1>
-                  </div>
 
-                  <div className='column is-12'>
-                    <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
-                    <p>{this.props.user.email}</p>
-                    <p className='rating'>Trust Rating: </p>
-                    <span className='rating'><StarRatingComponent
-                      name="rate1"
-                      starCount={5}
-                      value={this.hoverRating || this.rating}
-                      onStarClick={this.rate}
-                      onStarHover={this.changeHoverRating}
-                      onStarHoverOut={this.endHover}
-                      starColor='gold'
-                    />
-                    </span>
-                    <br />
+                  {
+                    this.state.viewingProfile
 
-                    {!this.state.editingProfile && !this.state.addingItem
-                      && <a className='button button-pad' onClick={() => this.renderForm('editingProfile')}>Edit Profile</a>}
-                  </div>
+                      ?
+                        <div>
+                          <div className='column is-12'>
+                            <h1 className='title is-1'>@{this.props.user.username}</h1>
+                          </div>
+
+                          <div className='column is-12'>
+                            <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
+                            <p>{this.props.user.email}</p>
+                            <p className='rating'>Trust Rating: </p>
+                            <span className='rating'><StarRatingComponent
+                              name="rate1"
+                              starCount={5}
+                              value={this.hoverRating || this.rating}
+                              onStarClick={this.rate}
+                              onStarHover={this.changeHoverRating}
+                              onStarHoverOut={this.endHover}
+                              starColor='gold'
+                            />
+                            </span>
+                            <br />
+
+                            {!this.state.editingProfile && !this.state.addingItem
+                              && <a className='button button-pad' onClick={() => this.renderForm('editingProfile')}>Edit Profile</a>}
+                          </div>
+                        </div>
+                        
+                      :
+                        <div>
+                          <div className='column is-12'>
+                            <h1 className='title is-1'>Messages</h1>
+                            <ul>
+                              {this.props.user.messages.received.map(message => <li>{message.message}</li>)}
+                            </ul>
+                          </div>
+                        </div>
+                  }
+
                 </div>
               </div>
             </div>
@@ -116,7 +151,7 @@ class Profile extends React.Component {
               <div className={`modal ${this.state.addingItem && 'is-active'}`}>
                 <div className="modal-background"></div>
                 <div className="modal-content">
-                  <NewGearForm onFinish={() => this.setFalse('addingItem')}/>}
+                  <NewGearForm onFinish={() => this.setFalse('addingItem')} />}
                 </div>
                 <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.setFalse('addingItem')}></a>
               </div>
@@ -126,7 +161,7 @@ class Profile extends React.Component {
               <div className={`modal ${this.state.editingProfile && 'is-active'}`}>
                 <div className="modal-background"></div>
                 <div className="modal-content">
-                  <EditProfileForm onFinish={() => this.setFalse('editingProfile')}/>
+                  <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />
                 </div>
                 <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.setFalse('editingProfile')}></a>
               </div>
