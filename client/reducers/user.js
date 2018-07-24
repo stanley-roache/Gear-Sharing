@@ -12,6 +12,26 @@ export default function user(state = initialState, action) {
         ...state,
         isFetching: true
       }
+    case 'REQUEST_PROFILE_EDIT':
+      return {
+        ...state,
+        isSaving: true
+      }
+    case 'SUCCESS_PROFILE_EDIT':
+      return {
+        ...state,
+        isSaving: false,
+        firstName: action.update.first_name,
+        lastName: action.update.last_name,
+        email: action.update.email_address,
+        profilePic: action.update.profile_pic
+      }
+    case 'ERROR_PROFILE_EDIT':
+      return {
+        ...state,
+        isSaving: false,
+        errorMessage: action.message
+      }
     case 'SET_USER':
       return {
         ...state,
@@ -60,16 +80,16 @@ export default function user(state = initialState, action) {
       }
     case 'REQUEST_MESSAGE_SAVE':
       return {
-        ...state, 
+        ...state,
         isSaving: true
       }
     case 'SET_REQUEST':
       let newMessages = {
-        ...state.messages, 
+        ...state.messages,
         sent: [state.messages.sent, action.request]
-        }
+      }
       return {
-        ...state, 
+        ...state,
         isSaving: false,
         messages: newMessages
       }
