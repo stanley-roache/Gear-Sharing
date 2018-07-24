@@ -14,6 +14,7 @@ class GearRequest extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.buildMessage = this.buildMessage.bind(this)
+    this.cancel = this.cancel.bind(this)
   }
 
 
@@ -23,8 +24,7 @@ class GearRequest extends React.Component {
     })
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
+  handleSubmit() {
     const message = this.buildMessage()
     this.props.dispatch(manageRequest(message))
     this.props.onFinish()
@@ -40,18 +40,25 @@ class GearRequest extends React.Component {
     }
   }
 
+  cancel() {
+    this.setState({
+      message: ''
+    })
+    this.props.onFinish()
+  }
+
 
   render() {
     return (
-      <form className='new-request-form' onSubmit={this.handleSubmit}>
+      <div className='send-message-form'>
         <label>
-          Send a message with your request: 
+          Send a message with your request:
           <input onChange={this.handleChange} type="text" value={this.state.message} name='message' />
         </label>
         <br />
-        <input type="submit" value='Send Request' />
-        <button onClick={this.props.onFinish}>Cancel</button>
-      </form>
+        <button onClick={this.handleSubmit}>Send Request</button>
+        <button onClick={this.cancel}>Cancel</button>
+      </div>
     )
   }
 }
