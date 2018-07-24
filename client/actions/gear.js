@@ -14,87 +14,95 @@ export function getGear() {
   }
 }
 
-  export function requestGear () {
-    return {
-      type: 'GEAR_REQUEST',
-      isFetching: true,
-      isSaving: false
-    }
+export function requestGear() {
+  return {
+    type: 'GEAR_REQUEST',
+    isFetching: true,
+    isSaving: false
   }
+}
 
-  export function setGear (gear) {
-    return {
-      type: 'SET_GEAR',
-      gear:gear,
-      isFetching: false,
-      isSaving: false
-    }
+export function setGear(gear) {
+  return {
+    type: 'SET_GEAR',
+    gear: gear,
+    isFetching: false,
+    isSaving: false
   }
+}
 
-  export function gearError (message) {
-    return {
-      type: 'GEAR_ERROR',
-      isFetching: false,
-      isSaving: false,
-      message
-    }
+export function gearError(message) {
+  return {
+    type: 'GEAR_ERROR',
+    isFetching: false,
+    isSaving: false,
+    message
   }
+}
 
 
-  export function addGearItem(item) {
-    return dispatch => {
-      dispatch(requestGearSave())
-      return request('post', 'gear/new', item)
-        .then((res) => {
-          let newGear = res.body.gear
-          newGear.id = res.body.id
-          dispatch(gearAdd(newGear))
-        })
-        .catch(err => {
-          dispatch(gearError(err.response.body.message))
-        })
-    }
+export function addGearItem(item) {
+  return dispatch => {
+    dispatch(requestGearSave())
+    return request('post', 'gear/new', item)
+      .then((res) => {
+        let newGear = res.body.gear
+        newGear.id = res.body.id
+        dispatch(gearAdd(newGear))
+      })
+      .catch(err => {
+        dispatch(gearError(err.response.body.message))
+      })
   }
+}
 
-  export function requestGearSave () {
-    return {
-      type: 'REQUEST_GEAR_SAVE',
-      isFetching: false,
-      isSaving: true
-    }
+export function requestGearSave() {
+  return {
+    type: 'REQUEST_GEAR_SAVE',
+    isFetching: false,
+    isSaving: true
   }
+}
 
-  export function gearAdd (item) {
-    return {
-      type: 'GEAR_ADD',
-      item
-    }
+export function gearAdd(item) {
+  return {
+    type: 'GEAR_ADD',
+    item
   }
+}
 
-  export function editGearItem(item){
-    return dispatch => {
-      dispatch(editRequest())
-      return request('post', `gear/update/${item.id}`, item)
-        .then((res) => {
-          dispatch(editGear(item))
-        })
-        .catch(err => {
-          dispatch(gearError(err.response.body.message))
-        }) // need to work on catch blocks
-    }
+export function editGearItem(item) {
+  return dispatch => {
+    dispatch(editRequest())
+    return request('post', `gear/update/${item.id}`, item)
+      .then((res) => {
+        dispatch(editGear(item))
+      })
+      .catch(err => {
+        dispatch(gearError(err.response.body.message))
+      }) // need to work on catch blocks
   }
+}
 
-  export function editRequest () {
-    return {
-      type:'EDIT_REQUEST',
-      isFetching: false,
-      isSaving: true
-    }
+export function setAvailability(id, isAvailable) {
+  const update = {
+    id,
+    status: (isAvailable) ? 'Available' : 'Not Available'
   }
+  return dispatch => { dispatch(editGearItem(update)) }
+}
 
-  export function editGear (item) {
-    return {
-      type: 'EDIT_GEAR',
-      item
-    }
+function editRequest() {
+  return {
+    type: 'EDIT_REQUEST',
+    isFetching: false,
+    isSaving: true
   }
+}
+
+function editGear(item) {
+  return {
+    type: 'EDIT_GEAR',
+    item
+  }
+}
