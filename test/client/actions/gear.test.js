@@ -1,4 +1,39 @@
-const actions = require('../../../client/actions/gear')
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import * as actions from '../../../client/actions/gear'
+import {requestGear, setGear, gearError} from '../../../client/actions/gear'
+
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
+
+jest.mock('../../../client/utils/api', () => (method, url, data) => {
+    return Promise.resolve({
+        body: [
+            'Drill',
+            'Another Drill'
+        ]
+    })
+})
+
+test('test get some gear', () => {
+    const store = mockStore({})
+    const fakeGear = [
+        'Drill',
+        'Another Drill'
+    ]
+  
+    const expectedActions = [
+        { type: 'GEAR_REQUEST', isFetching: true, isSaving: false },
+        { type: 'SET_GEAR', gear: fakeGear, isFetching: false, isSaving: false }
+    ]
+
+    const dispatchedStore = store.dispatch(
+        actions.getGear()
+    )
+    return dispatchedStore.then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+    })
+})
 
 
 describe('actions', () => {
