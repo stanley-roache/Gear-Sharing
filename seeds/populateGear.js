@@ -9,9 +9,9 @@ exports.seed = function(knex, Promise) {
           id: 1,
           status: "Available",
           trustframework: "One",
-          name: 'Dyna Drill',
-          description: 'A drill that can be used on concrete',
-          photo_url: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/juigjhfj.jpg',
+          name: 'Hammer Drill',
+          description: 'Tackle a wide range of applications with quick-release chucks and multi-gear drills Designed with large diameter gearing, optimised communtators and rugged casing to last longer.',
+          photo_url: 'https://images-na.ssl-images-amazon.com/images/I/41kJ2MOzCvL._SL500_AC_SS350_.jpg',
           user_id: 1
         },
         {
