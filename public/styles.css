@@ -3,8 +3,9 @@
     width: 400px;
 }
 
-.tempimgcss {
-    width: 500px;
+.profile-photo {
+    margin-top: 23px;
+    width: 100%
 }
 
 /* custom bulma overrides */
@@ -19,9 +20,8 @@
     margin-top: 15px;
 }
 
-.tab {
-    padding-right: 15px;
-    padding-top: 15px;
+.profile-tab {
+    margin-top: -15px;
 }
 
 #name {
