@@ -21,7 +21,27 @@ function insertRequest(request, testDb) {
         .into('requests')
 }
 
+function updateRequest(id, requestUpdate, testDb) {
+    const db = testDb || conn
+    return db('requests')
+        .where({id})
+        .update(requestUpdate)
+}
+
+function deleteRequest(id, testDb) {
+    const db = testDb || conn
+    return db('requests')
+        .where({id})
+        .del()
+        .then(numdeletes => {
+            if (numdeletes) return numdeletes
+            else throw new Error ('request not found in DB')
+        })
+}
+
 module.exports = {
     getRequests,
-    insertRequest
+    insertRequest,
+    updateRequest,
+    deleteRequest
 }

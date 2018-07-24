@@ -61,25 +61,38 @@ export class GearItem extends React.Component {
             const gearOwnerId = user_id
 
             return (
-                <div className='gear-display'>
-                    <img className='tempimgcss' src={photo_url} />
-                    <h1>{name}</h1>
-                    <p>{status} - {trustframework}</p>
-                    <p>{description}</p>
-
-                    {!this.props.auth.isAuthenticated
-                        && <button onClick={this.toLogin}>Login to request this tool</button>}
-                        
-                    {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
-                        && <button onClick={() => this.renderForm()}>Edit this piece of shit</button>}
-
-                    <div ref='editForm'>
-                        {this.state.editingItem
-                            && <GearEdit item={thisGear} finish={() => this.cancelEdit()} />}
+                <div>
+                    <div className='hero'>
+                        <div className='hero-body'>
+                            <div className='container has-text-centered'>
+                                <h1 className='title is-1'>{name}</h1>
+                            </div>
+                        </div>
                     </div>
+                <div className='columns box'>
+                    <div className='column is-7'>
+                        <p className='subtitle is-5'>{description}</p>
+                        <h3 className='subtitle is-4'>Avaliability: {status}</h3>
+                        <h3 className='subtitle is-4'>Trust Level: {trustframework}</h3>
 
-                    {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
-                        && <GearRequest onFinish={() => {}} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId}/>}
+                        {!this.props.auth.isAuthenticated
+                            && <button onClick={this.toLogin}>Login to request this tool</button>}
+
+                        {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
+                            && <button className='button' onClick={() => this.renderForm()}>Edit this tool</button>}
+
+                        <div ref='editForm'>
+                            {this.state.editingItem
+                                && <GearEdit item={thisGear} finish={() => this.cancelEdit()} />}
+                        </div>
+
+                        {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
+                            && <GearRequest onFinish={() => { }} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId} />}
+                    </div>
+                    <div className='column is-5'>
+                        <img className='imgset' src={photo_url} />
+                    </div>
+                </div>
                 </div>
             )
         }

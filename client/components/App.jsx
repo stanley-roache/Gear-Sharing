@@ -11,7 +11,7 @@ import GearItem from './GearItem'
 // import TestModal from './TestModal'
 
 import { getGear } from "../actions/gear";
-import {fetchUser} from '../actions/login'
+import { fetchUser } from '../actions/login'
 
 
 
@@ -30,15 +30,15 @@ class App extends React.Component {
       <Router>
         <div className="container">
 
-              <Nav />
+          <Nav />
           {/* <TestModal /> */}
 
-          <Route exact path='/toolpool' component={ToolPool}/>
+          <Route exact path='/toolpool' component={ToolPool} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path='/profile' component={Profile}/>
-          <Route exact path='/item/:id' component={GearItem}/>
-       </div>
+          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/item/:id' component={GearItem} />
+        </div>
       </Router>
     )
   }

@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ItemInline from './ItemInline'
+import ItemInGrid from './ItemInGrid'
+
+import {nameSort} from '../utils/sorting'
 
 export class ToolPool extends React.Component {
   constructor(props) {
@@ -72,8 +74,10 @@ export class ToolPool extends React.Component {
         <h1 className='title is-2'>TOOL POOL</h1>
         {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
         <ul>
-          {display.map(item => {
-            return <ItemInline item={item} key={item.id} />
+          {display
+            .sort(nameSort)
+            .map(item => {
+            return <ItemInGrid item={item} key={item.id} showToggle={false}/>
           })}
         </ul>
       </div>

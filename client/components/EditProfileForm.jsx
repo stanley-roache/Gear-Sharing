@@ -1,6 +1,6 @@
 import React from 'react'
-import {editProfileAction} from '../actions/profile'
-import {connect} from 'react-redux'
+import { editProfileAction } from '../actions/profile'
+import { connect } from 'react-redux'
 
 
 export class EditProfileForm extends React.Component {
@@ -8,10 +8,10 @@ export class EditProfileForm extends React.Component {
     super(props)
 
     this.state = {
-        first_name: props.user.firstName,
-        last_name: props.user.lastName,
-        email_address: props.user.email,
-        profile_pic: '' 
+      first_name: props.user.firstName,
+      last_name: props.user.lastName,
+      email_address: props.user.email,
+      profile_pic: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -33,35 +33,35 @@ export class EditProfileForm extends React.Component {
 
   render() {
     return (
-      <form className='edit-profile-form' onSubmit={this.handleSubmit}>
-        <label>
-          First Name:
-          <input onChange={this.handleChange} type="text" value={this.state.first_name} name='first_name' />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input onChange={this.handleChange} type="text" value={this.state.last_name} name='last_name' />
-        </label>
-        <br />
-        <label>
-          Email Address:
-          <input onChange={this.handleChange} type="text" value={this.state.email_address} name='email_address' />
-        </label>
-        <br />
-        <label>
-          Profile Picture:
-          <input onChange={this.handleChange} type="text" value={this.state.profile_pic} name='profile_pic' />
-        </label>
-        <br />
-        <input type="submit" value='Confirm Details' />
-        <button onClick={this.props.onFinish}>Cancel</button>
-      </form>
+      <div className='box edit-profile'>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <h1 className="title is-1 has-text-centered">Edit Profile</h1>
+          <hr/>
+
+           <label className="label is-medium">First Name
+              <input required className="input is-medium is-fullwidth" type="text" name='first_name' onChange={this.handleChange} value={this.state.first_name} />
+            </label>
+
+            <label className="label is-medium">Last Name
+              <input required className="input is-medium is-fullwidth" type="text" name="last_name" onChange={this.handleChange} value={this.state.last_name} />
+            </label>
+
+            <label className="label is-medium">Email Address
+              <input required className="input is-medium is-fullwidth" type="email" name="email_address" onChange={this.handleChange} value={this.state.email_address} />
+            </label>
+
+            <label className="label is-medium">Profile Picture
+              <input required className="input is-medium is-fullwidth" placeholder="Past a link to an online photo" type="text" name="photo_url" onChange={this.handleChange} value={this.state.profile_pic} />
+            </label>
+            <hr/>
+          <input className="submit button-pad button is-centered is-black is-large" type="submit" value='Submit' />
+        </form>
+      </div>
     )
   }
 }
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({ user }) => {
   return {
     user
   }
