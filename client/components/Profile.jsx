@@ -5,6 +5,7 @@ import scrollToComponent from 'react-scroll-to-component'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
+import EditProfileForm from './EditProfileForm'
 import StarRatingComponent from 'react-star-rating-component';
 
 class Profile extends React.Component {
@@ -13,12 +14,13 @@ class Profile extends React.Component {
 
     this.state = {
       addingItem: false,
+      editingProfile: false,
       rating: 4,
       hovering: false,
       hoverRating: null
     }
 
-    this.cancelAdd = this.cancelAdd.bind(this)
+    this.setFalse = this.setFalse.bind(this)
     this.renderForm = this.renderForm.bind(this)
     this.rate = this.rate.bind(this)
     this.endHover = this.endHover.bind(this)
@@ -37,23 +39,24 @@ class Profile extends React.Component {
     this.setState({ rating, hoverRating: null })
   }
 
-  cancelAdd() {
+  setFalse(val) {
     this.setState({
-      addingItem: false
+      [val]: false
     })
   }
 
-  renderForm() {
+  renderForm(ref) {
     this.setState({
-      addingItem: true
+      [ref]: true
     })
-    scrollToComponent(this.refs.form, {
+    scrollToComponent(this.refs[ref], {
       align: 'top',
       duration: 1000
     })
   }
 
   render() {
+    const { hoverRating, rating } = this.state
     // to wait on gear array & user info load:
     if (this.props.user.isFetching) {
       return (
@@ -104,25 +107,31 @@ class Profile extends React.Component {
                     <br/>
                     
                     <a className='button edit'>Edit Profile</a>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className='section'>
-            <GearList />
+        <div className='section'>
+          <GearList />
+        </div>
+
+        <div className='section'>
+          {!this.state.addingItem && !this.state.editingProfile
+            && <button onClick={() => this.renderForm('addingItem')}>Add Gear Item</button>}
+          <div ref='addingItem'>
+            {this.state.addingItem
+              && <NewGearForm finish={() => this.setFalse('addingItem')} />}
           </div>
-
-          <div className='section'>
-            {!this.state.addingItem
-              && <button onClick={() => this.renderForm()}>Add Gear Item</button>}
-            <div ref='form'>
-              {this.state.addingItem
-                && <NewGearForm finish={() => this.cancelAdd()} />}
-            </div>
+          {!this.state.editingProfile && !this.state.addingItem
+            && <button onClick={() => this.renderForm('editingProfile')}>Edit Profile</button>}
+          <div ref='editingProfile'>
+            {this.state.editingProfile
+              && <EditProfileForm onFinish={() => this.setFalse('editingProfile')} />}
           </div>
         </div>
+        </div >
       )
     }
   }
