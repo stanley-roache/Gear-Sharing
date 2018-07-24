@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       table.integer('owner_id')
       table.integer('requester_id')
       table.timestamp('created_at').defaultTo(knex.fn.now())
-      table.string('message')
+      table.string('message', 1000)
     })
   };
   

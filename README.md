@@ -52,14 +52,18 @@ A platform to share expensive equipment within trusted groups
 ## Views (Client Side)
   | name | purpose |
   | --- | --- |
+  | Nav | navigation bar |
+  | EditProfileForm | - |
+  | NewGearForm | Form fpr user to add new item of gear |
+  | GearEdit | Form/Modal for editing single item |
+  | GearItem | Full page view of single item |
+  | GearRequest | component for requesting use of too, within GearItem |
+  | ItemInGrid | single item display within GearList or ToolPool |
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
   | Profile | View a logged in user's profile |
   | GearList | User's view of their own gear |
-  | ItemInline | single item display in GearList |
-  | NewGearForm | Form fpr user to add new item of gear |
   | ToolPool | View all gear in the loaning group |
-  | Nav | Navigation Bar |
 
 ## Reducers (Client Side)
 
@@ -78,9 +82,18 @@ Each of these actions calls on several synchrous actions on sending and receivin
   | --- | --- | --- |
   | getGear | all gear | fetches all gear into client |
   | addGearItem | single item | saves new item to redux state and posts to server for DB saving |
+  | editGearItem | update object | updates item in db and redux state |
+  | setAvailability | id, boolean | sets availability of item in db and state |
+  | loginUser | creds | manages login request |
+  | fetchUser | callback | fetches full user profile from db for state |
+  | logoutUser | - | destroys token client-side to log out |
   | registerUserRequest | new user form data | creates new user in the server and logs them in in state |
-  | loginUser | login credentials | authenticates user and saves full info to state |
-  | fetchUser | - | fetches full user data of logged in user |
+  | editProfileAction | update object | udpates user profile in db and state |
+  | manageRequest | request object | manages saving emailing new request, saving to db and state in that order |
+  | postRequest | request object | manages saving new request to db and state |
+  | manageMessageDelete | id | manages deleting request from db and state |
+  | manageMessageUpdate | id, update object | manages updating request in db and state |
+  | mailRequest | request object, callback | manages email sending to user |
   
 ## Synchrous actions
 
@@ -112,7 +125,7 @@ Each of these actions calls on several synchrous actions on sending and receivin
 ### Gear
   | Column Name | Data Type | Purpose |
   | --- | --- | --- |
-  | id | Integer | Unique identifier for each item |
+  | id | increments | Unique identifier for each item |
   | name | String | name of item |
   | description | String | Description of item, condition, missing parts etc. |
   | photo_url | string | URL of a picture of the item |
@@ -124,13 +137,24 @@ Each of these actions calls on several synchrous actions on sending and receivin
 
  | Column Name | Data Type | Purpose |
  | --- | --- | --- |
- | id | Integer | Unique identifier for each user |
+ | id | increments | Unique identifier for each user |
  | user_name | string | Used for login |
  | first_name | string | First name |
  | last_name | string | Last name |
  | profile_pic | string | url of profile picture |
  | email_address | string | displayed for contact information |
  | hash | string | hashed login password |
+ 
+ ### Requests (Join Table M22 (each request joins to two users)
+
+ | Column Name | Data Type | Purpose |
+ | --- | --- | --- |
+ | id | increments | Unique identifier for each request |
+ | gear_id | integer  | id of gear item |
+ | owner_id | integer | id of owner |
+ | last_name | integer | id of requesting user |
+ | created_at | timestamp | timestamp created on insertion into table |
+ | message | string | custom message from requester to owner |
  ---
 
 
@@ -148,82 +172,35 @@ mv .env_example .env
 To run in development:
 ```sh
 yarn dev
- - or -
-npm run dev
-
 ```
 
 To run in production:
 ```sh
 yarn start
-  - or -
-npm start
 ```
-
-## Setting up sendgrid with api key
-
-Get API key from sendgrid
-
-```sh
-echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-source ./sendgrid.env
-```
-
 
 ## Heroku!!!
 
-### Creating your app
-
-Create your app with `heroku create [name]`
-
-You can check that this was successful by running `heroku apps` to view a list of your apps
-
-
-### Adding postgres
-
-Add postgresql (hobby dev) to your app at `https://dashboard.heroku.com/apps/[APP NAME HERE]/resources`
-
-Check that pg has been added by running `heroku addons` to ensure the postgresql db is on your app
-
-
 ### Deploying!
 
-I have created several npm scripts that will be useful for deploying your app to heroku easily.
-
-To push your local master branch to your heroku app:
+To push master branch to heroku:
 ```sh
 yarn h:deploy
-  - or -
-npm run h:deploy
 ```
 
-Run heroku migrations:
+Heroku database scripts:
 ```sh
 yarn h:migrate
-  - or -
-npm run h:migrate
-```
-
-Run heroku seeds:
-```sh
 yarn h:seed
-  - or -
-npm run h:seed
-```
-
-If ever you need to rollback, you can also:
-```sh
 yarn h:rollback
-  - or -
-npm run h:rollback
 ```
 
-Set environment variables on heroku (instead of .env)
+### Setting environment variables (instead of .env)
 ```sh
-heroku config:set GITHUB_USERNAME=joesmith
 heroku config:set JWT_SECRET=somesecret
+heroku config:set SENDGRID_API_KEY=key
 ```
-## Seeding Heroku
+### Seeding Heroku
 
 1. You will need pgsql tools, install with ```sudo apt-get install -y postgresql-client```
 2. rollback and migrate heroku with yarn h:rollback, yarn h:migrate
@@ -233,7 +210,3 @@ heroku config:set JWT_SECRET=somesecret
 6. close direct db connection with \q
 7. seed heroku with ```yarn h:seed```
 8. repeat steps 3 - 6 to update primary keys
-
-
-### Ta-Da!
-Your app should be deployed!

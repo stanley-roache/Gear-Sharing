@@ -1,5 +1,5 @@
 import request from '../utils/api'
-import { sendRequest as mailRequest } from './mailing'
+import { mailRequest } from './mailing'
 
 function postRequest(message, didSucceed) {
     return dispatch => {
