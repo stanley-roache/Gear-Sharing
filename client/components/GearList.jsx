@@ -5,24 +5,33 @@ import { Link } from 'react-router-dom'
 export const GearList = props => (
   <div>
     <div className='columns is-multiline'>
-      <div className='column is-8'>
-        <h1 className='title is-1'>My Tools</h1>
-      </div>
-      
-    </div>
-    <ul>
+
       {props.user.gear.map((item) => {
         return (
-          <li key={item.id}>
+          <div key={item.id} className='column is-4'>
             <Link to={`/item/${item.id}`}>
-              {item.name} - {item.description} - {item.status} - {item.trustframework}
+              <img src={item.photo_url} />
             </Link>
-          </li>
+            <br/>
+            <Link to={`/item/${item.id}`}>
+              <h4 className='title is-4'><a>{item.name}</a></h4>
+            </Link>
+            <p>{item.status}</p>
+            <a className={`button button-pad has-text-centered ${item.status == 'Available' 
+              ? 'is-danger'
+              : 'is-success'}`}>
+                {item.status == 'Available' 
+                  ? 'MAKE UNAVAILABLE'
+                  : 'MAKE AVAILABLE'}
+            </a>
+          </div>
         )
       })}
-    </ul>
+    </div>
   </div>
 )
+
+// Avialability button needs onCLick
 
 const mapStateToProps = ({ user }) => ({ user })
 
