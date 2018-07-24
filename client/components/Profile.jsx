@@ -1,6 +1,6 @@
 import React from 'react'
-import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import GearList from './GearList'
 import NewGearForm from './NewGearForm'
@@ -62,30 +62,9 @@ class Profile extends React.Component {
     else {
       return (
         <div className='container'>
-          {/* {!this.props.auth.isAuthenticated && <Redirect to='/login'/>} */}
           {this.props.user.message && <span className="has-text-danger is-large">{this.props.user.message}</span>}
 
           <div className='section profile'>
-
-            {/* <div className='columns'>
-              <div className='column is-6 is-offset-6'>
-                <div className="tabs is-boxed is-right">
-                  <ul>
-                    <li className={`${this.state.viewingMessages && 'is-active'}`} 
-                      onClick={() => this.selectMessages()}>
-                        <a>My Messages</a>
-                    </li>
-                    <li className={`${this.state.viewingProfile && 'is-active'}`} 
-                      onClick={() => this.selectProfile()}>
-                        <a>Profile</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>  */}
-
-
-
 
             <div className='columns is-multiline'>
               <div className='column is-5'>
@@ -143,9 +122,25 @@ class Profile extends React.Component {
                       <div>
                         <div className='column is-12'>
                           <h1 className='title is-1'>Messages</h1>
+                          <div>
                           <ul>
-                            {this.props.user.messages.received.map(message => <li>{message.message}</li>)}
+                            {this.props.user.messages.received.map(message => {
+                              return (
+                                <div className='message'>
+                                  <i className="far fa-envelope icon-pad"></i>
+                                  <span>{message.requester_user_name}</span>
+                                  <span className='is-right'>{message.created_at}</span>
+                                  <li>{message.message}</li>
+                                  <p>
+                                    <Link to={`/item/${message.gear_id}`}>
+                                      {message.gear_name}
+                                    </Link>
+                                  </p>
+                                </div>
+                              )
+                            })}
                           </ul>
+                          </div>
                         </div>
                       </div>
                   }
