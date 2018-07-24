@@ -1,6 +1,9 @@
 const initialState = {
   gear: [],
-  messages: {},
+  messages: {
+    sent: [],
+    received: []
+  },
   isFetching: false,
   isSaving: false
 }
@@ -86,7 +89,7 @@ export default function user(state = initialState, action) {
     case 'SET_REQUEST':
       let newMessages = {
         ...state.messages,
-        sent: [state.messages.sent, action.request]
+        sent: [...state.messages.sent, action.request]
       }
       return {
         ...state,
@@ -98,6 +101,59 @@ export default function user(state = initialState, action) {
         ...state,
         errorMessage: action.message,
         isSaving: false
+      }
+    case 'REQUEST_MESSAGE_DELETE': {
+      return {
+        ...state,
+        isSaving: true
+      }
+    }
+    case 'ERROR_MESSAGE_DELETE': {
+      return {
+        ...state,
+        isSaving: false,
+        errorMessage: action.message
+      }
+    }
+    case 'SUCCESS_MESSAGE_DELETE':
+      return {
+        ...state,
+        isSaving: false,
+        messages: {
+          sent: state.messages.sent.filter(message => message.id != action.id),
+          received: state.messages.received.filter(message => message.id != action.id)
+        }
+      }
+    case 'REQUEST_MESSAGE_UPDATE': {
+      return {
+        ...state,
+        isSaving: true
+      }
+    }
+    case 'ERROR_MESSAGE_UPDATE': {
+      return {
+        ...state,
+        isSaving: false,
+        errorMessage: action.message
+      }
+    }
+    case 'SUCCESS_MESSAGE_UPDATE':
+      let messageType = 'sent'
+      let orginalMessage = state.messages.sent.find(message => message.id == action.id)
+      if (!orginalMessage) {
+        messageType = 'received'
+        orginalMessage = state.messages.received.find(message => message.id == action.id)
+      }
+
+      const newMessage = Object.assign({}, orginalMessage, action.update)
+
+      return {
+        ...state,
+        isSaving: false,
+        messages: {
+          ...state.messages,
+          [messageType]: [...state.messages[messageType].filter(message => message.id != action.id), newMessage],
+        }
       }
     default:
       return state

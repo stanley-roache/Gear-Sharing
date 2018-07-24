@@ -44,7 +44,7 @@ router.use(
 
 router.post('/new', (req, res) => {
   const newItem = req.body
-
+  
   gearDB.addGear(newItem)
     .then(ids => {
       res.json({
