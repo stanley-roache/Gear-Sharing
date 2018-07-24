@@ -16,13 +16,13 @@ class Nav extends React.Component {
       <div className='section'>
         <div className='columns is-centered has-text-centered'>
           <div className='column is-3'>
-            <p>ALL TOOLS</p>
+            <p><a href="#/toolpool">ALL TOOLS</a></p>
           </div>
           <div className='column is-6'>
-            <h1 className='title is-3'>ToolPool</h1>
+            <h1 className='title is-3'><a href="#/">ToolPool</a></h1>
           </div>
           <div className='column is-3'>
-            <p>LOGIN/REGISTER</p>
+            <p><a href="#/login">LOGIN/REGISTER</a></p>
           </div>
         </div>
       </div>
