@@ -5,8 +5,8 @@
     "orientation": "portrait",
     "icons": [
         {
-            "src": "icon/sample_icon-192.png",
-            "sizes": "192x192",
+            "src": "icon/sample_icon-512.png",
+            "sizes": "512x512",
             "type": "image/png"
         },
         {
