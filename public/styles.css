@@ -1,3 +1,8 @@
+
+.imgset {
+    width: 400px;
+}
+
 .tempimgcss {
     width: 500px;
 }
@@ -27,6 +32,7 @@
     margin-top: 5px;
 }
 
+<<<<<<< HEAD
 .profile {
     padding-top: 1rem;
 }
@@ -38,3 +44,8 @@
 .profile-gear {
     padding-top: 4rem;
 }
+=======
+.navBarItem {
+  padding-left: 30px;
+}
+>>>>>>> a3e9dea85e7b4e29cdc4531c467d729ddb6b837d
