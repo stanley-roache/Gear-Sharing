@@ -23,9 +23,11 @@ router.get('/fullProfile', (req, res) => {
     getRequests(req.user.user_id)
   ])
     .then(([info, gear, messages]) => {
-      user = info
-      user.gear = gear
-      user.messages = messages
+      const user = Object.assign(
+        {},
+        info,
+        {gear, messages}
+      )
       res.json(user)
     })
     .catch(err => {

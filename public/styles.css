@@ -3,10 +3,32 @@
     width: 400px;
 }
 
-.tempimgcss {
-    width: 500px;
+.profile-photo {
+    margin-top: 23px;
+    width: 100%
+}
+.homebody {
+    background-image: url("images/background/spanner2.png");
+    background-position: center center;
+    background-repeat:  no-repeat;
+    /* background-attachment: fixed; */
+    background-size:  cover;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    height: 100vh;
+    padding-top: 10vh;
+    margin: auto;
+    /* margin-top: 10vh; */
+    /* opacity: 0.2; */
 }
 
+.homebody h1 {
+    color: rgba(0, 0, 0, 1);
+    /* opacity: 1; */
+}
+.homebody p {
+    color: rgba(0, 0, 0, 1);
+    /* opacity: 1; */
+}
 /* custom bulma overrides */
 
 .submit {
@@ -19,9 +41,8 @@
     margin-top: 15px;
 }
 
-.tab {
-    padding-right: 15px;
-    padding-top: 15px;
+.profile-tab {
+    margin-top: -15px;
 }
 
 #name {
@@ -54,4 +75,49 @@
 
 .edit-profile {
     padding: 3rem;
+}
+
+.navlink a:link {
+  color: black;
+}
+
+.navLink a:visited {
+  color: black;
+}
+
+.navLink a.active {
+  color: hotpink;
+}
+
+.navSpace {
+  padding-left: 30px;
+}
+
+.tool-name {
+    padding-left: 15px;
+}
+
+.gear-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+.icon-pad {
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.message {
+    padding: 20px;
+}
+
+.is-search-button {
+    width: 50%;
+    margin: auto;
+}
+
+.tool-pool-name {
+    padding-top: 10px;
+    padding-bottom: 10px; 
 }

@@ -39,17 +39,13 @@ const fakeGearItem = {
 
 const expectedJoinKeys = [
   'id',
-  'first_name',
-  'last_name',
   'user_name',
-  'email_address',
-  'hash',
   'status',
   'trustframework',
   'name',
   'description',
   'photo_url',
-  'user_id',
+  'user_id'
 ]
 
 const fakeGearItemUpdate = {
@@ -94,8 +90,8 @@ test('getGearByGearId function gets a gear by ID', () => {
     })
 })
 
-test('getGearWithUsers function joins the users and gear', () => {
-  gear.getGearWithUsers(testDb)
+test('getGearWithUsernames function joins the users and gear', () => {
+  gear.getGearWithUsernames(testDb)
     .then(actualArr => {
       actualArr.forEach(actual => {
         expectedJoinKeys.forEach(key => {
@@ -147,8 +143,8 @@ test('userExists function lets you know if a username is taken', () => {
     })
 })
 
-test('getGearByGearIdWithUser function joins the owner and gear', () => {
-  gear.getGearByGearIdWithUser(1, testDb)
+test('getGearByGearIdWithUsername function joins the owner and gear', () => {
+  gear.getGearByGearIdWithUsername(1, testDb)
     .then(actual => {
         expectedJoinKeys.forEach(key => {
           expect(actual.hasOwnProperty(key)).toBeTruthy()
@@ -166,11 +162,12 @@ test('insertRequest does it"s job', () => {
     message: "Hey I like your drill, it's not bad. Can I have?" 
   }
 
-  return requests.insertRequest(fakeRequest, testDb)
-    .then(ids => {
+  return requests.insertRequest(fakeRequest, true, testDb)
+    .then(details => {
       const expected = 'number'
-      const actual = typeof ids[0]
+      const actual = typeof details.id
       expect(actual).toBe(expected)
+      expect(details.owner_user_name).toBeDefined()
     })
 })
 
@@ -205,4 +202,50 @@ test.skip('deleteRequest throws error if request with matching id doesnt exist',
     .catch(err => {
       expect(err).toBeTruthy()
     })
+})
+
+describe('request joined queiries', () => {
+  const user_id = 1
+
+  const expectedKeyBase = [
+    'id',
+    'gear_id',
+    'owner_id',
+    'requester_id',
+    'created_at',
+    'message',
+    'gear_name'
+  ]
+
+  test('getReceivedRequestsWithUsername has expected length', () => {
+    return requests.getReceivedRequestsWithUsername(user_id, testDb)
+      .then(requests => {
+        expect(requests).toHaveLength(2)
+      })
+  })
+
+  test('getReceivedRequestsWithUsername has expected keys', () => {
+    const expectedKeys = [...expectedKeyBase, 'requester_user_name'].sort()
+    return requests.getReceivedRequestsWithUsername(user_id, testDb)
+      .then(itemArr => {
+        const actual = Object.keys(itemArr[0]).sort()
+        expect(actual).toEqual(expectedKeys)
+    })
+  })
+
+  test('getSentRequestsWithUsername has expected length', () => {
+    return requests.getSentRequestsWithUsername(user_id, testDb)
+      .then(requests => {
+        expect(requests).toHaveLength(1)
+      })
+  })
+
+  test('getSentRequestsWithUsername has expected keys', () => {
+    const expectedKeys = [...expectedKeyBase, 'owner_user_name'].sort()
+    return requests.getSentRequestsWithUsername(user_id, testDb)
+      .then(itemArr => {
+        const actual = Object.keys(itemArr[0]).sort()
+        expect(actual).toEqual(expectedKeys)
+    })
+  })
 })

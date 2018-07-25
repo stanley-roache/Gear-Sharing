@@ -141,14 +141,13 @@ export default function user(state = initialState, action) {
       }
     }
     case 'SUCCESS_MESSAGE_UPDATE':
-      let messageType = 'sent'
-      let orginalMessage = state.messages.sent.find(message => message.id == action.id)
-      if (!orginalMessage) {
-        messageType = 'received'
-        orginalMessage = state.messages.received.find(message => message.id == action.id)
-      }
+      const messageType = state.messages.sent.find(message => message.id == action.id) ? 'sent' : 'received'
 
-      const newMessage = Object.assign({}, orginalMessage, action.update)
+      const newMessage = Object.assign(
+        {}, 
+        state.messages[messageType].find(msg => msg.id == action.id),
+        action.update
+      )
 
       return {
         ...state,

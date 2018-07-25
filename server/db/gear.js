@@ -1,9 +1,21 @@
 const conn = require('./connection')
 
-function getGearWithUsers(testDb) {
+const gearUserJoinKeys = [
+  'gear.id as id',
+  'name',
+  'description',
+  'status',
+  'trustframework',
+  'photo_url',
+  'user_id',
+  'user_name'
+]
+
+function getGearWithUsernames(testDb) {
   const db = testDb || conn
   return db('gear')
-    .join('users', 'gear.user_id', 'users.id')
+    .join('users', 'users.id', 'gear.user_id')
+    .select(...gearUserJoinKeys)
 }
 
 function getGear(testDb) {
@@ -19,11 +31,12 @@ function getGearByGearId(id, testDb) {
     .first()
 }
 
-function getGearByGearIdWithUser(id, testDb) {
+function getGearByGearIdWithUsername(id, testDb) {
   const db = testDb || conn
   return db('gear')
     .join('users', 'gear.user_id', 'users.id')
     .where('gear.id', id)
+    .select(...gearUserJoinKeys)
     .first()
 }
 
@@ -50,10 +63,10 @@ function removeGearById(id, testDb) {
 
 
 module.exports = {
-  getGearWithUsers,
+  getGearWithUsernames,
   getGear,
   getGearByGearId,
-  getGearByGearIdWithUser,
+  getGearByGearIdWithUsername,
   getGearByUserId,
   addGear,
   updateGear,

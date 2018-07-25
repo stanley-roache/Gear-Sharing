@@ -6,9 +6,11 @@ const gearDB = require('../db/gear')
 // public routes
 
 router.get('/single/:id', (req, res) => {
+  console.log('hit route');
+  
   const gearID = Number(req.params.id)
 
-  gearDB.getGearByGearId(gearID)
+  gearDB.getGearByGearIdWithUsername(gearID)
     .then(gear => {
       res.json(gear)
     })
@@ -21,7 +23,7 @@ router.get('/single/:id', (req, res) => {
 })
 
 router.get('/all', (req, res) => {
-  gearDB.getGear()
+  gearDB.getGearWithUsernames()
     .then(gearList => {
       res.json(gearList)
     })

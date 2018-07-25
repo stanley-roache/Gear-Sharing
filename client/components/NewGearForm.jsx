@@ -59,7 +59,7 @@ export class NewGearForm extends React.Component {
               </div>
 
               <div className='column is-6'>
-                <div className='select is-mulptiple'>
+                <div className='select'>
                   <select onChange={this.handleChange}>
                     <option className='option' value='One'>Free borrowing</option>
                     <option className='option' value='Two'>Upkeep Koha</option>
