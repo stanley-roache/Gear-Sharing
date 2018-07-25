@@ -76,15 +76,15 @@ export class ToolPool extends React.Component {
   }
 
   render() {
-    // to wait on gear array & user info load:
-    if (this.props.gear.isFetching) {
-      return (
-        <p>Fetching!!!!!!!!!!!</p>
-      )
-    }
+//     // to wait on gear array & user info load:
+//     if (this.props.gear.isFetching) {
+//       return (
+//         <p>Fetching!!!!!!!!!!!</p>
+//       )
+//     }
 
-    // once loaded:
-    else {
+//     // once loaded:
+//     else {
       let display = (this.state.filter === 'AVAILABLE')
         ? this.state.results.filter(e => e.status === 'Available')
         : this.state.results
@@ -148,14 +148,15 @@ export class ToolPool extends React.Component {
               .sort(nameSort)
               .map(item => {
                 console.log('print gear item')
-                return <ItemOnToolPool item={item} key={item.id} />
+//                 return <ItemOnToolPool item={item} key={item.id} />
+              return <ItemInGrid item={item} key={item.id} showToggle={false}/>
               })}
           </div>
 
         </div>
       )
     }
-  }
+//   }
 }
 
 const mapStateToProps = (state) => ({ gear: state.gear.gear, err: state.gear.errorMessage })
