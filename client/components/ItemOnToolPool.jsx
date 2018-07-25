@@ -18,8 +18,12 @@ export const ItemOnToolPool = props => {
             </Link>
             <div className='message'>
                 <p>{status}</p>
-                <p>Trust framework: </p>
-                <p>{trustframework}</p>
+                <p>{(trustframework == 'One')
+                    ? 'Free Borrowing'
+                    : (trustframework == 'Two')
+                        ? 'Upkeep Koha'
+                        : 'Conditional (Contact Owner)'
+                }</p>
             </div>
 
         </div>

@@ -105,7 +105,7 @@ export class GearItem extends React.Component {
                                     ? 'Free Borrowing'
                                     : (trustframework == 'Two')
                                         ? 'Upkeep Koha'
-                                        : 'Conditional (Contact to Arrange)'
+                                        : 'Conditional (Contact Owner)'
                                 }</p>
                                 <br />
 
