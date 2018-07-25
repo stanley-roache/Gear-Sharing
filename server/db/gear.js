@@ -31,6 +31,14 @@ function getGearByGearId(id, testDb) {
     .first()
 }
 
+function getGearByGearIdWithUser(id, testDb) {
+  const db = testDb || conn
+  return db('gear')
+    .join('users', 'gear.user_id', 'users.id')
+    .where('gear.id', id)
+    .first()
+}
+
 function getGearByGearIdWithUsername(id, testDb) {
   const db = testDb || conn
   return db('gear')
@@ -66,6 +74,7 @@ module.exports = {
   getGearWithUsernames,
   getGear,
   getGearByGearId,
+  getGearByGearIdWithUser,
   getGearByGearIdWithUsername,
   getGearByUserId,
   addGear,
