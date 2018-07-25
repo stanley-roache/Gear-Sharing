@@ -3,8 +3,9 @@
     width: 400px;
 }
 
-.tempimgcss {
-    width: 500px;
+.profile-photo {
+    margin-top: 23px;
+    width: 100%
 }
 .homebody {
     background-image: url("images/background/spanner2.png");
@@ -40,9 +41,8 @@
     margin-top: 15px;
 }
 
-.tab {
-    padding-right: 15px;
-    padding-top: 15px;
+.profile-tab {
+    margin-top: -15px;
 }
 
 #name {
@@ -75,4 +75,49 @@
 
 .edit-profile {
     padding: 3rem;
+}
+
+.navlink a:link {
+  color: black;
+}
+
+.navLink a:visited {
+  color: black;
+}
+
+.navLink a.active {
+  color: hotpink;
+}
+
+.navSpace {
+  padding-left: 30px;
+}
+
+.tool-name {
+    padding-left: 15px;
+}
+
+.gear-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+.icon-pad {
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.message {
+    padding: 20px;
+}
+
+.is-search-button {
+    width: 50%;
+    margin: auto;
+}
+
+.tool-pool-name {
+    padding-top: 10px;
+    padding-bottom: 10px; 
 }

@@ -35,7 +35,6 @@ class GearRequest extends React.Component {
       gear_id: this.props.gear_id,
       owner_id: this.props.owner_id,
       requester_id: this.props.requester_id,
-      created_at: Math.round(Date.now() / 1000),
       message: this.state.message
     }
   }

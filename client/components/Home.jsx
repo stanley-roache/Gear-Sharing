@@ -12,6 +12,7 @@ export class Home extends React.Component {
     }
     render() {
         return (
+
             <div className='homebody'>
                 <div className="container">
 
@@ -45,11 +46,3 @@ export class Home extends React.Component {
 const mapStateToProps = (state) => ({ gear: state.gear.gear, err: state.gear.errorMessage })
 
 export default connect(mapStateToProps)(Home)
-
-
-
-
-
-// popssible background image as only image
-    // mission statement in h3, under Tool Pool in h1
-    // 3 colums with about, ethics and sustability
