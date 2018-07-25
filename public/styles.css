@@ -91,3 +91,7 @@
     padding: 20px;
 }
 
+.is-search-button {
+    width: 50%;
+    margin: auto;
+}
