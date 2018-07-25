@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ItemOnToolPool from './ItemOnToolPool'
+import ItemInGrid from './ItemInGrid'
 
 import { nameSort } from '../utils/sorting'
 
