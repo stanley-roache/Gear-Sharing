@@ -13,7 +13,7 @@ export class GearItem extends React.Component {
             editingItem: false,
             requestingItem: false,
             requestSent: false,
-            activeToolTip: null, 
+            activeToolTip: null,
             toolTipOpen: false
         }
         this.openEdit = this.openEdit.bind(this)
@@ -22,22 +22,21 @@ export class GearItem extends React.Component {
         this.openRequest = this.openRequest.bind(this)
         this.sendRequest = this.sendRequest.bind(this)
         this.openToolTip = this.openToolTip.bind(this)
-        this.closeToolTip = this.closeToolTip.bind(this) 
+        this.closeToolTip = this.closeToolTip.bind(this)
     }
 
     toLogin() {
         document.location = "/#/login"
     }
 
-    openToolTip (trustframework) {
+    openToolTip(trustframework) {
         this.setState({
             activeToolTip: trustframework,
             toolTipOpen: true
         })
     }
 
-    closeToolTip () {
-        console.log('closing')
+    closeToolTip() {
         this.setState({
             activeToolTip: null,
             toolTipOpen: false
@@ -103,6 +102,7 @@ export class GearItem extends React.Component {
 
             return (
                 <div className='section'>
+
                     <div className='container'>
                         <div className='columns is-multiline has-text-centered'>
                             <div className='column is-12'>
@@ -167,7 +167,7 @@ export class GearItem extends React.Component {
                         <div className={`modal ${this.state.toolTipOpen && this.state.activeToolTip == 'One' && 'is-active'}`}>
                             <div className="modal-background"></div>
                             <div className="modal-content">
-                                <ToolTip trustframework={trustframework}/>}
+                                <ToolTip trustframework={trustframework} />}
                             </div>
                             <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeToolTip()}></a>
                         </div>
@@ -208,6 +208,7 @@ export class GearItem extends React.Component {
                         </div>
 
                     </div>
+
                 </div>
             )
         }
