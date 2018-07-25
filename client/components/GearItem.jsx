@@ -94,7 +94,7 @@ export class GearItem extends React.Component {
                             </div>
                         </div>
                         <div className='columns box gear-card'>
-                            <div className='column is-6'>
+                            <div className='column is-7'>
                                 <h3 className='title is-3'>Description:</h3>
                                 <p>{description}</p>
                                 <br />
@@ -110,7 +110,7 @@ export class GearItem extends React.Component {
                                 <br />
 
                             </div>
-                            <div className='column is-6'>
+                            <div className='gearitemimg column is-5'>
                                 <img src={photo_url} />
                             </div>
                         </div>

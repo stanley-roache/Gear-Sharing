@@ -17,6 +17,11 @@
     margin: auto;
 }
 
+.gearitemimg{
+    max-height: 400px;
+    max-width: 400px;
+}
+
 /* custom bulma overrides */
 
 .submit {
