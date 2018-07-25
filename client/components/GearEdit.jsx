@@ -69,7 +69,7 @@ export class GearEdit extends React.Component {
                 <select name='trustframework' onChange={this.handleChange} value={this.state.trustframework}>
                   <option className='option' value='One'>Free borrowing</option>
                   <option className='option' value='Two'>Upkeep Koha</option>
-                  <option className='option' value='Three'>Conditional (contact to talk)</option>
+                  <option className='option' value='Three'>Conditional (Contact Owner)</option>
                 </select>
               </div>
             </div>

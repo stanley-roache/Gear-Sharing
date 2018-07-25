@@ -11,28 +11,12 @@
     background-image: url("images/background/spanner-darker.jpg");
     background-position: center center;
     background-repeat:  no-repeat;
-    /* background-attachment: fixed; */
     background-size:  cover;
-    /* background-color: rgba(255, 255, 255, 0.5); */
     height: 100vh;
     padding-top: 10vh;
-    margin: auto
-    /* margin-top: 10vh; */
-    /* opacity: 0.2; */
+    margin: auto;
 }
 
-.white {
-    color: white;
-}
-
-.homebody h1 {
-    color: rgba(0, 0, 0, 1);
-    /* opacity: 1; */
-}
-.homebody p {
-    color: rgba(0, 0, 0, 1);
-    /* opacity: 1; */
-}
 /* custom bulma overrides */
 
 .submit {
