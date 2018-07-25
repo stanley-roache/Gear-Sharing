@@ -24,6 +24,10 @@
 
 /* custom bulma overrides */
 
+.icon-pad {
+    padding-right: 10px;
+}
+
 .submit {
     width: 60%;
     margin: auto;
