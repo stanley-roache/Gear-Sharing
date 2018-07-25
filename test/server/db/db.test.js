@@ -197,18 +197,6 @@ test('deleteRequest', () => {
     })
 })
 
-test.skip('deleteRequest throws error if request with matching id doesnt exist', () => {
-  const id = 1
-
-  return requests.deleteRequest(id, testDb)
-    .then(() => {
-      expect(true).toBeFalsy()
-    })
-    .catch(err => {
-      expect(err).toBeTruthy()
-    })
-})
-
 describe('request joined queiries', () => {
   const user_id = 1
 
