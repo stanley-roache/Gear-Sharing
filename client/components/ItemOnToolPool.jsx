@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 
 export const ItemOnToolPool = props => {
-    const { name, status, id, photo_url, trustframework } = props.item
+    const { name, status, id, photo_url, trustframework, user_name } = props.item
 
     return (
         <div key={id} className='column is-3 gear-item'>
@@ -12,12 +12,15 @@ export const ItemOnToolPool = props => {
                 <img src={photo_url} />
             </Link>
             <Link to={`/item/${id}`}>
-                <h4 className='title is-4'>
+                <h4 className='title is-4 tool-pool-name'>
                     <a>{name}</a>
                 </h4>
             </Link>
-            <p>{status}</p>
-            <p>{trustframework}</p>
+            <div className='message'>
+                <p>{status}</p>
+                <p>Trust framework: </p>
+                <p>{trustframework}</p>
+            </div>
 
         </div>
     )

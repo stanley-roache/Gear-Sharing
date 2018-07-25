@@ -95,3 +95,8 @@
     width: 50%;
     margin: auto;
 }
+
+.tool-pool-name {
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
