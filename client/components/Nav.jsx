@@ -23,7 +23,6 @@ class Nav extends React.Component {
             <h1 className={this.props.location.pathname === "/login" ? 'active title is-3' : "title is-3"}><Link to="/">TOOLPOOL</Link></h1>
           </div>
           <div className='column is-3'>
-            {console.log(this.props)}
             {this.props.auth.isAuthenticated
               ? [
                 <div>
