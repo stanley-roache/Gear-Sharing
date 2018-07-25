@@ -10,17 +10,35 @@ const requestSubject = 'new request for gear use'
 function sendRequest(details) {
   const {item, requester, messageBody} = details
   const requestBodyHTML = `
-  Hey ${item.user_name},
-  <br><br>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>TOOLPOOL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+<body style="fontcolor:black;">
+  <div style="padding:40px; background-color: #777777; max-width: 525px;">
+  <div style="padding:10px; background-color: #FFFFFF; max-width: 500px;">
+  <h1 style="text-align: center;"><img style="height: 1em; padding-right: 15px;" src="http://gears-of-poor.herokuapp.com/icon/sample_icon-512.png"/>TOOLPOOL<img style="height: 1em; padding-left: 15px;" src="http://gears-of-poor.herokuapp.com/icon/sample_icon-512.png"/></h1>
+  <h2 style="b">Hey ${item.first_name},</h2>
   ${requester.user_name} wants to use your ${item.name}.
   <br><br>
-  Their message: ${messageBody}
+  Their message:
   <br><br>
+  <div style="padding: 20px 20px 20px 20px; border-radius: 10px; background-color: pink;">
+    ${messageBody}
+  </div>
+  <br>
   It'd be awesome if you could touch base with them at ${requester.email_address} ASAP.
   <br><br>
   Thanks for getting involved!
   <br><br>
-  Have an awesome day!`
+  Have an awesome day!
+  </div></div>
+  </body>
+  </html>`
+
 
   return new Promise((resolve, reject) => {
     const msg = {
