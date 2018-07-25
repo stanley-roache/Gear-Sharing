@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ItemOnToolPool from './ItemOnToolPool'
-import ItemInGrid from './ItemInGrid'
 
 import { nameSort } from '../utils/sorting'
 
@@ -25,6 +24,7 @@ export class ToolPool extends React.Component {
     this.selectSearch = this.selectSearch.bind(this)
     this.selectFilter = this.selectFilter.bind(this)
   }
+
 
   handleChange(e) {
     this.setState({
@@ -54,6 +54,7 @@ export class ToolPool extends React.Component {
     })
   }
 
+
   cancelSearch() {
     this.setState({
       term: ''
@@ -76,21 +77,21 @@ export class ToolPool extends React.Component {
   }
 
   render() {
-//     // to wait on gear array & user info load:
-//     if (this.props.gear.isFetching) {
-//       return (
-//         <p>Fetching!!!!!!!!!!!</p>
-//       )
-//     }
+    // to wait on gear array & user info load:
+    if (this.props.gear.isFetching) {
+      return (
+        <p>Fetching!!!!!!!!!!!</p>
+      )
+    }
 
-//     // once loaded:
-//     else {
+    // once loaded:
+    else {
       let display = (this.state.filter === 'AVAILABLE')
         ? this.state.results.filter(e => e.status === 'Available')
         : this.state.results
 
       return (
-        <div className='container'>
+        <div className='section'>
           <div className='columns is-multiline'>
             <div className='column is-4 is-offset-4 has-text-centered'>
               <h1 className='title is-1'>ALL TOOLS</h1>
@@ -147,16 +148,14 @@ export class ToolPool extends React.Component {
             {display
               .sort(nameSort)
               .map(item => {
-                console.log('print gear item')
-//                 return <ItemOnToolPool item={item} key={item.id} />
-              return <ItemInGrid item={item} key={item.id} showToggle={false}/>
+                return <ItemOnToolPool item={item} key={item.id} />
               })}
           </div>
 
         </div>
       )
     }
-//   }
+  }
 }
 
 const mapStateToProps = (state) => ({ gear: state.gear.gear, err: state.gear.errorMessage })
