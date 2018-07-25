@@ -49,10 +49,10 @@ router.post('/new', (req, res) => {
   
   gearDB.addGear(newItem)
     .then(ids => {
-      res.json({
-        gear: newItem,
-        id: ids[0]
-      })
+      gearDB.getGearByGearIdWithUsername(ids[0])
+        .then(gear => {
+          res.json(gear)
+        })
     })
     .catch(err => {
       res.status(500).send({
@@ -71,6 +71,8 @@ router.post('/update/:id', (req, res) => {
       res.status(200).send({numUpdates}) // rewrite test for this - should really test that it gets back the edited item
     })
     .catch(err => {
+      console.log(err);
+      
       res.status(500).send({
         message: 'error updating gear item',
         err

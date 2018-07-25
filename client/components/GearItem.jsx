@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import GearEdit from './GearEdit'
 import GearRequest from './GearRequest'
+import ToolTip from './ToolTip'
 
 export class GearItem extends React.Component {
     constructor(props) {
@@ -12,16 +13,34 @@ export class GearItem extends React.Component {
             editingItem: false,
             requestingItem: false,
             requestSent: false,
+            activeToolTip: null,
+            toolTipOpen: false
         }
         this.openEdit = this.openEdit.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
         this.closeRequest = this.closeRequest.bind(this)
         this.openRequest = this.openRequest.bind(this)
         this.sendRequest = this.sendRequest.bind(this)
+        this.openToolTip = this.openToolTip.bind(this)
+        this.closeToolTip = this.closeToolTip.bind(this)
     }
 
     toLogin() {
         document.location = "/#/login"
+    }
+
+    openToolTip(trustframework) {
+        this.setState({
+            activeToolTip: trustframework,
+            toolTipOpen: true
+        })
+    }
+
+    closeToolTip() {
+        this.setState({
+            activeToolTip: null,
+            toolTipOpen: false
+        })
     }
 
     openEdit() {
@@ -83,6 +102,7 @@ export class GearItem extends React.Component {
 
             return (
                 <div className='section'>
+
                     <div className='container'>
                         <div className='columns is-multiline has-text-centered'>
                             <div className='column is-12'>
@@ -94,24 +114,24 @@ export class GearItem extends React.Component {
                             </div>
                         </div>
                         <div className='columns box gear-card'>
-                            <div className='column is-6'>
+                            <div className='column is-7'>
                                 <h3 className='title is-3'>Description:</h3>
                                 <p>{description}</p>
                                 <br />
                                 <h5 className='title is-5' id='is-gear-item-subcategory1'>{status}</h5>
                                 <br />
                                 <h5 className='title is-5' id='is-gear-item-subcategory2'>Borrowing conditions:</h5>
-                                <p>{(trustframework == 'One')
+                                <p><a onClick={() => this.openToolTip(trustframework)}>{(trustframework == 'One')
                                     ? 'Free Borrowing'
                                     : (trustframework == 'Two')
                                         ? 'Upkeep Koha'
                                         : 'Conditional (Contact Owner)'
-                                }</p>
+                                }</a></p>
                                 <br />
 
                             </div>
-                            <div className='column is-6'>
-                                <img src={photo_url} />
+                            <div className='column is-5'>
+                                <img className="gearitemimg is-pulled-right" src={photo_url} />
                             </div>
                         </div>
 
@@ -144,6 +164,33 @@ export class GearItem extends React.Component {
 
 
 
+                        <div className={`modal ${this.state.toolTipOpen && this.state.activeToolTip == 'One' && 'is-active'}`}>
+                            <div className="modal-background"></div>
+                            <div className="modal-content">
+                                <ToolTip trustframework={trustframework} />}
+                            </div>
+                            <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeToolTip()}></a>
+                        </div>
+
+                        <div className={`modal ${this.state.toolTipOpen && this.state.activeToolTip == 'Two' && 'is-active'}`}>
+                            <div className="modal-background"></div>
+                            <div className="modal-content">
+                                <ToolTip trustframework={trustframework} />}
+                            </div>
+                            <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeToolTip()}></a>
+                        </div>
+
+                        <div className={`modal ${this.state.toolTipOpen && this.state.activeToolTip == 'Three' && 'is-active'}`}>
+                            <div className="modal-background"></div>
+                            <div className="modal-content">
+                                <ToolTip trustframework={trustframework} />}
+                            </div>
+                            <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeToolTip()}></a>
+                        </div>
+
+
+
+
                         <div className={`modal ${this.state.editingItem && 'is-active'}`}>
                             <div className="modal-background"></div>
                             <div className="modal-content">
@@ -161,6 +208,7 @@ export class GearItem extends React.Component {
                         </div>
 
                     </div>
+
                 </div>
             )
         }

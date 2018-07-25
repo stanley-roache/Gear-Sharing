@@ -102,16 +102,21 @@ test('getGearWithUsernames function joins the users and gear', () => {
 })
 
 test('getUserByName function does what it says it does', () => {
-  return users.getUserByName('haydiggidydoc', testDb)
+  const expected = 'wayneric'
+
+  return users.getUserByName(expected, testDb)
     .then(users => {
-      expect(users.user_name).toEqual('haydiggidydoc')
+      expect(users.user_name).toEqual(expected)
   })
 })
 
 test('getUserById function gets a user by their Id', () => {
-  return users.getUserById(2, testDb)
+  const expected = 'Hayden'
+  const user_id = 2
+
+  return users.getUserById(user_id, testDb)
     .then(users => {
-      expect(users.first_name).toEqual('Haydeen')
+      expect(users.first_name).toEqual(expected)
     })
 })
 

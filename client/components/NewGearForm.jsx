@@ -13,8 +13,9 @@ export class NewGearForm extends React.Component {
       photo_url: '',
       trustframework: "One",
       status: 'Available',
-      user_id: this.props.user.id
+      user_id: props.user.id
     }
+    
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)

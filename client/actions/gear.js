@@ -46,8 +46,7 @@ export function addGearItem(item) {
     dispatch(requestGearSave())
     return request('post', 'gear/new', item)
       .then((res) => {
-        let newGear = res.body.gear
-        newGear.id = res.body.id
+        let newGear = res.body
         dispatch(gearAdd(newGear))
       })
       .catch(err => {
@@ -72,10 +71,13 @@ export function gearAdd(item) {
 }
 
 export function editGearItem(item) {
+  delete item.user_name
   return dispatch => {
     dispatch(editRequest())
     return request('post', `gear/update/${item.id}`, item)
       .then((res) => {
+        console.log('successgul updated');
+        
         dispatch(editGear(item))
       })
       .catch(err => {

@@ -76,7 +76,7 @@ describe('gear route tests', () => {
         .send(fakeGear)
         .expect(200)
         .then(res => {
-          expect(res.body.gear).toBeTruthy()
+          expect(res.body).toBeTruthy()
         })
     })
 
