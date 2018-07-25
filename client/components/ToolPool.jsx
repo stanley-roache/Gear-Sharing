@@ -25,6 +25,11 @@ export class ToolPool extends React.Component {
     this.selectFilter = this.selectFilter.bind(this)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.gear.length != prevProps.gear.length) {
+      this.resetSearch()
+    }
+  }
 
   handleChange(e) {
     this.setState({
@@ -78,7 +83,7 @@ export class ToolPool extends React.Component {
 
   render() {
     // to wait on gear array & user info load:
-    if (this.props.gear.isFetching) {
+    if (this.props.isFetching) {
       return (
         <p>Fetching!!!!!!!!!!!</p>
       )
@@ -113,36 +118,30 @@ export class ToolPool extends React.Component {
                 </ul>
               </div>
 
-              {
-                this.state.viewingSearch
-
-                  ?
-
-                  <div>
-                    <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
-                    <button className='button is-centered' onClick={this.handleSubmit}>Search</button>
-                    <button className='button is-centered' onClick={this.cancelSearch}>Cancel</button>
+              {this.state.viewingSearch
+                ?
+                <div>
+                  <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
+                  <button className='button is-centered' onClick={this.handleSubmit}>Search</button>
+                  <button className='button is-centered' onClick={this.cancelSearch}>Cancel</button>
+                </div>
+                :
+                <div className='columns'>
+                  <div className='column is-4'>
+                    <span>Filter by: </span>
                   </div>
-
-                  :
-
-                  <div className='columns'>
-                    <div className='column is-4'>
-                      <span>Filter by: </span>
-                    </div>
-                    <div className='column is-8'>
-                      <div className='select is-fullwidth'>
-                        <select onChange={this.handleChange} name="filter">
-                          <option className='option' value='AVAILABLE'>Available Now</option>
-                          <option className='option' value='ALL'>All Tools</option>
-                        </select>
-                      </div>
+                  <div className='column is-8'>
+                    <div className='select is-fullwidth'>
+                      <select onChange={this.handleChange} name="filter">
+                        <option className='option' value='AVAILABLE'>Available Now</option>
+                        <option className='option' value='ALL'>All Tools</option>
+                      </select>
                     </div>
                   </div>
+                </div>
               }
             </div>
           </div>
-
 
           <div className='columns is-multiline'>
             {display
@@ -158,6 +157,10 @@ export class ToolPool extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ gear: state.gear.gear, err: state.gear.errorMessage })
+const mapStateToProps = (state) => ({
+  gear: state.gear.gear,
+  err: state.gear.errorMessage,
+  isFetching: state.gear.isFetching
+})
 
 export default connect(mapStateToProps)(ToolPool)
