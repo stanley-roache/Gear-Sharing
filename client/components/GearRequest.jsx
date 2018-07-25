@@ -14,7 +14,6 @@ class GearRequest extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.buildMessage = this.buildMessage.bind(this)
-    this.cancel = this.cancel.bind(this)
   }
 
 
@@ -24,7 +23,8 @@ class GearRequest extends React.Component {
     })
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault()
     const message = this.buildMessage()
     this.props.dispatch(manageRequest(message))
     this.props.onFinish()
@@ -39,24 +39,19 @@ class GearRequest extends React.Component {
     }
   }
 
-  cancel() {
-    this.setState({
-      message: ''
-    })
-    this.props.onFinish()
-  }
-
-
   render() {
     return (
-      <div className='send-message-form'>
-        <label>
-          Send a message with your request:
-          <input onChange={this.handleChange} type="text" value={this.state.message} name='message' />
-        </label>
-        <br />
-        <button onClick={this.handleSubmit}>Send Request</button>
-        <button onClick={this.cancel}>Cancel</button>
+      <div className='box add-gear'>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <h1 className="title is-1 has-text-centered">Request {this.props.name}</h1>
+          <hr />
+
+          <label className="label is-medium">Send a message with your request
+            <textarea required rows='8' className="textarea is-medium is-fullwidth" placeholder="e.g. when you are wanting it, what you plan to do, talking about the borrowing conditions. Be a goodie" onChange={this.handleChange} value={this.state.message} name='message'></textarea>
+          </label>
+
+          <input className="submit button-pad button is-centered is-black is-large" type='submit' value='Send Request' />
+        </form>
       </div>
     )
   }

@@ -10,23 +10,48 @@ export class GearItem extends React.Component {
 
         this.state = {
             editingItem: false,
-            requestingItem: false
+            requestingItem: false,
+            requestSent: false
         }
+        this.openEdit = this.openEdit.bind(this)
+        this.closeEdit = this.closeEdit.bind(this)
+        this.closeRequest = this.closeRequest.bind(this)
+        this.openRequest = this.openRequest.bind(this)
+        this.sendRequest = this.sendRequest.bind(this)
     }
 
     toLogin() {
         document.location = "/#/login"
     }
 
-    renderForm() {
+    openEdit() {
         this.setState({
             editingItem: true
         })
     }
 
-    cancelEdit() {
+    closeEdit() {
         this.setState({
             editingItem: false
+        })
+    }
+
+    openRequest() {
+        this.setState({
+            requestingItem: true
+        })
+    }
+
+    closeRequest() {
+        this.setState({
+            requestingItem: false
+        })
+    }
+
+    sendRequest() {
+        this.setState({
+            requestingItem: false,
+            requestSent: true
         })
     }
 
@@ -92,6 +117,9 @@ export class GearItem extends React.Component {
 
                                 {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
                                     && <p className='has-text-centered'>This is your tool</p>}
+
+                                {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
+                                    && <p className='has-text-centered'>Far out, nice tool. Want to use it? Get in touch</p>}
                             </div>
                             <div className='column is-6'>
 
@@ -99,27 +127,33 @@ export class GearItem extends React.Component {
                                     && <button className='submit button is-centered is-black is-large' onClick={this.toLogin}>Login/Register</button>}
 
                                 {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
-                                    && <button className='submit button is-centered is-black is-large' onClick={() => this.renderForm()}>Edit this tool</button>}
-                            </div>
-                        </div>
+                                    && <button className='submit button is-centered is-black is-large' onClick={() => this.openEdit()}>Edit this tool</button>}
 
-
-
-                        <div ref='editForm'>
-                            <div className={`modal ${this.state.editingItem && 'is-active'}`}>
-                                <div className="modal-background"></div>
-                                <div className="modal-content">
-                                    <GearEdit item={thisGear} onFinish={() => this.cancelEdit()} />}
-                                </div>
-                                <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.cancelEdit()}></a>
+                                {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId && !this.state.requestSent
+                                    && <button className='submit button is-centered is-black is-large' onClick={() => this.openRequest()}>Request this tool</button>}
+                                {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId && this.state.requestSent
+                                    && <p className='has-text-centered'>Message sent!</p>}
                             </div>
                         </div>
 
 
 
 
-                        {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
-                            && <GearRequest onFinish={() => { }} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId} />}
+                        <div className={`modal ${this.state.editingItem && 'is-active'}`}>
+                            <div className="modal-background"></div>
+                            <div className="modal-content">
+                                <GearEdit item={thisGear} onFinish={() => this.closeEdit()} />}
+                            </div>
+                            <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeEdit()}></a>
+                        </div>
+
+                        <div className={`modal ${this.state.requestingItem && 'is-active'}`}>
+                            <div className="modal-background"></div>
+                            <div className="modal-content">
+                                <GearRequest onFinish={() => this.sendRequest()} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId} name={name} />}
+                            </div>
+                            <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.closeRequest()}></a>
+                        </div>
 
                     </div>
                 </div>
