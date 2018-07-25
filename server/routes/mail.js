@@ -19,20 +19,18 @@ router.post('/request', (req, res) => {
         gearDB.getGearByGearIdWithUser(req.body.gearId),
         userDB.getUserById(req.user.user_id)
     ])
-        .then(([item, requester]) => {
-            return sendRequest({ item, requester, messageBody })
+    .then(([item, requester]) => {
+        return sendRequest({ item, requester, messageBody })
+    })
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: 'error sending mail request',
+            err
         })
-        .then(() => {
-            res.sendStatus(200)
-        })
-        .catch(err => {
-            console.log(err);
-
-            res.status(500).send({
-                message: 'error sending mail request',
-                err
-            })
-        })
+    })
 })
 
 module.exports = router
