@@ -3,7 +3,7 @@ const conn = require('./connection')
 function getGearWithUsers(testDb) {
   const db = testDb || conn
   return db('gear')
-    .join('users', 'gear.user_id', 'users.id')
+    .join('users', 'users.id', 'gear.user_id')
 }
 
 function getGear(testDb) {
