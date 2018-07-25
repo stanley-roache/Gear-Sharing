@@ -14,9 +14,9 @@ router.use(
 )
 
 router.post('/request', (req, res) => {
-    const { messageBody } = req.body
+    const { gearId, messageBody } = req.body
     Promise.all([
-        gearDB.getGearByGearIdWithUser(req.body.gearId),
+        gearDB.getGearByGearIdWithUser(gearId),
         userDB.getUserById(req.user.user_id)
     ])
     .then(([item, requester]) => {

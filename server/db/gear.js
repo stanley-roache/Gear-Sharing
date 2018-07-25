@@ -11,6 +11,14 @@ const gearUserJoinKeys = [
   'user_name'
 ]
 
+const gearUserJoinKeysFull = [
+  ...gearUserJoinKeys,
+  'first_name',
+  'last_name',
+  'email_address',
+  'profile_pic',
+]
+
 function getGearWithUsernames(testDb) {
   const db = testDb || conn
   return db('gear')
@@ -36,6 +44,7 @@ function getGearByGearIdWithUser(id, testDb) {
   return db('gear')
     .join('users', 'gear.user_id', 'users.id')
     .where('gear.id', id)
+    .select(...gearUserJoinKeysFull)
     .first()
 }
 
