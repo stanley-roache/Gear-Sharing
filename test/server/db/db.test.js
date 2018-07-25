@@ -39,17 +39,13 @@ const fakeGearItem = {
 
 const expectedJoinKeys = [
   'id',
-  'first_name',
-  'last_name',
   'user_name',
-  'email_address',
-  'hash',
   'status',
   'trustframework',
   'name',
   'description',
   'photo_url',
-  'user_id',
+  'user_id'
 ]
 
 const fakeGearItemUpdate = {
@@ -94,8 +90,8 @@ test('getGearByGearId function gets a gear by ID', () => {
     })
 })
 
-test('getGearWithUsers function joins the users and gear', () => {
-  gear.getGearWithUsers(testDb)
+test('getGearWithUsernames function joins the users and gear', () => {
+  gear.getGearWithUsernames(testDb)
     .then(actualArr => {
       actualArr.forEach(actual => {
         expectedJoinKeys.forEach(key => {
@@ -147,8 +143,8 @@ test('userExists function lets you know if a username is taken', () => {
     })
 })
 
-test('getGearByGearIdWithUser function joins the owner and gear', () => {
-  gear.getGearByGearIdWithUser(1, testDb)
+test('getGearByGearIdWithUsername function joins the owner and gear', () => {
+  gear.getGearByGearIdWithUsername(1, testDb)
     .then(actual => {
         expectedJoinKeys.forEach(key => {
           expect(actual.hasOwnProperty(key)).toBeTruthy()

@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Three",
           name: 'Hammer Drill',
           description: 'Tackle a wide range of applications with quick-release chucks and multi-gear drills. Designed with large diameter gearing, optimised communtators and rugged casing to last longer.',
-          photo_url: 'https://i.ebayimg.com/images/g/eJAAAOSw9mpaNb1N/s-l300.jpg',
+          photo_url: 'http://www.miconstruguia.com/wp-content/uploads/2015/04/Makita_XRH05Z_Action_Shot_7.jpg',
           user_id: 1
         },
         {
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Food Dehydrator',
           description: 'Easily make healthy, delicious, and natural snacks like banana chips, fruit roll-ups, and jerky!',
-          photo_url: 'https://cdn3.volusion.com/wunh2.w2vhv/v/vspfiles/photos/75-0601-W-2.jpg?1524575057',
+          photo_url: 'https://cdn3.volusion.com/wunh2.w2vhv/v/vspfiles/photos/74-1001-W-2.jpg?1524575057',
           user_id: 2
         },
         {
@@ -28,8 +28,8 @@ exports.seed = function(knex, Promise) {
           status: "Available",
           trustframework: "Three",
           name: 'Chainsaw',
-          description: 'Entry level MiniBoss Chainsaw for cutting firewood economical, compact and lightweight. STIHL Ematic chain lubrication for optimum lubrication of the chain.',
-          photo_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Stihl_MS_170.JPG/1200px-Stihl_MS_170.JPG',
+          description: 'Powerful 14.5 Amp motor offers consistent performance and durability. Built-in chain brake for added safety. Automatic oil lubrication and built-in oil reservoir with level indicator. ',
+          photo_url: 'https://www.worx.com/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/w/g/wg303-3.1530283278.jpg',
           user_id: 3
         },
         {
@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Hole Saw Set',
           description: 'Bi-metal holesaws with high speed steel teeth for cutting mild steel, copper, aluminium, brass, laminates, plastics and timber. Carbon steel arbor and extension.',
-          photo_url: 'http://img.diytrade.com/cdimg/456086/2606764/0/1155628706.jpg',
+          photo_url: 'https://www.goldtoolsmanila.com/wp-content/uploads/2017/07/TCT-22mm-HoleSaw-3.jpg',
           user_id: 4
         },
         {
@@ -47,7 +47,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Water Blaster',
           description: 'Compact, light weight Waterblaster, great for light cleaning jobs around the house and garden. The RE 88 comes equipped with an anti-drill and quick release coupling on the gun, rotary and fan nozzles and a detergent spray set, all as standard.ary and fan nozzles and detergent spray set, all as standard.',
-          photo_url: 'http://hireshopkaitaia.co.nz/wp-content/uploads/2014/10/waterblaster-1800psi.jpg',
+          photo_url: 'http://www.kerrick.co.nz/site/DefaultSite/filesystem/images/news/SetWidth485-Drain-Cleaner-and-Water-Blaster-for-Milford.jpg',
           user_id: 1
         },
         {
@@ -65,7 +65,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Hair Clippers',
           description: 'The Wahl Super Taper is one of the most popular mains clippers among NZ professionals, barbers and salons. Its powerful, realiable motor, durable, corrosion resistant chrome plated blades make it ideal for all clipper work.',
-          photo_url: 'https://images.asos-media.com/products/wahl-lithium-power-spl-clipper/8103968-1-multi?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72',
+          photo_url: 'https://ae01.alicdn.com/kf/HTB1PbQYRFXXXXXmXFXXq6xXFXXXS/pet-dog-cat-hand-clippers-manual-plier-hair-trimmers-old-fashioned-manual-knife-hand-operated-clipper.jpg_640x640.jpg',
           user_id: 3
         },
         {
@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Three",
           name: 'Rotary Hoe',
           description: 'The Red Roo rotary hoe has a 600mm wide cutting deck that goes to a depth of 250mm. This unit is powered by a 8.5hp petrol engine, and is easily transported by ute or trailer.',
-          photo_url: 'https://www.directaccessandequipment.com.au/assets/equipment/general/rotary-hoe.jpg',
+          photo_url: 'http://img.agriexpo.online/images_ag/photo-g/168458-10377539.jpg',
           user_id: 1
         },
         {
@@ -92,7 +92,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Travel Hair Dryer',
           description: 'The hair dryer has 1400W power and has 2 different speed settings, it also comes with a clip off concentrator for easier styling.',
-          photo_url: 'http://www.gapyeartravelstore.com/images/P/2-15.jpg',
+          photo_url: 'https://i1.wp.com/thebeautyinyou.mlethadaniels.net/wp-content/uploads/2018/02/Revlon-1875W-Compact-Travel-Hair-Dryer-0-3.jpg?fit=500%2C500',
           user_id: 2
         },
         {
@@ -100,17 +100,17 @@ exports.seed = function(knex, Promise) {
           status: "Available",
           trustframework: "Two",
           name: 'Acoustic Guitar',
-          description: 'Rouge guitars is for musicians, who are looking for an ambitious instrument with a good sound and a modern design.',
-          photo_url: 'https://www.batonrougeguitars.com/fileadmin/images/home/Galeria_2018_04/Batonrouge_Guitars_04.jpg',
+          description: 'The top is bubbled and the back has some cracks. Good for musicians who are looking for an ambitious instrument with a good sound.',
+          photo_url: 'https://djbe776q9tz25.cloudfront.net/6fabc00vn4qtggc5bmgejmab8g.jpg?w=535&h=535&mode=crop',
           user_id: 3
         },
         {
           id: 12,
           status: "Available",
           trustframework: "Two",
-          name: 'Fishing Kayak',
+          name: 'Kayaks',
           description: 'Fishing Kayak set up includes paddle, anchor, seat, and storage /rod holder. Great fishing set up.',
-          photo_url: 'https://i.ebayimg.com/00/s/MTA2N1gxNjAw/z/kNAAAOSwve5bVayv/$_75.JPG',
+          photo_url: 'https://oceankayak.johnsonoutdoors.com/sites/johnsonoutdoors-store/files/product/ocekayakl3/1097555/InSituationImage/1097555_insitu04.jpg',
           user_id: 3
         },
         {
@@ -118,8 +118,8 @@ exports.seed = function(knex, Promise) {
           status: "Available",
           trustframework: "One",
           name: 'Ladder',
-          description: 'he Atom Multi Ladder 22 combines the strengths of traditional A-frame, uneven A-frame and extension ladders, and trestle scaffolding, into one tidy package.',
-          photo_url: 'https://www.traderisk.com.au/wp-content/uploads/2015/08/ladder-double.jpg',
+          description: 'A Cosco 2008 Model 20-12A ABL aluminum 12ft step-ladder. Highest standing level is 112 1/8", has extra-heavy duty industrial rating, and a working load of 300lbs.',
+          photo_url: 'https://ebth-com-production.imgix.net/2016/10/13/20/27/27/4b58296f-560b-470b-b7b9-9a47fd7be171/DSCN0176.jpg?ixlib=rb-1.1.0&w=880&h=880&fit=crop&crop=&auto=format',
           user_id: 1
         },
         {
@@ -128,7 +128,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Three",
           name: 'Engine Hoist',
           description: 'Big Red 1 Ton Engine Hoist (T31002) by Torin®. The heavy-duty Torin 1 Ton Folding Shop Crane is specifically designed to raise, lower and transport engines, differentials, transmissions and other heavy loads with minimal effort.',
-          photo_url: 'http://www.yesterdaystractors.com/gallery/jd2010art/onstand.jpg',
+          photo_url: 'https://pixl.varagesale.com/http://s3.amazonaws.com/hopshop-image-store-production/41070006/38a7431e7989f7c5be989e731d0fbd97.jpg?_ver=large_uploader_thumbnail&w=640&h=640&fit=crop&s=99cb7cdb9b612964f6991ee249b7f4b6',
           user_id: 2
         },
         {
@@ -137,16 +137,16 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Microwave',
           description: 'Class up your cooking space. This Samsung over-the-range microwave has a sleek design and LED display to keep your kitchen looking sharp.',
-          photo_url: 'https://s7d2.scene7.com/is/image/SamsungUS/rsi-ctt-LifestyleCountertopMicrowave-1440-HAMicrowaves-063016V2?$feature-benefit-bottom-mobile-jpg$',
+          photo_url: 'https://assets.robertdyas-static.co.uk/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/r/u/russell_hobbs_rhretmm705r_17l_manual_retro_microwave_red_0002_195693_3_.jpg',
           user_id: 3
         },
         {
           id: 16,
           status: "Not Available",
           trustframework: "Three",
-          name: 'Commercial Donut Machine',
+          name: 'Donut Factory',
           description: 'This machine can make 560 donuts/hour – that is more than 46 dozen/hour. Most often, this quantity of donuts is enough.',
-          photo_url: 'http://www.otex.us/otexkepek/termek/12/12_1_orig.jpg',
+          photo_url: 'https://i.pinimg.com/originals/da/2a/b6/da2ab6fe20c9814e5a633c8069a565f3.jpg',
           user_id: 4
         },
         {
@@ -155,16 +155,16 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Golf Clubs',
           description: '7 Antique Vintage 1920s Hickory Wood Shaft Golf Clubs & Old Golf Bag.',
-          photo_url: 'https://www.parthcnctools.com/image/parthcnctools/7-antique-vintage-1920s-hickory-wood-shaft-golf-clubs-old-golf-bag-1600-x-952.jpg',
+          photo_url: 'https://pixl.varagesale.com/http://s3.amazonaws.com/hopshop-image-store-production/140018394/befe9a2d0e8fc73d9d2a941223b86f99.jpg?_ver=large_uploader_thumbnail&w=640&h=640&fit=crop&s=4808c51dc3e23b24a7e65fdcaa8cfdb6',
           user_id: 1
         },
         {
           id: 18,
           status: "Not Available",
           trustframework: "Three",
-          name: 'Row Boat',
-          description: 'Great little boat, does not leak a drop. Does not come with oars',
-          photo_url: 'https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/BXDkzMFFeizetursq/videoblocks-close-up-shot-of-an-old-row-boat-that-has-been-pulled-to-shore-the-river-can-be-seen-nearby-and-grass-growing-inside-the-boat_s-hgt0tctz_thumbnail-full01.png',
+          name: 'Row Boat Cradle',
+          description: 'Great little boat we had made for our son. It does not leak a drop but does not come with oars',
+          photo_url: 'http://www.plioz.com/wp-content/images/handcrafted-row-boat-cradle1.jpg',
           user_id: 2
         },
         {
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'VHS Tape Rewinder',
           description: 'Quickly rewind your videotapes and video cassettes with a fast and easy VCR rewinder. Enjoy your old movies and home videos with these bestselling brands.',
-          photo_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/VHS_tape_rewinder.jpg/1200px-VHS_tape_rewinder.jpg',
+          photo_url: 'https://i.ebayimg.com/images/g/7J4AAOSwzXxaNWY1/s-l640.jpg',
           user_id: 3
         },
         {
@@ -200,7 +200,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "One",
           name: 'Barrel Cactus',
           description: 'Echinocactus grusonii, popularly known as the golden barrel cactus, golden ball or mother-in-laws cushion, is a well known species of cactus, and is endemic to east-central Mexico.',
-          photo_url: 'https://cdn.shopify.com/s/files/1/0968/5384/products/4e630b91-b8d0-59f9-b7fd-79b213d01d2d.jpg?v=1520488868',
+          photo_url: 'https://st.hzcdn.com/simgs/4592cddb09593ba3_8-0200/home-design.jpg',
           user_id: 2
         },
         {
@@ -209,7 +209,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Two",
           name: 'Fire Extinguisher',
           description: 'Discharge a fine powder that absorbs fuel molecules, depriving the fire of a fuel source.',
-          photo_url: 'http://www.upnorthvoice.com/wp-content/uploads/2018/05/fire-extinguisher.jpg',
+          photo_url: 'https://images-na.ssl-images-amazon.com/images/I/814mx2L11TL.jpg',
           user_id: 3
         },
         {
@@ -218,7 +218,7 @@ exports.seed = function(knex, Promise) {
           trustframework: "Three",
           name: 'Jukebox',
           description: 'This is an original 1970s  jukebox but it was gutted to make it lighter as it was used as a prop in a play.  It therefore  doesnt work. It is currently on wheels. Artwork and song lists made up for the show so not original.',
-          photo_url: 'https://www.fiftiesstore.com/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/w/1/w1800-11-17-1_xxl.jpg',
+          photo_url: 'https://www.hiremasterwanganui.co.nz/wp-content/uploads/2015/01/IMG_1962.jpg',
           user_id: 4
         },
       ]);
