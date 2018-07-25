@@ -110,8 +110,8 @@ export class GearItem extends React.Component {
                                 <br />
 
                             </div>
-                            <div className='gearitemimg column is-5'>
-                                <img src={photo_url} />
+                            <div className='column is-5'>
+                                <img className="gearitemimg is-pulled-right" src={photo_url} />
                             </div>
                         </div>
 
