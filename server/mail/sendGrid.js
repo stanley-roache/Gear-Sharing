@@ -9,6 +9,8 @@ const requestSubject = 'new request for gear use'
 
 function sendRequest(details) {
   const {item, requester, messageBody} = details
+  console.log(item);
+  
   const requestBodyHTML = `
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
