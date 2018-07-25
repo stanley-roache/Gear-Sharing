@@ -46,8 +46,7 @@ export function addGearItem(item) {
     dispatch(requestGearSave())
     return request('post', 'gear/new', item)
       .then((res) => {
-        let newGear = res.body.gear
-        newGear.id = res.body.id
+        let newGear = res.body
         dispatch(gearAdd(newGear))
       })
       .catch(err => {

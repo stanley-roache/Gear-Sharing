@@ -49,10 +49,10 @@ router.post('/new', (req, res) => {
   
   gearDB.addGear(newItem)
     .then(ids => {
-      res.json({
-        gear: newItem,
-        id: ids[0]
-      })
+      gearDB.getGearByGearIdWithUsername(ids[0])
+        .then(gear => {
+          res.json(gear)
+        })
     })
     .catch(err => {
       res.status(500).send({
