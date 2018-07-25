@@ -122,10 +122,13 @@ export class ToolPool extends React.Component {
 
               {this.state.viewingSearch
                 ?
-                <div>
-                  <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
-                  {/*<button className='button is-centered' onClick={this.handleSubmit}>Search</button>*/}
-                  {/*<button className='button is-centered' onClick={this.cancelSearch}>See All</button>*/}
+                <div className='columns'>
+                  <div className='column is-9'>
+                    <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
+                  </div>
+                  <div className='column is-3'>
+                    <button className='button is-pulled-right' onClick={this.cancelSearch}>See All</button>
+                  </div>
                 </div>
                 :
                 <div className='columns'>
