@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {editGearItem} from '../actions/gear'
+import { connect } from 'react-redux'
+import { editGearItem } from '../actions/gear'
 
 export class GearEdit extends React.Component {
   constructor(props) {
@@ -22,52 +22,69 @@ export class GearEdit extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.dispatch(editGearItem(this.state))
-    this.props.finish()
+    this.props.onFinish()
   }
 
   render() {
     return (
-      <form className='edit-gear-form' onSubmit={this.handleSubmit}>
-        <label>
-          Name: 
-          <input onChange={this.handleChange} type="text" value={this.state.name} name='name' />
-        </label>
-        <br />
-        <label>
-          Availability: 
-          <select name='status' onChange={this.handleChange} value={this.state.status}>
-            <option value='Available'>Available</option>
-            <option value='Not Available'>Not Available</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Description: 
-          <input onChange={this.handleChange} type="text" value={this.state.description} name='description' />
-        </label>
-        <br />
-        <label>
-          Photo url: 
-          <input onChange={this.handleChange} type="text" value={this.state.photo_url} name='photo_url' />
-        </label>
-        <br />
-        <label>
-          Lending conditions: 
-          <select name='trustframework' onChange={this.handleChange} value={this.state.trustframework}>
-            <option value='One'>Free Borrowing</option>
-            <option value='Two'>Upkeep Koha</option>
-            <option value='Three'>Conditional (contact to arrange)</option>
-          </select>
-        </label>
-        <br />
-        <input type="submit" value='Submit changes' />
-        <button onClick={this.props.finish}>Cancel</button>
-      </form>
+      <div className='box add-gear'>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <h1 className="title is-1 has-text-centered">Edit Tool</h1>
+          <hr />
+
+          <label className="label is-medium">Name
+              <input required className="input is-medium is-fullwidth" type="text" onChange={this.handleChange} value={this.state.name} name='name' />
+          </label>
+
+          <div className='columns'>
+            <div className='column is-6'>
+              <label className='label is-medium' name='status'>Availability</label>
+            </div>
+
+            <div className='column is-6'>
+              <div className='select is-pulled-right'>
+                <select name='status' onChange={this.handleChange} value={this.state.status}>
+                  <option className='option' value='Available'>Available</option>
+                  <option className='option' value='Not Available'>Not Available</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <label className='label is-medium'>Description
+            <textarea className="textarea is-small is-fullwidth" rows='3' name='description' onChange={this.handleChange} value={this.state.description}></textarea>
+          </label>
+
+          <label className="label is-medium">Photo url
+            <input className="input is-medium is-fullwidth" type="text" name="photo_url" onChange={this.handleChange} value={this.state.photo_url} />
+          </label>
+
+          <div className='columns'>
+            <div className='column is-6'>
+              <label className="label is-medium" name='trustframework'>Lending conditions</label>
+            </div>
+
+            <div className='column is-6'>
+              <div className='select is-pulled-right'>
+                <select name='trustframework' onChange={this.handleChange} value={this.state.trustframework}>
+                  <option className='option' value='One'>Free borrowing</option>
+                  <option className='option' value='Two'>Upkeep Koha</option>
+                  <option className='option' value='Three'>Conditional (contact to talk)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+          <input className="submit button-pad button is-centered is-black is-large" type="submit" value='Submit' />
+
+        </form>
+      </div>
     )
   }
 }
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({ user }) => {
   return {
     user
   }

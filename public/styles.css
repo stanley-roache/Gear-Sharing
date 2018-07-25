@@ -110,6 +110,7 @@
 
 .message {
     padding: 20px;
+    width: 100%;
 }
 
 .is-search-button {
@@ -120,4 +121,16 @@
 .tool-pool-name {
     padding-top: 10px;
     padding-bottom: 10px; 
+}
+
+.gear-card {
+    margin-top: 2rem;
+}
+
+#is-gear-item-subcategory1 {
+    margin-bottom: 0.8rem;
+}
+
+#is-gear-item-subcategory2 {
+    margin-bottom: 0.8rem;
 }
