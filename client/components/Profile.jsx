@@ -23,6 +23,10 @@ class Profile extends React.Component {
     this.renderForm = this.renderForm.bind(this)
   }
 
+  componentDidMount() {
+    !this.props.auth.isAuthenticated && (document.location = "/#/login")
+  }
+
 
   setFalse(val) {
     this.setState({

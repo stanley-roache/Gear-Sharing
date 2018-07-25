@@ -59,8 +59,8 @@ export class NewGearForm extends React.Component {
               </div>
 
               <div className='column is-6'>
-                <div className='select'>
-                  <select onChange={this.handleChange}>
+                <div className='select is-pulled-right'>
+                  <select name='trustframework' onChange={this.handleChange}>
                     <option className='option' value='One'>Free borrowing</option>
                     <option className='option' value='Two'>Upkeep Koha</option>
                     <option className='option' value='Three'>Conditional (contact to talk)</option>
