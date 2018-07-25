@@ -11,7 +11,7 @@ export class GearItem extends React.Component {
         this.state = {
             editingItem: false,
             requestingItem: false,
-            requestSent: false
+            requestSent: false,
         }
         this.openEdit = this.openEdit.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
@@ -75,7 +75,8 @@ export class GearItem extends React.Component {
                 status,
                 photo_url,
                 trustframework,
-                user_id
+                user_id,
+                user_name
             } = thisGear
             const activeUserId = this.props.user.id
             const gearOwnerId = user_id
@@ -89,7 +90,7 @@ export class GearItem extends React.Component {
                             </div>
 
                             <div className='column is-12'>
-                                <p>@placeholderino</p>
+                                <p>@{user_name}</p>
                             </div>
                         </div>
                         <div className='columns box gear-card'>
@@ -97,11 +98,15 @@ export class GearItem extends React.Component {
                                 <h3 className='title is-3'>Description:</h3>
                                 <p>{description}</p>
                                 <br />
-                                <h5 className='title is-5' id='is-gear-item-subcategory1'>Availability:</h5>
-                                <p>{status}</p>
+                                <h5 className='title is-5' id='is-gear-item-subcategory1'>{status}</h5>
                                 <br />
                                 <h5 className='title is-5' id='is-gear-item-subcategory2'>Borrowing conditions:</h5>
-                                <p>{trustframework}</p>
+                                <p>{(trustframework == 'One')
+                                    ? 'Free Borrowing'
+                                    : (trustframework == 'Two')
+                                        ? 'Upkeep Koha'
+                                        : 'Conditional (Contact to Arrange)'
+                                }</p>
                                 <br />
 
                             </div>
