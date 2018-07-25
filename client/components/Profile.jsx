@@ -92,6 +92,7 @@ class Profile extends React.Component {
                     this.state.viewingProfile
 
                       ?
+
                       <div>
                         <div className='column is-12'>
                           <h1 className='title is-1'>@{this.props.user.username}</h1>
@@ -119,6 +120,7 @@ class Profile extends React.Component {
                       </div>
 
                       :
+
                       <div>
                         <div className='column is-12'>
                           <h1 className='title is-1'>Messages</h1>
