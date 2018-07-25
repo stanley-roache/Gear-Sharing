@@ -30,7 +30,7 @@ export class Home extends React.Component {
               </div>
               <div className='column is-6'>
                 <h1 className='title is-2 has-text-white'>Ethics:</h1>
-                <p className='has-text-white'>The ToolPool team are committed to creating a reliable and safe online community space to ensure mutually beneficial interactions between lenders and borrowers. </p>
+                <p className='has-text-white'>The Borrowers team are committed to creating a reliable and safe online community space to ensure mutually beneficial interactions between lenders and borrowers. </p>
               </div>
             </div>
           </div>
