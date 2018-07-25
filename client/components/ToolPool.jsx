@@ -64,6 +64,7 @@ export class ToolPool extends React.Component {
 
     return (
       <div className='toolpool-wrapper'>
+        <div className="container">
           <input onChange={this.handleChange} type="text" value={this.state.term} name='term'/>
           <button onClick={this.handleSubmit}>Search</button>
           <button onClick={this.cancelSearch}>Cancel</button>
@@ -71,15 +72,17 @@ export class ToolPool extends React.Component {
             <option value='AVAILABLE'>Available Now</option>
             <option value='ALL'>All</option>
           </select>
-        <h1 className='title is-2'>TOOL POOL</h1>
-        {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
-        <ul>
-          {display
-            .sort(nameSort)
-            .map(item => {
-            return <ItemInGrid item={item} key={item.id} showToggle={false}/>
-          })}
-        </ul>
+          <h1 className='title is-2'>TOOL POOL</h1>
+          {this.props.err && <span className="has-text-danger is-large">{this.props.err}</span>}
+          <ul>
+            {display
+              .sort(nameSort)
+              .map(item => {
+              return <ItemInGrid item={item} key={item.id} showToggle={false}/>
+            })}
+          </ul>
+
+        </div>
       </div>
     )
   }
