@@ -89,40 +89,50 @@ export class GearItem extends React.Component {
                             <div className='column is-12'>
                                 {!this.props.auth.isAuthenticated
                                     && <p className='has-text-centered'>Only registered users can request to borrow gear</p>}
-                                    
-                                    {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
-                                        && <p className='has-text-centered'>This is your tool</p>}
-                                </div>
-                                <div className='column is-6'>
 
-                                    {!this.props.auth.isAuthenticated
-                                        && <button className='submit button is-centered is-black is-large' onClick={this.toLogin}>Login/Register</button>}
-
-                                    {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
-                                        && <button className='submit button is-centered is-black is-large' onClick={() => this.renderForm()}>Edit this tool</button>}
-                                </div>
+                                {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
+                                    && <p className='has-text-centered'>This is your tool</p>}
                             </div>
+                            <div className='column is-6'>
 
-                            <div ref='editForm'>
-                                {this.state.editingItem
-                                    && <GearEdit item={thisGear} finish={() => this.cancelEdit()} />}
+                                {!this.props.auth.isAuthenticated
+                                    && <button className='submit button is-centered is-black is-large' onClick={this.toLogin}>Login/Register</button>}
+
+                                {this.props.auth.isAuthenticated && activeUserId === gearOwnerId && !this.state.editingItem
+                                    && <button className='submit button is-centered is-black is-large' onClick={() => this.renderForm()}>Edit this tool</button>}
                             </div>
-
-                            {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
-                                && <GearRequest onFinish={() => { }} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId} />}
-
                         </div>
+
+
+
+                        <div ref='editForm'>
+                            <div className={`modal ${this.state.editingItem && 'is-active'}`}>
+                                <div className="modal-background"></div>
+                                <div className="modal-content">
+                                    <GearEdit item={thisGear} onFinish={() => this.cancelEdit()} />}
+                                </div>
+                                <a className="submit button is-centered is-large modal-close" aria-label="close" onClick={() => this.cancelEdit()}></a>
+                            </div>
+                        </div>
+
+
+
+
+                        {this.props.auth.isAuthenticated && activeUserId !== gearOwnerId
+                            && <GearRequest onFinish={() => { }} gear_id={gearId} owner_id={gearOwnerId} requester_id={activeUserId} />}
+
                     </div>
-                    )
-                }
-            }
-        }
-        
-        const mapStateToProps = (state) => (
-    {
-                        auth: state.auth,
-                    user: state.user,
-                    gear: state.gear
-                }
+                </div>
             )
+        }
+    }
+}
+
+const mapStateToProps = (state) => (
+    {
+        auth: state.auth,
+        user: state.user,
+        gear: state.gear
+    }
+)
 export default connect(mapStateToProps)(GearItem)
