@@ -34,7 +34,7 @@ export class ToolPool extends React.Component {
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    }, this.handleSubmit)
   }
 
   handleSubmit() {
@@ -124,8 +124,8 @@ export class ToolPool extends React.Component {
                 ?
                 <div>
                   <input className='input is-normal' onChange={this.handleChange} type="text" placeholder='Search here...' value={this.state.term} name='term' />
-                  <button className='button is-centered' onClick={this.handleSubmit}>Search</button>
-                  <button className='button is-centered' onClick={this.cancelSearch}>Cancel</button>
+                  {/*<button className='button is-centered' onClick={this.handleSubmit}>Search</button>*/}
+                  {/*<button className='button is-centered' onClick={this.cancelSearch}>See All</button>*/}
                 </div>
                 :
                 <div className='columns'>
