@@ -100,12 +100,8 @@ class Profile extends React.Component {
 
                       ?
 
-                      <div>
-                        <div className='column is-12'>
+                        <div className='column is-12 is-full'>
                           <h1 className='title is-1'>@{this.props.user.username}</h1>
-                        </div>
-
-                        <div className='column is-12'>
                           <h5 className='title is-5' id='name'>{this.props.user.firstName} {this.props.user.lastName}</h5>
                           <p>{this.props.user.email}</p>
                           <p className='rating'>Trust Rating: </p>
@@ -124,11 +120,9 @@ class Profile extends React.Component {
                           {!this.state.editingProfile && !this.state.addingItem
                             && <a className='button button-pad' onClick={() => this.renderForm('editingProfile')}>Edit Profile</a>}
                         </div>
-                      </div>
 
                       :
 
-                      <div>
                         <div className='column is-12'>
                           <h1 className='title is-1'>Messages</h1>
                           <div>
@@ -138,7 +132,7 @@ class Profile extends React.Component {
                                 <div className='message'>
                                   <i className="far fa-envelope icon-pad"></i>
                                   <span>{message.requester_user_name}</span>
-                                  <span className='is-right'>{message.created_at}</span>
+                                  <span className='is-pulled-right'>{message.created_at}</span>
                                   <li>{message.message}</li>
                                   <p>
                                     <Link to={`/item/${message.gear_id}`}>
@@ -151,7 +145,6 @@ class Profile extends React.Component {
                           </ul>
                           </div>
                         </div>
-                      </div>
                   }
 
                 </div>
