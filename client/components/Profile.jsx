@@ -23,8 +23,8 @@ class Profile extends React.Component {
     this.renderForm = this.renderForm.bind(this)
   }
 
-  componentWillMount() {
-    this.props.auth.isAuthenticated && (document.location = "/#/login")
+  componentDidMount() {
+    !this.props.auth.isAuthenticated && (document.location = "/#/login")
   }
 
 
