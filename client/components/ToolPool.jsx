@@ -82,10 +82,11 @@ export class ToolPool extends React.Component {
   }
 
   render() {
+
     // to wait on gear array & user info load:
     if (this.props.isFetching) {
       return (
-        <p>Fetching!!!!!!!!!!!</p>
+        <p>Fetching...</p>
       )
     }
 
@@ -97,6 +98,7 @@ export class ToolPool extends React.Component {
 
       return (
         <div className='section'>
+        <div className="container">
           <div className='columns is-multiline'>
             <div className='column is-4 is-offset-4 has-text-centered'>
               <h1 className='title is-1'>ALL TOOLS</h1>
@@ -150,7 +152,7 @@ export class ToolPool extends React.Component {
                 return <ItemOnToolPool item={item} key={item.id} />
               })}
           </div>
-
+          </div>
         </div>
       )
     }

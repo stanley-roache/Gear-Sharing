@@ -54,7 +54,10 @@ class Profile extends React.Component {
     // to wait on gear array & user info load:
     if (this.props.user.isFetching) {
       return (
-        <p>Fetching!!!!!!!!!!!</p>
+        <div className="container">
+          <p className="has-text-centered title is-1"> Fetching...</p>
+
+        </div>
       )
     }
 

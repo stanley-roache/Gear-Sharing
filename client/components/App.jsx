@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="">
 
           <Route path='/' component={Nav} />
           <Route exact path='/' component={Home} />
