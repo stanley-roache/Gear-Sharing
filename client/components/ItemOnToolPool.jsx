@@ -17,13 +17,8 @@ export const ItemOnToolPool = props => {
                 </h4>
             </Link>
             <div className='message'>
-                <p>{status}</p>
-                <p>{(trustframework == 'One')
-                    ? 'Free Borrowing'
-                    : (trustframework == 'Two')
-                        ? 'Upkeep Koha'
-                        : 'Conditional (Contact Owner)'
-                }</p>
+                <p>Status: {status}</p>
+                <p>Owner: {user_name}</p>
             </div>
 
         </div>
@@ -31,3 +26,10 @@ export const ItemOnToolPool = props => {
 }
 
 export default connect()(ItemOnToolPool)
+
+{/* <p>{(trustframework == 'One')
+                    ? 'Free Borrowing'
+                    : (trustframework == 'Two')
+                        ? 'Upkeep Koha'
+                        : 'Conditional (Contact Owner)'
+                }</p> */}
