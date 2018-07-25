@@ -72,10 +72,13 @@ export function gearAdd(item) {
 }
 
 export function editGearItem(item) {
+  delete item.user_name
   return dispatch => {
     dispatch(editRequest())
     return request('post', `gear/update/${item.id}`, item)
       .then((res) => {
+        console.log('successgul updated');
+        
         dispatch(editGear(item))
       })
       .catch(err => {
