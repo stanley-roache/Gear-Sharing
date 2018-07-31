@@ -39,7 +39,7 @@ router.get('/fullProfile', (req, res) => {
     })
 })
 
-router.post('/update', (req, res) => {
+router.put('/update', (req, res) => {
   const userUpdate = req.body
   const userId = req.user.user_id
 
