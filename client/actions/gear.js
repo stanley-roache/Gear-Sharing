@@ -92,7 +92,7 @@ export function setAvailability(id, isAvailable) {
   return dispatch => { dispatch(editGearItem(update)) }
 }
 
-function editRequest() {
+export function editRequest() {
   return {
     type: 'EDIT_REQUEST',
     isFetching: false,
@@ -100,7 +100,7 @@ function editRequest() {
   }
 }
 
-function editGear(item) {
+export function editGear(item) {
   return {
     type: 'EDIT_GEAR',
     item
