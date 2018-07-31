@@ -7,6 +7,7 @@ import {
     gearError,
     requestGearSave,
     gearAdd,
+    editGearItem,
     editRequest,
     editGear
 } from '../../../client/actions/gear'
