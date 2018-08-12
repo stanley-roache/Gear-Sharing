@@ -9,7 +9,8 @@ import {
     gearAdd,
     editGearItem,
     editRequest,
-    editGear
+    editGear,
+    setAvailability
 } from '../../../client/actions/gear'
 
 const middlewares = [thunk]
@@ -94,6 +95,31 @@ describe('thunk tests', () => {
         .then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         })
+    })
+
+    it('setAvailibity success actions', () => {
+      const actual = {
+        id: 1,
+        status: 'Available'
+      }
+
+      const expectedActions = [
+        editRequest(),
+        editGear(actual)
+      ]
+
+      let dispatched = store.dispatch(
+        setAvailability(
+          actual.id,
+          actual.status == 'Available'
+        )
+      )
+
+      console.log(dispatched)
+
+      dispatched.then(() => {
+        expect(store.getActions()).toEqual(expectedActions)
+      })
     })
 })
 
