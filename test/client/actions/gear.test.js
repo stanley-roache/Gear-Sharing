@@ -115,8 +115,6 @@ describe('thunk tests', () => {
         )
       )
 
-      console.log(dispatched)
-
       dispatched.then(() => {
         expect(store.getActions()).toEqual(expectedActions)
       })
