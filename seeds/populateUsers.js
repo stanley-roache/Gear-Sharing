@@ -36,9 +36,9 @@ exports.seed = function(knex, Promise) {
         },
         {
           id: 4,
-          first_name: 'Stan',
-          last_name: 'Dan',
-          user_name: 'Diddly',
+          first_name: 'Stanley',
+          last_name: 'Roache',
+          user_name: 'Stan',
           email_address: 'stan.roache@gmail.com',
           profile_pic: '/images/profiles/1.jpg',
           hash: '$2a$12$3AFD0RA3To2A/rsyvJ/SjO6Z4JbrbZv2a7RJaQHZSYi/ZGrkeb7KK'
